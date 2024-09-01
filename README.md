@@ -1,4 +1,4 @@
-# ![Uploading link_icon Background Removed.png…]() CT\_Mapper: Automated Terminology Mapping of Clinical Terms to OMOP Vocabularies using Retrieval Augmented Generation: 
+![link_icon Background Removed](https://github.com/user-attachments/assets/45a29e7d-58d3-4532-a5ef-b90daa624bc7) # CT\_Mapper: Automated Terminology Mapping of Clinical Terms to OMOP Vocabularies using Retrieval Augmented Generation: 
 CT Mapper is an automated concept linking tool to find appropriate standardized terms in OMOP Athena vocabularies for clinical terms in data dictionary. The mapping tool is built with advanced Retrieval Augment Generation method. We leverage the power of generative models and vector store to improve accuracy of linking for composite concepts. This tool allows the data custodians to transform ambiogious and semi-structured clinical data to harmonized schema.
 
 # Task Description
