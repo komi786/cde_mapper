@@ -1,1 +1,24 @@
+pandas
+tqdm
+torch
+transformers
+python-dotenv
+qdrant-client
+langchain
+langchain_openai
+ctransformers
+pydantic>=1.10.8
+typing-extensions>=4.8.0
+torch>=2.2.2
+openai>=1.19.0
+qdrant-client>=1.8.2
+langchain-community
+togather
+faiss-cpu
+faiss-gpu
+langchain-togather
+simstring-fast
+
+
+
 
