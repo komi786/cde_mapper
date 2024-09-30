@@ -3,7 +3,8 @@ CT Mapper is an automated concept linking tool to find appropriate standardized 
 
 # Task Description
 To harmonize clinical data effectively, it is crucial to understand the varying levels of conceptual representation within it. Many existing frameworks have attempted to address the challenge of concept linking, focusing primarily on clinical terms with atomic representation. However, in the context of challenges encountered in mapping cohort studies for the ICARE4CVD project, we propose a solution that leverages retrieval-augmented generation and in-context learning. Rather than mapping individual terms, we focus on mapping data dictionaries presented in a horizontal table format, where each row is treated as a single query. Each query may include multiple components such as labels, descriptions, methods, formulas, units, and categorical values. To standardize and extract clinical terms from each query, we employed in-context learning with generative models like LLAMA and GPT-4. For retrieval, we utilized a hybrid vector search combined with metadata filtering on structured schema, which enhances precision. To further refine the results, we propose a multi-stage ranking method. This includes a large language model-based cross-ranking method to filter out irrelevant candidates, followed by a relevance-based scoring and relationship prediction. The cumulative score from these steps is used to identify the final candidate.
-![rag_pipeline_major_revision_v4](https://github.com/user-attachments/assets/80f66675-cf69-4d9c-8781-e97d9aea4bd5)
+![image](https://github.com/user-attachments/assets/5fa77c82-58ad-4736-bc83-b3a57a33dab4)
+
 
 ## Installation Requirements
 
