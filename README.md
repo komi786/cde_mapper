@@ -33,7 +33,7 @@ You can install these dependencies using `pip`:
 
 ```bash
 pip install pandas tqdm torch transformers python-dotenv qdrant-client langchain langchain_openai ctransformers pydantic>=1.10.8 typing-extensions>=4.8.0 torch>=2.2.2 openai>=1.19.0 qdrant-client>=1.8.2 langchain-community togather faiss-cpu faiss-gpu langchain-togather simstring-fast
-
+```
 Usage
 
 Running Experiments on NCBI Dataset
@@ -42,12 +42,11 @@ Below are examples of how to run experiments using the {NCBI} dataset or anyothe
 Standard Inference
 
 To perform standard inference on the NCBI dataset, use the following command:
-
-bash
-Copy code
+```
 PYTHONPATH=/workspace/mapping_tool python3 '/workspace/mapping_tool/rag/vector_index.py' \
   --mode inference \
   --collection_name ncbi_custom_collection \
   --document_file_path /workspace/mapping_tool/data/eval_datasets/original_ncbi-disease/test_dictionary_docs.jsonl \
   --input_data /workspace/mapping_tool/data/eval_datasets/original_ncbi-disease/combined_test_queries.txt \
   --output_file /workspace/mapping_tool/data/eval_datasets/ncbi-disease_hybrid_not_compressed.txt
+```
