@@ -18,7 +18,4 @@ faiss-cpu
 faiss-gpu
 langchain-togather
 simstring-fast
-
-
-
-
+ragatouille
