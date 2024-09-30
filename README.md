@@ -34,14 +34,12 @@ You can install these dependencies using `pip`:
 ```bash
 pip install pandas tqdm torch transformers python-dotenv qdrant-client langchain langchain_openai ctransformers pydantic>=1.10.8 typing-extensions>=4.8.0 torch>=2.2.2 openai>=1.19.0 qdrant-client>=1.8.2 langchain-community togather faiss-cpu faiss-gpu langchain-togather simstring-fast
 ```
-Usage
+## Usage
 
 Running Experiments on NCBI Dataset
 Below are examples of how to run experiments using the {NCBI} dataset or anyother dataset with CT_Mapper. These examples demonstrate both standard inference and using the LLAMA3.1 model for enhanced performance.
 
-Standard Inference
-
-To perform standard inference on the NCBI dataset, use the following command:
+## Standard Inference: To perform standard inference on the NCBI dataset, use the following command:
 ```
 PYTHONPATH=/workspace/mapping_tool python3 '/workspace/mapping_tool/rag/vector_index.py' \
   --mode recreate \
@@ -50,4 +48,49 @@ PYTHONPATH=/workspace/mapping_tool python3 '/workspace/mapping_tool/rag/vector_i
   --input_data /workspace/mapping_tool/data/eval_datasets/original_ncbi-disease/combined_test_queries.txt \
   --output_file /workspace/mapping_tool/data/eval_datasets/ncbi-disease_hybrid_not_compressed.txt
 ```
-use mode == inference if using already existing collection
+
+## Explanation of Parameters:
+
+--mode inference: Sets the mode to recreate. Use 'inference' for existing collection
+--collection_name ncbi_custom_collection: Specifies the collection name.
+--document_file_path: Path to the JSONL file containing the list of langchain documents.
+--input_data: Path to the text file containing combined test queries, format (id||mention)
+--output_file: Path where the output results will be saved.
+
+## LLAMA3.1 Inference
+
+For enhanced inference using the LLAMA3.1 model, execute the following command:
+
+```
+PYTHONPATH=/workspace/mapping_tool python3 '/workspace/mapping_tool/rag/vector_index.py' \
+  --mode inference \
+  --collection_name ncbi_custom_collection \
+  --document_file_path /workspace/mapping_tool/data/eval_datasets/original_ncbi-disease/test_dictionary_docs.jsonl \
+  --input_data /workspace/mapping_tool/data/eval_datasets/original_ncbi-disease/combined_test_queries.txt \
+  --output_file /workspace/mapping_tool/data/eval_datasets/ncbi-disease_hybrid_llama3.1_stage1_prompt2.txt \
+  --use_llm \
+  --llm_id llama3.1
+```
+
+
+## Contributing
+
+Contributions are welcome! Please follow these steps to contribute:
+
+Fork the Repository: Click the "Fork" button at the top-right corner of this page.
+Clone Your Fork:
+```git clone https://github.com/your-username/CT_Mapper.git ```
+Create a New Branch:
+```git checkout -b feature/YourFeature```
+Make Your Changes: Implement your feature or bug fix.
+Commit Your Changes:
+```git commit -m "Add your descriptive commit message"```
+Push to Your Fork:
+```git push origin feature/YourFeature```
+Create a Pull Request: Navigate to the original repository and click "New Pull Request".
+Please ensure your contributions adhere to the existing code style and include appropriate tests where applicable.
+
+```markdown
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
+
