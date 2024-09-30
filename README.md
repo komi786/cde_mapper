@@ -44,9 +44,10 @@ Standard Inference
 To perform standard inference on the NCBI dataset, use the following command:
 ```
 PYTHONPATH=/workspace/mapping_tool python3 '/workspace/mapping_tool/rag/vector_index.py' \
-  --mode inference \
+  --mode recreate \
   --collection_name ncbi_custom_collection \
   --document_file_path /workspace/mapping_tool/data/eval_datasets/original_ncbi-disease/test_dictionary_docs.jsonl \
   --input_data /workspace/mapping_tool/data/eval_datasets/original_ncbi-disease/combined_test_queries.txt \
   --output_file /workspace/mapping_tool/data/eval_datasets/ncbi-disease_hybrid_not_compressed.txt
 ```
+use mode == inference if using already existing collection
