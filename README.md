@@ -51,11 +51,11 @@ PYTHONPATH=/workspace/mapping_tool python3 '/workspace/mapping_tool/rag/vector_i
 
 ## Explanation of Parameters:
 
---mode inference: Sets the mode to recreate. Use 'inference' for existing collection
---collection_name ncbi_custom_collection: Specifies the collection name.
---document_file_path: Path to the JSONL file containing the list of langchain documents.
---input_data: Path to the text file containing combined test queries, format (id||mention)
---output_file: Path where the output results will be saved.
+  --mode inference: Sets the mode to recreate. Use 'inference' for existing collection
+  --collection_name ncbi_custom_collection: Specifies the collection name.
+  --document_file_path: Path to the JSONL file containing the list of langchain documents.
+  --input_data: Path to the text file containing combined test queries, format (id||mention)
+  --output_file: Path where the output results will be saved.
 
 ## LLAMA3.1 Inference
 
