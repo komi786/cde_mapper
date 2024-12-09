@@ -1,0 +1,33 @@
+# Ignore operating system files
+.DS_Store
+Thumbs.db
+
+# Ignore build directories
+/build/
+/dist/
+
+# Ignore dependency directories
+/node_modules/
+/vendor/
+
+# Ignore log files
+*.log
+
+*.env
+# Ignore configuration files with sensitive information
+config.ini
+secrets.json
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Ignore temporary files
+*.tmp
+*.swp
