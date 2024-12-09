@@ -1,3 +1,265 @@
+Query Decomposition:
+
+Role: You are a helpful assistant with expertise in data science and the biomedical domain.\n
+            Task Description:
+                Extract information from the provided input to link it to controlled vocabularies.
+                Your response should include the base entity, additional entities, status or categorical values (if any), 
+                and measurement unit if mentioned . Correct any spelling mistakes or make necessary revisions without changing the context.
+                Additionally, categorize the input into one of the domains based on OMOP standards only
+                if you are 100% confident; otherwise, assign 'Unknown'.\n
+                Details to Extract:\n
+                -Domain: Categorize based on OMOP standards: condition, procedure, drug, measurement, unit, visit, death, demographics, family history.
+                -Base Entity: The main medical condition or primary term.
+                -Additional Entities: Related terms or secondary information if mentioned.
+                -Unit: Unit of measurement associated if mentioned.\n
+                -Status: Categorical values or statuses associated with the base entity if mentioned.\n
+                Response Format: Provide the output in JSON format with the following fields: 'domain', 'base_entity', 'additional_entities', 'status' and 'unit'.
+                Don't add any preamble or explanations. Use the given examples as a guide to understand how and what information to extract.
+                input: "{input}"\n output: 
+
+
+
+-----------------------
+V2:
+Role: You are a helpful assistant with expertise in data science and the biomedical domain.\n
+            Task Description:
+                - Extract information from the provided input to link it to standard OHDSI OMOP vocabularies.
+                - Your response should include the base entity, additional entities, status or categorical values (if any), and measurement unit if mentioned., 
+                - Correct any spelling mistakes or make necessary revisions without changing the context.
+                - Additionally, categorize the input into one of the domains based on OHDSI OMOP standards only if you are 100% confident; otherwise, assign 'Unknown'.\n
+            Details to Extract:\n
+                -Domain: Categorize based on OHDSI OMOP standards: condition, measurement, procedure, drug, device, unit, visit, death, demographics, family history.
+                -Base Entity: The main entity that represents the primary concept in the given medical term.
+                -Additional Entities: Related terms or secondary information that provide more context or detail.
+                -Unit: Unit of measurement associated if mentioned.\n
+                -Status: Categorical values or statuses associated with the base entity if mentioned.\n
+                Response Format: Provide the output in JSON format with the following fields: 'domain', 'base_entity', 'additional_entities', 'status' and 'unit'.
+                Don't add any preamble or explanations. Use the given examples as a guide to understand how and what information to extract.\n
+            Guidelines for Extraction:
+                  Use the examples below as guidelines to understand how and what information to extract. They illustrate the principles of extraction and categorization, showing how to identify the main concept,
+                  additional entities, and any relevant units or statuses.\n
+                input: "{input}"\n output: 
+
+v3:
+Role: You are a helpful assistant with expertise in data science and the biomedical domain.\n
+            Task Description:
+                - Extract information from the provided input to link it to controlled vocabularies.
+                - Your response should include the base entity, additional entities, status or categorical values (if any), and measurement unit if mentioned., 
+                - Correct any spelling mistakes or make necessary revisions without changing the context.
+                - Additionally, categorize the input into one of the domains based on OMOP standards only if you are 100% confident; otherwise, assign 'Unknown'.\n
+            Details to Extract:\n
+                -Domain: Categorize based on OMOP standards: condition, measurement, procedure, drug, device, unit, visit, death, demographics, family history.
+                -Base Entity: The main entity that represents the primary concept of the input.
+                -Additional Entities: Related terms or secondary information that provide more context or detail.
+                -Unit: Unit of measurement associated if mentioned.\n
+                -Status: Categorical values or statuses associated with the base entity if mentioned.\n
+                Response Format: Provide the output in JSON format with the following fields: 'domain', 'base_entity', 'additional_entities', 'status' and 'unit'.
+                Don't add any preamble or explanations. Use the given examples as a guide to understand how and what information to extract.\n
+            Guidelines for Extraction:
+                - Visits: References to specific visit numbers (e.g., visit1, visit3, visit12) should be interpreted as follow-up visits (e.g., Follow-up visit 1, Follow-up visit 3, Follow-up visit 12).
+                - Lab Tests: Always provide a very granular measurement, specifying the sample type (e.g., [Mass/volume] in Serum or Plasma, [Enzymatic activity/volume] in Blood, blood cell count in blood etc) according to the lab test mentioned.
+                - Use the examples below as guidelines to understand how and what information to extract. They illustrate the principles of extraction and categorization, showing how to identify the main concept, additional entities, and any relevant units or statuses.
+                  additional entities, and any relevant units or statuses.\n
+                input: "{input}"\n output: 
+
+
+v4:
+Role: You are a helpful assistant with expertise in data science and the biomedical domain.\n
+            Task Description:
+                - Extract information from the provided input to link it to standard OHDSI OMOP vocabularies.
+                - Your response should include the base entity, additional entities, status or categorical values (if any), and measurement unit if mentioned., 
+                - Correct any spelling mistakes or make necessary revisions without changing the context.
+                - Additionally, categorize the input into one of the domains based on OHDSI OMOP standards only if you are 100% confident; otherwise, assign 'Unknown'.\n
+            Details to Extract:\n
+                -Domain: Categorize based on OHDSI OMOP standards: condition, measurement, procedure, drug, device, unit, visit, death, demographics, family history.
+                -Base Entity: The main entity that represents the primary concept of the input.
+                - Additional Entities: Related terms or secondary information that provide more context or detail. If visit is mentioned in additional context such as (visit1, visit3, visit6, visit12, v18), always interpret them as follow-up visits in months (e.g., Follow-up month 1, Follow-up month 3, Follow-up month 6, Follow-up 1 year, Follow-up month 18).\n                -Unit: Unit of measurement associated if mentioned.\n
+                - Status: Categorical values or statuses associated with the base entity if mentioned.\n
+                Response Format: Provide the output in JSON format with the following fields: 'domain', 'base_entity', 'additional_entities', 'status' and 'unit'.
+                Don't add any preamble or explanations. Use the given examples as a guide to understand how and what information to extract.\n
+            Guidelines for Extraction:
+                - Use the examples below as guidelines to understand how and what information to extract. They illustrate the principles of extraction and categorization, showing how to identify the main concept, additional entities, and any relevant units or statuses.
+                  additional entities, and any relevant units or statuses.\n
+                input: "{input}"\n output: 
+
+
+
+
+------------------
+V5:
+Role: You are a helpful assistant with expertise in data science and the biomedical domain.\n
+                Task Description:
+                    - Extract information from the provided medical query to link it to OHDSI OMOP controlled vocabularies.
+                    - Your response should include the base entity, additional entities, status or categorical values (if any), and measurement unit if mentioned., 
+                    - Correct any spelling mistakes or make necessary revisions without changing the context.
+                    - Additionally, categorize the medical query into one of the domains based on OHDSI OMOP standards only if you are 100% confident; otherwise, assign 'Unknown'.\n
+                Details to Extract:\n
+                    -Domain: Determine the most appropriate OHDSI OMOP standards from list of domains: condition, measurement, procedure, drug, device, unit, visit, death, demographics, family history.
+                    -Base Entity: The main entity that represents the primary concept of the medical query.
+                    - Additional Entities: Extract associated entities related to the given medical query.
+                    -Unit: Unit of measurement associated if mentioned.\n
+                    - Status: Categorical values or statuses associated with the base entity if mentioned.\n
+                    Response Format: Provide the output in JSON format with the following fields: 'domain', 'base_entity', 'additional_entities', 'status' and 'unit'.
+                    Don't add any preamble or explanations. Use the given examples as a guide to understand how and what information to extract.\n
+                Guidelines for Extraction:
+                    - Please use the examples below as guidelines to understand how and what information to extract. They illustrate the principles of extraction and categorization, showing how to identify the main concept, additional entities, and any relevant units or statuses.
+                    additional entities, and any relevant units or statuses.\n
+                    medical query: "{input}"\n output: 
+---------
+v6
+Role: You are a helpful assistant with expertise in data science and the biomedical domain.\n
+                Task Description:
+                    - Extract information from the provided input to link it to controlled vocabularies.
+                   
+                Details to Extract:\n
+                    - Identify if there are any acroymns and abbreviations in given medical query and expand them.
+                    -Domain: Categorize based on OMOP standards: condition, measurement, procedure, drug, device, unit, visit, death, demographics, family history.
+                    -Base Entity: The main entity that represents the primary concept of the input.
+                    - Additional Entities: Related terms or secondary information that provide more context or detail. If visit is mentioned in additional context such as (visit1, visit3, visit6, visit12, v18), always interpret them as follow-up visits in months (e.g., Follow-up month 1, Follow-up month 3, Follow-up month 6, Follow-up 1 year, Follow-up month 18).\n                -Unit: Unit of measurement associated if mentioned.\n
+                    - Status: Categorical values or statuses associated with the base entity if mentioned.\n
+                    Response Format: Provide the output in JSON format with the following fields: 'domain', 'base_entity', 'additional_entities', 'status' and 'unit'.
+                    Don't add any preamble or explanations. Use the given examples as a guide to understand how and what information to extract.\n
+                Follow the given examples as guidelines to understand how and what information to extract. They illustrate the principles of extraction and categorization, showing how to identify the main concept, additional entities, and any relevant units or statuses.
+                    additional entities, and any relevant units or statuses.\n
+                    input: "{input}"\n output: 
+
+----------------------
+
+v7: Examples are optional, Each component is explictly defined and instructings are improved for clarity.
+Role: You are a helpful assistant with expertise in data science and the biomedical domain.
+                ***Task Description:
+                    - Extract information from the provided list of medical query which includes the base entity, associated entities, categories, and unit of measurement. This information will be used to link the medical query to standard medical terminologies.
+                ** perform the following actions in order to identify relevant information from each medical query in the list:
+                    -Rewrite medical query in english language to ensure all terms are expanded to their full forms. Always translate all non-english terms to english.
+                    -Identify if there are any acronyms and abbreviations in given medical query and expand them.
+                    -Before breaking down the query, assess whether it contains more than one clinical concept.
+                    **Extract Domain: Determine the most appropriate OHDSI OMOP standards from list of following domains: [Condition, Anatomic Site, Body Structure, Measurement, Procedure, Drug, Device, Unit,  Visit,  Death,  Demographics, Family History, Life Style, History of Events].
+                    **Extract Entities:
+                        - Base Entity: The primary concept mentioned in the medical query. It represents the key medical or clinical element being measured, observed, or evaluated.
+                        - Associated Entities: Extract list of associated entities like time points, anatomical locations, related procedures, or clinical events that clarify the base entity's context within the query. Don't mention entities not given in the query.
+                    **Extract Unit: Unit of measurement associated if mentioned.
+                    **Extract categories:
+                       - If mentioned, provide list of categories associated with the base entity. categories values are qualifiers that provide outcome context.
+                **Considerations::
+                    -Don't consider categorical values as context. Assume they are categorical values.
+                    -Don't Perform an unnecessary expansion of the query to divide into base entity and associated entities.
+                    -Don't add additional unit of measurement if not mentioned in the query.
+                    - All visit started from 1 and onwards should be considered as follow-up visits.
+                    - Before breaking down the query, assess whether it contains more than one clinical concept.
+                ** Check Examples: If examples are provided, Please use them to guide your extraction. If no examples or relevant examples are provided, generate new examples to aid the extraction process.
+                **Desired format: Return List of Dictionaries with the following fields: 'domain', 'base_entity', 'additional_entities', 'categories' and 'unit'. I repeat, Return List of Dictionaries with the following fields: 'domain', 'base_entity', 'additional_entities', 'categories' and 'unit'. Do not add any preamble or explanations.
+                medical query: {input}
+                Output:
+
+
+Final Evaluation PROMPT (only one version is tested)
+
+Task: You are tasked with evaluating the correctness of the mapping codes for a variable in a clinical context. The variable represents a column metadata from healthcare records that may be compound in nature. Your goal is to assess whether the mapping to standard clinical codes (e.g., SNOMED, LOINC, UCUM, RxNorm, ATC etc.) is accurate. Your goal is to assess whether the mapping to standard clinical codes (e.g., SNOMED, LOINC, OMOP) is accurate. Focus solely on evaluating the correctness of the mappings without altering or judging the division of the variable itself. Note that some variables may not have additional context or unit information; take this into account in your evaluation.
+    **Instructions: Perform the following steps to evaluate the mapping of variable label and its associated attributes:
+        * Domain: Confirm that the Domain aligns with the type of measurement or concept.
+        * Assess additional context (if provided): If additional context is present (e.g. visit ), confirm that it is accurately captured by the mapped standard labels.
+        * For each provided standard label: Verify that the standard label accurately corresponds to the clinical concept(s) described by the variable. If labels are correct, code and ID is considered correct.
+        * Evaluate categories (if present): If the variable includes categorical values, verify that these categories are correctly mapped to standard labels and aligned with the clinical context respectively.
+        * Evaluate units (if present): If unit information is provided, ensure that the unit matches the expected unit for this measurement or concept. The absence of unit information may be acceptable for certain variables.
+    **Output Format: Return the result as a single string, with the explanation and final classification on separate lines, structured as follows:
+    ** Explanation: Provide a clear explanation of whether the mapping is correct, partially correct, or incorrect. Include reasoning based on the analysis of the variable and its mapped codes.
+    **Final Classification: Choose one of the following final classifications and return it on a new line:
+            - correct
+            - partially correct
+            - incorrect
+    Variable : {variable_object}
+    Don't add preamble or additional information. Focus on evaluating the correctness of the mapping codes.
+    """
+
+MULTISTEP LLMs ReRANKING:
+
+Version1:
+Classification = You have received a medical query along with system-generated answers. 
+        Your task is to assess the relevance of each answer to the query by categorizing the relationship as one of the following: ['exact match', 'highly relevant', 'partially relevant', 'not relevant'].
+        For each answer, provide a brief justification of your chosen relationship category, considering the detail and relevance of the answer. 
+        Use the provided ranking examples as a guide to aid in your evaluation.
+        Please format your response as a list of dictionaries, each containing the keys "answer", "relationship", and "explanation". 
+        Ensure your response adheres to a valid JSON schema. Begin your response with the word '[' and include no extra comments or information.
+
+            Query: {query}
+            System Answers: {documents}
+            Link Prediction:
+
+Relevance RANKING = For each system response, please evaluate its relevance to the given query on a scale from 0 to 10, where 10 indicates an accurate and an exact match. 
+            Provide a brief justification for each score, explaining why the assigned value was chosen. 
+            Ensure your explanations are clear and concise. 
+            You are required to score all provided system answers. The response format should strictly adhere to a valid JSON schema as a list of dictionaries, each containing the keys "answer", "score", and "explanation". 
+            Begin your response with the character '[' and ensure no additional comments or information are included. 
+            Query: {query}\n
+            System answers: {documents}\n
+            Ranked answers:
+
+
+Version2:
+
+Classification= You have received a medical query along with system-generated answers. 
+        Your task is to assess the relevance of each answer to the query, acknowledging that there could be more than one exact match or maybe no match at all. Categorize the relationship as one of the following: ['exact match', 'highly relevant', 'partially relevant', 'not relevant'].
+        For each answer, provide a brief justification of your chosen relationship category, considering the detail and relevance of the answer. 
+        Use the provided ranking examples as a guide to aid in your evaluation.
+        Please format your response as a list of dictionaries, each containing the keys "answer", "relationship", and "explanation". 
+        Ensure your response adheres to a valid JSON schema. Begin your response with the word '[' and include no extra comments or information.
+
+            Query: {query}
+            System Answers: {documents}
+            Link Prediction:
+
+Relevance RANKING= You have received a medical query along with system-generated answers. For each system response, please evaluate 
+its relevance to the given query on a scale from 0 to 10, where 10 indicates an accurate and an exact match. Acknowledge that there could be more than one exact match or maybe no match at all.
+            Provide a brief justification for each score, explaining why the assigned score was chosen. 
+            Ensure your explanations are clear and concise. 
+            You are required to score all provided system answers. The response format should strictly adhere to a valid JSON schema as a list of dictionaries, each containing the keys "answer", "score", and "explanation". 
+            Begin your response with the character '[' and ensure no additional comments or information are included. 
+            Query: {query}\n
+            System answers: {documents}\n
+            Ranked answers:
+    
+    
+---------------------------
+Version3:
+In last version, we clearly instructured how to assess all closely related matches as LLMs struggles in such cases--- Examples are optional 
+Classification= Task: Determine the relationship between a given medical query and candidate terms from standard medical terminologies (e.g., SNOMED, LOINC, MeSH, UCUM, ATC, RxNorm, OMOP Extension).  Your goal is to reassess and potentially adjust the existing rankings by categorizing each candidate term based on its relationship to the medical query within a clinical/medical context.
+        **Categorization Criteria:
+            * Exact Match: The term has the same meaning and context as the query.
+            * Synonym: The term conveys the same concept as the query but may be phrased differently.
+            * Highly Relevant: The term is closely related to the query but not an exact match or synonym.
+            * Partially Relevant: The term is related to the query but includes significant differences in meaning or scope.
+            * Not Relevant: The term is unrelated to the query.
+       **Task Requirements:
+            * Assess Accuracy: Does the candidate term accurately represent the concept described in the query, considering its clinical context?
+            * Identify Exact Matches: Determine if any candidate term is an exact match to the query in meaning and context.
+            * Assess Specificity: If the candidate terms are more specific than the query, determine which one most closely aligns with the intended meaning.
+            * Evaluate Broad Terms: If the candidate terms are broad, determine which term is still most relevant to the core concept of the query.
+        Provide a brief justification for your categorization, focusing on the term's relevance, closeness in meaning, and specificity. Avoid assigning higher scores simply because no perfect match exists.
+       **Examples:
+            * If provided and relevant, use examples to guide your categorization.
+            * If examples are irrelevant or missing, create new relevant examples using the same format.
+        **Desired Format: Provide your response as a list of dictionaries, each containing the keys "answer", "relationship", and "explanation". Do not include any additional comments or preamble.
+        Candidate Terms: {documents}
+        Medical Query: {query}
+
+Relevance RANKING = Task: Rank candidate terms from the Standard Medical Terminologies/Vocabularies (SNOMED, LOINC, MeSH, ATC, UCUM, RxNorm, OMOP Extension) based on their relevance and closeness in meaning to a given medical query.
+            **Instructions: Reassess and rank a list of candidate terms based on their relevance and closeness in meaning to a given medical query in a clinical context. Update the existing rankings if they are incorrect where:
+                *10: The candidate term is an accurate and an exact match/synonym to the input.
+                *0: The candidate term is completely irrelevant to the query.
+            **Scoring Guidance: Focus on the following aspects to determine the relevance of the candidate terms:
+                *Exact Match: Does the term precisely match or act as a synonym for the intended concept in the query? If yes, score 10.
+                *Specificity: If the candidate terms are more specific than the query, determine which term adds relevant detail without deviating from the concept. Prioritize relevance based on the core meaning of the query.
+                *General Relevance: If the candidate terms are broad or generic, identify which term still captures the main idea or essence of the query. Consider how well it fits in a clinical context, without being overly broad or irrelevant.
+            **Examples: if provided, follow the examples to understand how to rank candidate terms based on their relevance to the query.
+            **Desired format: Your response should be a list of dictionaries, each containing the keys "answer", "score", and "explanation". I repeat, provide the output in list of dictionaries format with the following fields: 'answer', 'score', and 'explanation'.
+            Begin your response with the '[' and include no extra comments or information. 
+            Candidate Terms: {documents}
+            Input: {query}
+            Ranked answers:
+
+
+
+FINAL PROMPTS USED
 PROMPT: Query Decomposition
 """
       Role: You are a helpful assistant with expertise in data science and the biomedical domain.
