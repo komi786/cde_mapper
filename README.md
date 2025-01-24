@@ -39,14 +39,14 @@ pip install pandas tqdm torch transformers python-dotenv qdrant-client langchain
 Running Experiments on NCBI Dataset
 Below are examples of how to run experiments using the {NCBI} dataset or anyother dataset with CT_Mapper. These examples demonstrate both standard inference and using the LLAMA3.1 model for enhanced performance.
 
-## Standard Inference: To perform standard inference on the NCBI dataset, use the following command:
+## Standard Inference: To perform standard inference on the BC5CDR-Disease dataset, use the following command:
 ```
-PYTHONPATH=/workspace/mapping_tool python3 '/workspace/mapping_tool/rag/vector_index.py' \
+PYTHONPATH=python3 mapping_tool/rag/vector_index.py' \
   --mode recreate \
-  --collection_name ncbi_custom_collection \
-  --document_file_path /workspace/mapping_tool/data/eval_datasets/original_ncbi-disease/test_dictionary_docs.jsonl \
-  --input_data /workspace/mapping_tool/data/eval_datasets/original_ncbi-disease/combined_test_queries.txt \
-  --output_file /workspace/mapping_tool/data/eval_datasets/ncbi-disease_hybrid_not_compressed.txt
+  --collection_name bc5cdr_custom_collection  \
+  --document_file_path mapping_tool/data/original_bc5cdr-disease/test_dictionary_docs.jsonl \
+  --input_data mapping_tool/data/eval_datasets/original_bc5cdr-disease/random_queries_500.txt  \
+  --output_file mapping_tool/data/eval_datasets/original_bc5cdr-disease/original_bc5cdr_mapped.txt
 ```
 
 ## Explanation of Parameters:
@@ -62,12 +62,12 @@ PYTHONPATH=/workspace/mapping_tool python3 '/workspace/mapping_tool/rag/vector_i
 For enhanced inference using the LLAMA3.1 model, execute the following command:
 
 ```
-PYTHONPATH=/workspace/mapping_tool python3 '/workspace/mapping_tool/rag/vector_index.py' \
+PYTHONPATH=mapping_tool python3 'mapping_tool/rag/vector_index.py' \
   --mode inference \
-  --collection_name ncbi_custom_collection \
-  --document_file_path /workspace/mapping_tool/data/eval_datasets/original_ncbi-disease/test_dictionary_docs.jsonl \
-  --input_data /workspace/mapping_tool/data/eval_datasets/original_ncbi-disease/combined_test_queries.txt \
-  --output_file /workspace/mapping_tool/data/eval_datasets/ncbi-disease_hybrid_llama3.1_stage1_prompt2.txt \
+  --collection_name bc5cdr_custom_collection \
+  --document_file_path mapping_tool/data/original_bc5cdr-disease/test_dictionary_docs.jsonl \
+  --input_data mapping_tool/data/eval_datasets/original_bc5cdr-disease/random_queries_500.txt \
+  --output_file mapping_tool/data/eval_datasets/original_bc5cdr-disease/original_bc5cdr_llama3.1_stage1_prompt2.txt \
   --use_llm \
   --llm_id llama3.1
 ```
