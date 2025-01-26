@@ -1,4 +1,4 @@
-# CT_Mapper: Automated Terminology Mapping of Clinical Terms to OMOP Vocabularies using Retrieval Augmented Generation
+# CDE-Linker: Using Retrieval-Augmented Language Models for Linking Clinical Data Elements to Controlled Vocabularies
 
 ![image](https://github.com/user-attachments/assets/54577286-9d04-45a3-852e-66684bd1a2fc)
 
