@@ -79,7 +79,7 @@ Contributions are welcome! Please follow these steps to contribute:
 
 Fork the Repository: Click the "Fork" button at the top-right corner of this page.
 Clone Your Fork:
-```git clone https://github.com/your-username/CT_Mapper.git ```
+```git clone https://github.com/komi786/cde_mapper.git ```
 Create a New Branch:
 ```git checkout -b feature/YourFeature```
 Make Your Changes: Implement your feature or bug fix.
