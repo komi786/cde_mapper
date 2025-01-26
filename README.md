@@ -4,7 +4,6 @@
 
 CT_Mapper is an automated concept linking tool designed to find appropriate standardized terms in OMOP Athena vocabularies for clinical terms found in data dictionaries. Built with advanced Retrieval Augmented Generation (RAG) methods, CT_Mapper leverages the power of generative models and vector stores to enhance the accuracy of linking composite concepts. This tool enables data custodians to transform ambiguous and semi-structured clinical data into a harmonized schema effectively.
 
-![CT_Mapper Diagram](https://github.com/user-attachments/assets/5fa77c82-58ad-4736-bc83-b3a57a33dab4)
 
 ## Table of Contents
 
