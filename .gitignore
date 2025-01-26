@@ -1,5 +1,5 @@
 # Ignore operating system files
-.DS_Store
+*.DS_Store
 Thumbs.db
 
 # Ignore build directories
