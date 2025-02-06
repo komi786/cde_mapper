@@ -10,7 +10,7 @@ CT_Mapper is an automated concept linking tool designed to find appropriate stan
 - [Task Description](#task-description)
 - [Installation Requirements](#installation-requirements)
 - [Usage](#usage)
-  - [Running Experiments on NCBI Dataset](#running-experiments-on-ncbi-dataset)
+  - [Running Experiments on BC5CDR-Disease Dataset](#running-experiments-on-ncbi-dataset)
     - [Standard Inference](#standard-inference)
     - [LLAMA3.1 Inference](#llama31-inference)
 - [Contributing](#contributing)
