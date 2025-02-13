@@ -1,17 +1,16 @@
-# CT_Mapper: Automated Terminology Mapping of Clinical Terms to OMOP Vocabularies using Retrieval Augmented Generation
+# CDE-Linker: Using Retrieval-Augmented Language Models for Linking Clinical Data Elements to Controlled Vocabularies
 
-![CT_Mapper Logo](https://github.com/user-attachments/assets/45a29e7d-58d3-4532-a5ef-b90daa624bc7)
+![image](https://github.com/user-attachments/assets/54577286-9d04-45a3-852e-66684bd1a2fc)
 
 CT_Mapper is an automated concept linking tool designed to find appropriate standardized terms in OMOP Athena vocabularies for clinical terms found in data dictionaries. Built with advanced Retrieval Augmented Generation (RAG) methods, CT_Mapper leverages the power of generative models and vector stores to enhance the accuracy of linking composite concepts. This tool enables data custodians to transform ambiguous and semi-structured clinical data into a harmonized schema effectively.
 
-![CT_Mapper Diagram](https://github.com/user-attachments/assets/5fa77c82-58ad-4736-bc83-b3a57a33dab4)
 
 ## Table of Contents
 
 - [Task Description](#task-description)
 - [Installation Requirements](#installation-requirements)
 - [Usage](#usage)
-  - [Running Experiments on NCBI Dataset](#running-experiments-on-ncbi-dataset)
+  - [Running Experiments on BC5CDR-Disease Dataset](#running-experiments-on-ncbi-dataset)
     - [Standard Inference](#standard-inference)
     - [LLAMA3.1 Inference](#llama31-inference)
 - [Contributing](#contributing)
@@ -79,7 +78,7 @@ Contributions are welcome! Please follow these steps to contribute:
 
 Fork the Repository: Click the "Fork" button at the top-right corner of this page.
 Clone Your Fork:
-```git clone https://github.com/your-username/CT_Mapper.git ```
+```git clone https://github.com/komi786/cde_mapper.git ```
 Create a New Branch:
 ```git checkout -b feature/YourFeature```
 Make Your Changes: Implement your feature or bug fix.
