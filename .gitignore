@@ -31,3 +31,4 @@ secrets.json
 # Ignore temporary files
 *.tmp
 *.swp
+.DS_Store
