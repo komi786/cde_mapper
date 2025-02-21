@@ -32,3 +32,13 @@ secrets.json
 *.tmp
 *.swp
 .DS_Store
+.DS_Store
+data/.DS_Store
+src/.DS_Store
+src/rag/.DS_Store
+.DS_Store
+src/rag/__pycache__/athena_api_retriever.cpython-310.pyc
+*.pyc
+data/.DS_Store
+src/.DS_Store
+.DS_Store
