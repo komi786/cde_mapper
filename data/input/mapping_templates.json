@@ -300,8 +300,8 @@
         "output": "{\"domain\": \"Measurement\", \"base_entity\": \"Left ventricular E-wave/A-wave by US\", \"additional_entities\": [\"Baseline time\"], \"categories\": null, \"unit\": null}"
     },
     {
-        "input": "Hemoglobin at baseline g/dl",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": null}"
+        "input": "Hemoglobin at baseline g/dl, unit: (g/dl)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"g/dl\"}"
     },
     {
         "input": "Hb at visit12, unit: (g/dl)",
@@ -332,8 +332,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"g/dl\"}"
     },
     {
-        "input": "Aortic aneurism abdominal diameter, unit: (g/dl)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"g/dl\"}"
+        "input": "Aortic aneurism abdominal diameter, unit: (cm)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"cm\"}"
     },
     {
         "input": "Aortic aneurism thorax diameter in cm, unit: (cm)",
@@ -368,8 +368,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"cm\"}"
     },
     {
-        "input": "a-wave mitral valve at baseline, unit: (cm)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"cm\"}"
+        "input": "a-wave mitral valve at baseline, unit: (cm/s)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"cm/s\"}"
     },
     {
         "input": "a-wave mitral valve at visit12, unit: (cm/s)",
@@ -416,8 +416,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"cm/s\"}"
     },
     {
-        "input": "Days alive and outside the hospital lim 548 days (first 1 5 year), unit: (cm/s)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"cm/s\"}"
+        "input": "Days alive and outside the hospital lim 548 days (first 1 5 year), unit: (days)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"days\"}"
     },
     {
         "input": "Days hospitalised total, unit: (days)",
@@ -748,8 +748,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"days\"}"
     },
     {
-        "input": "P-axisat baseline, unit: (days)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"days\"}"
+        "input": "P-axisat baseline, unit: (degrees)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"degrees\"}"
     },
     {
         "input": "P-axis at visit12, unit: (degrees)",
@@ -772,8 +772,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"degrees\"}"
     },
     {
-        "input": "Mean Corpuscular Volume at v12, unit: (degrees)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"degrees\"}"
+        "input": "Mean Corpuscular Volume at v12, unit: (fL/cell)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"fL/cell\"}"
     },
     {
         "input": "Mean Corpuscular Volume at v18, unit: (fL/cell)",
@@ -788,8 +788,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"fL/cell\"}"
     },
     {
-        "input": "Prealbumin at baseline, unit: (fL/cell)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"fL/cell\"}"
+        "input": "Prealbumin at baseline, unit: (g/L)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"g/L\"}"
     },
     {
         "input": "Prealbumin at visit1, unit: (g/L)",
@@ -836,16 +836,16 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"g/L\"}"
     },
     {
-        "input": "ALT at baseline, unit: (g/L)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"g/L\"}"
+        "input": "ALT at baseline, unit: (U/l)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"U/l\"}"
     },
     {
         "input": "AST at baseline, unit: (U/l)",
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"U/l\"}"
     },
     {
-        "input": "Weight at baseline, unit: (U/l)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"U/l\"}"
+        "input": "Weight at baseline, unit: (kg)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"kg\"}"
     },
     {
         "input": "Weight at visit 1, unit: (kg)",
@@ -868,12 +868,12 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"kg\"}"
     },
     {
-        "input": "Calculated BMI, unit: (kg)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"kg\"}"
+        "input": "Calculated BMI, unit: (kg/m2)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"kg/m2\"}"
     },
     {
-        "input": "6MWT ( 6 minute walking test) distance walked at baseline , unit: (kg/m2)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"kg/m2\"}"
+        "input": "6MWT ( 6 minute walking test) distance walked at baseline , unit: (m)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"m\"}"
     },
     {
         "input": "Visit12 6mWT (6 minute walking test) distance, unit: (m)",
@@ -884,8 +884,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"m\"}"
     },
     {
-        "input": "creatinine at baseline, unit: (m)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"m\"}"
+        "input": "creatinine at baseline, unit: (\u00b5g/ml)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"\\u00b5g/ml\"}"
     },
     {
         "input": "creatinine at Visit1, unit: (\u00b5g/ml)",
@@ -908,8 +908,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"\\u00b5g/ml\"}"
     },
     {
-        "input": "DoseDigoxin Baseline, unit: (\u00b5g/ml)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"\\u00b5g/ml\"}"
+        "input": "DoseDigoxin Baseline, unit: (mg)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mg\"}"
     },
     {
         "input": "DoseDigoxin Visit1, unit: (mg)",
@@ -1032,8 +1032,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mg\"}"
     },
     {
-        "input": "Uric_acid at baseline, unit: (mg)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mg\"}"
+        "input": "Uric_acid at baseline, unit: (mg/dL)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mg/dL\"}"
     },
     {
         "input": "Uric_acid at visit1, unit: (mg/dL)",
@@ -1056,8 +1056,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mg/dL\"}"
     },
     {
-        "input": "high sensitive CRP at baseline ( lab result from centre of inclusion), unit: (mg/dL)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mg/dL\"}"
+        "input": "high sensitive CRP at baseline ( lab result from centre of inclusion), unit: (mg/l)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mg/l\"}"
     },
     {
         "input": "Cystatin C at baseline, unit: (mg/l)",
@@ -1108,8 +1108,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mg/l\"}"
     },
     {
-        "input": " soluble transferrin receptor (sTFR) at baseline, unit: (mg/l)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mg/l\"}"
+        "input": " soluble transferrin receptor (sTFR) at baseline, unit: (mg/L )",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mg/L \"}"
     },
     {
         "input": " soluble transferrin receptor (sTFR) at visit1, unit: (mg/L )",
@@ -1132,8 +1132,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mg/L \"}"
     },
     {
-        "input": "Left ventricular end diastolic volume at baseline, unit: (mg/L )",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mg/L \"}"
+        "input": "Left ventricular end diastolic volume at baseline, unit: (ml)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ml\"}"
     },
     {
         "input": "Left ventricular end diastolic volume at visit12, unit: (ml)",
@@ -1156,8 +1156,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ml\"}"
     },
     {
-        "input": "estimated glomerular filtration rate using CG formula at visit1, unit: (ml)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ml\"}"
+        "input": "estimated glomerular filtration rate using CG formula at visit1, unit: (mL/min/1.73m2)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mL/min/1.73m2\"}"
     },
     {
         "input": "estimated glomerular filtration rate using CG formula at visit12, unit: (mL/min/1.73m2)",
@@ -1228,8 +1228,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mL/min/1.73m2\"}"
     },
     {
-        "input": "Aorta Sinusportion diameter at baseline, unit: (mL/min/1.73m2)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mL/min/1.73m2\"}"
+        "input": "Aorta Sinusportion diameter at baseline, unit: (mm)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mm\"}"
     },
     {
         "input": "Aorta Sinusportion diameter at visit12, unit: (mm)",
@@ -1468,8 +1468,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mm\"}"
     },
     {
-        "input": "Bloodpressure diastolic at baselinerecumbent position, unit: (mm)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mm\"}"
+        "input": "Bloodpressure diastolic at baselinerecumbent position, unit: (mmHg)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mmHg\"}"
     },
     {
         "input": "Blood pressure diastolic in recumbent position at Visit1, unit: (mmHg)",
@@ -1596,8 +1596,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mmHg\"}"
     },
     {
-        "input": "cholesterol at baseline, unit: (mmHg)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mmHg\"}"
+        "input": "cholesterol at baseline, unit: (mmol/l)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mmol/l\"}"
     },
     {
         "input": "glucose at baseline, unit: (mmol/l)",
@@ -1680,8 +1680,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mmol/l\"}"
     },
     {
-        "input": "erythocytes at baseline, unit: (mmol/l)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mmol/l\"}"
+        "input": "erythocytes at baseline, unit: (10^6/ml)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"10^6/ml\"}"
     },
     {
         "input": "erythocytes at visit12, unit: (10^6/ml)",
@@ -1696,8 +1696,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"10^6/ml\"}"
     },
     {
-        "input": "Acc Aortaat baseline, unit: (10^6/ml)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"10^6/ml\"}"
+        "input": "Acc Aortaat baseline, unit: (ms)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ms\"}"
     },
     {
         "input": "Acc Aorta at visit12, unit: (ms)",
@@ -1816,8 +1816,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ms\"}"
     },
     {
-        "input": "P-wave_voltage_ in lead II at baseline, unit: (ms)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ms\"}"
+        "input": "P-wave_voltage_ in lead II at baseline, unit: (mv)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mv\"}"
     },
     {
         "input": "P-wave_voltage_ lead II at visit12, unit: (mv)",
@@ -1852,12 +1852,12 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mv\"}"
     },
     {
-        "input": "First manifestation of HeartFailure in months, unit: (mv)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mv\"}"
+        "input": "First manifestation of Heart Failure in months, unit: (month)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"month\"}"
     },
     {
-        "input": "Testosteron at baseline, unit: (months)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"months\"}"
+        "input": "Testosteron at baseline, unit: (ng/dL)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ng/dL\"}"
     },
     {
         "input": "Testosteron at visit1, unit: (ng/dL)",
@@ -1880,8 +1880,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ng/dL\"}"
     },
     {
-        "input": "Ferritin at baseline, unit: (ng/dL)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ng/dL\"}"
+        "input": "Ferritin at baseline, unit: (ng/mL)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ng/mL\"}"
     },
     {
         "input": "Ferritin at visit1, unit: (ng/mL)",
@@ -1904,8 +1904,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ng/mL\"}"
     },
     {
-        "input": "soluble ST2 (sST2) at Baseline, unit: (ng/mL)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ng/mL\"}"
+        "input": "soluble ST2 (sST2) at Baseline, unit: (ng/ml)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ng/ml\"}"
     },
     {
         "input": "soluble ST2 (sST2) at visit1, unit: (ng/ml)",
@@ -1952,8 +1952,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ng/ml\"}"
     },
     {
-        "input": "sex hormone-binding globulin (SHBG) at baseline, unit: (ng/ml)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"ng/ml\"}"
+        "input": "sex hormone-binding globulin (SHBG) at baseline, unit: (nmol/L)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"nmol/L\"}"
     },
     {
         "input": "sex hormone-binding globulin (SHBG) at visit1, unit: (nmol/L)",
@@ -1976,8 +1976,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"nmol/L\"}"
     },
     {
-        "input": "frequency at baseline, unit: (nmol/L)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"nmol/L\"}"
+        "input": "frequency at baseline, unit: (bpm)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"bpm\"}"
     },
     {
         "input": "frequency at visit12, unit: (bpm)",
@@ -2052,8 +2052,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"bpm\"}"
     },
     {
-        "input": "dose ACE-inhibitor expressed as % of target dose at baseline, unit: (bpm)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"bpm\"}"
+        "input": "dose ACE-inhibitor expressed as % of target dose at baseline, unit: (%)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"%\"}"
     },
     {
         "input": "dose ACE-inhibitor expressed as % of target dose Visit1, unit: (%)",
@@ -2200,8 +2200,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"%\"}"
     },
     {
-        "input": "Mean Corpuscular Hemoglobin at v12, unit: (%)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"%\"}"
+        "input": "Mean Corpuscular Hemoglobin at v12, unit: (pg/ cell)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"pg/ cell\"}"
     },
     {
         "input": "Mean Corpuscular Hemoglobin at v18, unit: (pg/ cell)",
@@ -2216,8 +2216,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"pg/ cell\"}"
     },
     {
-        "input": "NT pro-BNP at visit1, unit: (pg/ cell)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"pg/ cell\"}"
+        "input": "NT pro-BNP at visit1, unit: (pg/ml)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"pg/ml\"}"
     },
     {
         "input": "NT pro-BNP at visit12, unit: (pg/ml)",
@@ -2260,8 +2260,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"pg/ml\"}"
     },
     {
-        "input": "high-sensitivity troponin T (hsTnT) at baseline, unit: (pg/ml)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"pg/ml\"}"
+        "input": "high-sensitivity troponin T (hsTnT) at baseline, unit: (pg/mL)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"pg/mL\"}"
     },
     {
         "input": "high-sensitivity troponin T (hsTnT) at visit1, unit: (pg/mL)",
@@ -2360,8 +2360,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"pg/ml\"}"
     },
     {
-        "input": "C-TERMINAL FGF23 at baseline, unit: (pg/ml)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"pg/ml\"}"
+        "input": "C-TERMINAL FGF23 at baseline, unit: (pmol)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"pmol\"}"
     },
     {
         "input": "C-TERMINAL FGF23 at visit12, unit: (pmol)",
@@ -2392,8 +2392,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"pmol\"}"
     },
     {
-        "input": "body surface area at BL, unit: (pmol)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"pmol\"}"
+        "input": "body surface area at BL, unit: (m2)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"m2\"}"
     },
     {
         "input": "body surface area at v12, unit: (m2)",
@@ -2404,8 +2404,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"m2\"}"
     },
     {
-        "input": "Left atrium area at baseline, unit: (m2)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"m2\"}"
+        "input": "Left atrium area at baseline, unit: (mm2)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mm2\"}"
     },
     {
         "input": "Left atrium area at visit12, unit: (mm2)",
@@ -2452,8 +2452,8 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mm2\"}"
     },
     {
-        "input": "leukocytes in 10^3/ml at baseline, unit: (mm2)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"mm2\"}"
+        "input": "leukocytes in 10^3/ml at baseline, unit: (10^3/ml)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"10^3/ml\"}"
     },
     {
         "input": "leukocytes in 10^3/ml at visit12, unit: (10^3/ml)",
@@ -2468,60 +2468,60 @@
         "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"10^3/ml\"}"
     },
     {
-        "input": "Age in years, unit: (10^3/ml)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"10^3/ml\"}"
+        "input": "Age in years, unit: (year)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"year\"}"
     },
     {
-        "input": "Coronary artery disease Year of diagnosis, unit: (years)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"years\"}"
+        "input": "Coronary artery disease Year of diagnosis, unit: (year)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"year\"}"
     },
     {
-        "input": "Cancer Year of diagnosis, unit: (yyyy)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"yyyy\"}"
+        "input": "Cancer Year of diagnosis, unit: (year)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"year\"}"
     },
     {
-        "input": "Date Coronary artery bypass grafting year, unit: (yyyy)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"yyyy\"}"
+        "input": "Date Coronary artery bypass grafting year, unit: (year)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"year\"}"
     },
     {
-        "input": "Date Myocardial Infarction year diagnosis, unit: (yyyy)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"yyyy\"}"
+        "input": "Date Myocardial Infarction year diagnosis, unit: (year)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"year\"}"
     },
     {
-        "input": "Date Percutaneous coronary intervention year, unit: (yyyy)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"yyyy\"}"
+        "input": "Date Percutaneous coronary intervention year, unit: (year)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"year\"}"
     },
     {
-        "input": "Dilated cardiomyopathy Year diagnosis, unit: (yyyy)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"yyyy\"}"
+        "input": "Dilated cardiomyopathy Year diagnosis, unit: (year)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"year\"}"
     },
     {
-        "input": "Diabetes Year of diagnosis, unit: (yyyy)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"yyyy\"}"
+        "input": "Diabetes Year of diagnosis, unit: (year)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"year\"}"
     },
     {
-        "input": "Hypertension diagnosis Year, unit: (yyyy)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"yyyy\"}"
+        "input": "Hypertension diagnosis Year, unit: (year)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"year\"}"
     },
     {
-        "input": "ICD (implanted cardiac defibrilator) Year of implantation, unit: (yyyy)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"yyyy\"}"
+        "input": "ICD (implanted cardiac defibrilator) Year of implantation, unit: (year)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"year\"}"
     },
     {
-        "input": "Pack Years, unit: (yyyy)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"yyyy\"}"
+        "input": "Pack Years, unit: (year)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"year\"}"
     },
     {
-        "input": "Stop years ( number of years patient has not smoked after quitting), unit: (packyears)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"packyears\"}"
+        "input": "Stop years ( number of years patient has not smoked after quitting), unit: (Pack years)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"Pack years\"}"
     },
     {
-        "input": "Valvular heartdisease Year of diagnosis, unit: (years)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"years\"}"
+        "input": "Valvular heartdisease Year of diagnosis, unit: (year)",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": \"year\"}"
     },
     {
-        "input": "6MWT ( 6 minute walking test) performed at baseline y/n,categorical values: 1=yes|0=no, unit: (yyyy)",
-        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": \"yyyy\"}"
+        "input": "6MWT ( 6 minute walking test) performed at baseline y/n,categorical values: 1=yes|0=no",
+        "output": "{\"domain\": NaN, \"base_entity\": NaN, \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "6MWT( 6 minute walking test) good effort at baseline,categorical values: 1=yes|0=no",
@@ -6520,20 +6520,20 @@
         "output": "{\"domain\": \"Measurement\", \"base_entity\": NaN, \"additional_entities\": null, \"categories\": null, \"unit\": null}"
     },
     {
-        "input": "exacerbation of heart failure,categorical values: 1=ja|0=nee",
-        "output": "{\"domain\": \"condition_occurrence\", \"base_entity\": \"exacerbation of heart failure\", \"additional_entities\": null, \"categories\": [\"ja\", \"nee\"], \"unit\": null}"
+        "input": "exacerbation of heart failure,categorical values: 1=yes|0=no",
+        "output": "{\"domain\": \"condition_occurrence\", \"base_entity\": \"exacerbation of heart failure\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Angiotensin-Converting Enzyme inhibitors: daily frequency,categorical values: 1=once a day|2=twice a day|3=three times a day",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"ACE inhibitors, plain\\\"\", \"additional_entities\": [\"dosages\", \"frequency per day\"], \"categories\": [\"once a day\", \"twice a day\", \"three times a day\"], \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"ACE inhibitors, plain\\\"\", \"additional_entities\": [\"Dosage\", \"frequency per day\"], \"categories\": [\"once a day\", \"twice a day\", \"three times a day\"], \"unit\": null}"
     },
     {
         "input": "statin:total daily dosage, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"hmg-coa reductase inhibitor\", \"additional_entities\": [\"dosages\", \"frequency per day\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"hmg-coa reductase inhibitor\", \"additional_entities\": [\"Dosage\", \"frequency per day\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "Dobutamine Stress Echocardiography (DSE) is performed for ischemia detection,categorical values: 1=yes|0=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"stress echocardiography using dobutamine\", \"additional_entities\": [\"ischemia\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"stress echocardiography using dobutamine\", \"additional_entities\": [\"ischemia\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Renin-angiotensin system (RAS):Medication administered,categorical values: 1=yes|0=no",
@@ -6580,24 +6580,24 @@
         "output": "{\"domain\": \"observation\", \"base_entity\": \"patient entered into trial\", \"additional_entities\": [\"heart failure\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
-        "input": "Pulse pressure, unit: (MmHg)",
-        "output": "{\"domain\": \"measurement\", \"base_entity\": \"arterial pulse pressure\", \"additional_entities\": [\"pulse\"], \"categories\": null, \"unit\": \"MmHg\"}"
+        "input": "Pulse pressure, unit: (mmHg)",
+        "output": "{\"domain\": \"measurement\", \"base_entity\": \"arterial pulse pressure\", \"additional_entities\": [\"pulse\"], \"categories\": null, \"unit\": \"mmHg\"}"
     },
     {
-        "input": "Systolic blood pressure, unit: (MmHg)",
-        "output": "{\"domain\": \"measurement\", \"base_entity\": \"systolic blood pressure\", \"additional_entities\": null, \"categories\": null, \"unit\": \"MmHg\"}"
+        "input": "Systolic blood pressure, unit: (mmHg)",
+        "output": "{\"domain\": \"measurement\", \"base_entity\": \"systolic blood pressure\", \"additional_entities\": null, \"categories\": null, \"unit\": \"mmHg\"}"
     },
     {
-        "input": "diastolic blood pressure, unit: (MmHg)",
-        "output": "{\"domain\": \"measurement\", \"base_entity\": \"diastolic blood pressure\", \"additional_entities\": null, \"categories\": null, \"unit\": \"MmHg\"}"
+        "input": "diastolic blood pressure, unit: (mmHg)",
+        "output": "{\"domain\": \"measurement\", \"base_entity\": \"diastolic blood pressure\", \"additional_entities\": null, \"categories\": null, \"unit\": \"mmHg\"}"
     },
     {
         "input": "edema,categorical values: 1=yes|0=no",
         "output": "{\"domain\": \"observation\", \"base_entity\": \"edema\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
-        "input": "blood volume finding,categorical values: normo volemisch=a normal volume of blood in the body.|hyper volemisch=fluid overload|hypo volemisch=volume depletion or volume contraction",
-        "output": "{\"domain\": \"measurement\", \"base_entity\": \"blood volume\", \"additional_entities\": null, \"categories\": [\"a normal volume of blood in the body.\", \"fluid overload\", \"volume depletion or volume contraction\"], \"unit\": null}"
+        "input": "blood volume finding,categorical values: normo volemisch=a normal volume of blood in the body|hyper volemisch=fluid overload|hypo volemisch=volume depletion or volume contraction",
+        "output": "{\"domain\": \"measurement\", \"base_entity\": \"blood volume\", \"additional_entities\": null, \"categories\": [\"a normal volume of blood in the body\", \"fluid overload\", \"volume depletion or volume contraction\"], \"unit\": null}"
     },
     {
         "input": "heart failure with preserved ejection fraction (HFpEF) or Diastolic heart failure,categorical values: 1=yes|0=no",
@@ -6620,8 +6620,8 @@
         "output": "{\"domain\": \"measurement\", \"base_entity\": \"tricuspid atrioventricular gradient\", \"additional_entities\": null, \"categories\": [\"Tricuspid Atrioventricular Gradient <30 mmHg\", \"Tricuspid Atrioventricular Gradient >30 mmHg\", \"30 mmHg\"], \"unit\": \"MmHg\"}"
     },
     {
-        "input": "Left ventricular diastolic dysfunction,categorical values: 1=ja|0=nee",
-        "output": "{\"domain\": \"condition_occurrence\", \"base_entity\": \"left ventricular diastolic dysfunction\", \"additional_entities\": null, \"categories\": [\"ja\", \"nee\"], \"unit\": null}"
+        "input": "Left ventricular diastolic dysfunction,categorical values: 1=yes|0=no",
+        "output": "{\"domain\": \"condition_occurrence\", \"base_entity\": \"left ventricular diastolic dysfunction\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Inferior vena cava Diameter by US,categorical values: 15-25mm=Inferior vena cava Diameter between at 15 and 25| <15mm=Inferior vena cava Diameter less than 15| >25mm=Inferior vena cava Diameter more than 25, unit: (mm)",
@@ -6697,11 +6697,11 @@
     },
     {
         "input": "polysomnography performed,categorical values: 1=yes|0=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"polysomnography\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"polysomnography\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "fluid intake restrictions,categorical values: 1=yes|0=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"fluid restriction\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"fluid restriction\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "sodium chloride intake restrictions,categorical values: 1=yes|0=no",
@@ -6717,19 +6717,19 @@
     },
     {
         "input": "diuretics: dosage, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"diuretics\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"diuretics\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "diuretic: daily dosage (no unit)",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"diuretics\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"diuretics\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "diuretic:daily frequency,categorical values: 1=once a day|2=twice a day",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"diuretics\", \"additional_entities\": [\"dosages\", \"frequency per day\"], \"categories\": [\"once a day\", \"twice a day\"], \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"diuretics\", \"additional_entities\": [\"Dosage\", \"frequency per day\"], \"categories\": [\"once a day\", \"twice a day\"], \"unit\": null}"
     },
     {
         "input": "diuretic: total daily dosage",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"diuretics\", \"additional_entities\": [\"dosages\", \"total\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"diuretics\", \"additional_entities\": [\"Dosage\", \"total\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "diuretics dose expressed in an amount equivalent to Furosemide, unit: (mg (miligram))",
@@ -6745,71 +6745,71 @@
     },
     {
         "input": "statin: daily dosage, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"hmg-coa reductase inhibitor\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"hmg-coa reductase inhibitor\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "statin: daily dosage (no unit)",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"hmg-coa reductase inhibitor\", \"additional_entities\": [\"dosages\", \"total\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"hmg-coa reductase inhibitor\", \"additional_entities\": [\"Dosage\", \"total\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "statins: daily frequency",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"hmg-coa reductase inhibitor\", \"additional_entities\": [\"dosages\", \"frequency per day\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"hmg-coa reductase inhibitor\", \"additional_entities\": [\"Dosage\", \"frequency per day\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Angiotensin-converting enzyme inhibitor,categorical values: nvt=Not applicable|perindopril=Perindopril|lisinopril=Lisinopril|ramipril=Ramipril|gestopt ivm bijwerkingen=Discontinued due to side effects|quinapril=Quinapril|enalapril=Enalapril|fosinopril=Fosinopril|contraindicatie=Contraindicated|captopril=Captopril|trandolapril=Trandolapril|zofenopril=Zofenopril",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"ACE inhibitors, plain\\\"\", \"additional_entities\": null, \"categories\": [\"Not applicable\", \"Perindopril\", \"Lisinopril\", \"Ramipril\", \"Discontinued due to side effects\", \"Quinapril\", \"Enalapril\", \"Fosinopril\", \"Contraindicated\", \"Captopril\", \"Trandolapril\", \"Zofenopril\"], \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ACE inhibitors plain\", \"additional_entities\": null, \"categories\": [\"Not applicable\", \"Perindopril\", \"Lisinopril\", \"Ramipril\", \"Discontinued due to side effects\", \"Quinapril\", \"Enalapril\", \"Fosinopril\", \"Contraindicated\", \"Captopril\", \"Trandolapril\", \"Zofenopril\"], \"unit\": null}"
     },
     {
         "input": "Angiotensin-converting enzyme:Medication administered,categorical values: 1=yes|0=no",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"ACE inhibitors, plain\\\"\", \"additional_entities\": [\"Medication administration\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ACE inhibitors plain\", \"additional_entities\": [\"Medication administration\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "angiotensin-converting enzyme inhibitors: contraindications,categorical values: 1=yes|0=no",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"ACE inhibitors, plain\\\"\", \"additional_entities\": [\"contraindicated\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ACE inhibitors plain\", \"additional_entities\": [\"contraindicated\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Angiotensin-Converting Enzyme drug:dosage, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"ACE inhibitors, plain\\\"\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ACE inhibitors plain\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "Angiotensin-Converting Enzyme inhibitors: daily dosage (no unit)",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"ACE inhibitors, plain\\\"\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ACE inhibitors plain\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Angiotensin-Converting Enzyme inhibitors:total daily dosage, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"ACE inhibitors, plain\\\"\", \"additional_entities\": [\"dosages\", \"total\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ACE inhibitors plain\", \"additional_entities\": [\"Dosage\", \"total\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "Angiotensin-converting enzyme: Percentage of target dose, unit: (percent )",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"ACE inhibitors, plain\\\"\", \"additional_entities\": [\"Fractionated dose\"], \"categories\": null, \"unit\": \"percent \"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ACE inhibitors plain\", \"additional_entities\": [\"Fractionated dose\"], \"categories\": null, \"unit\": \"percent \"}"
     },
     {
         "input": "Angiotensin II Receptor Blockers,categorical values: nvt=Not applicable|valsartan=Valsartan|losartan=Losartan|irbesartan=Irbesartan|candesartan=Candesartan|telmisartan=Telmisartan|olmesartan=Olmesartan|gestopt ivm bijwerkingen=Discontinued due to side effects|contraindica",
         "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"Angiotensin II receptor blockers (ARBs), plain\\\"\", \"additional_entities\": null, \"categories\": [\"Not applicable\", \"Valsartan\", \"Losartan\", \"Irbesartan\", \"Candesartan\", \"Telmisartan\", \"Olmesartan\", \"Discontinued due to side effects\", \"contraindica\"], \"unit\": null}"
     },
     {
-        "input": "Angiotensin II Receptor Blockers: Medication administered,categorical values: 1=ja|0=nee",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"Angiotensin II receptor blockers (ARBs), plain\\\"\", \"additional_entities\": [\"Medication administration\"], \"categories\": [\"ja\", \"nee\"], \"unit\": null}"
+        "input": "Angiotensin II Receptor Blockers: Medication administered,categorical values: 1=yes|0=no",
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Angiotensin II receptor blockers (ARBs) plain\", \"additional_entities\": [\"Medication administration\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
-        "input": "Angiotensin II Receptor Blockers: Contraindicated?,categorical values: 1=ja|0=nee",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"Angiotensin II receptor blockers (ARBs), plain\\\"\", \"additional_entities\": [\"contraindicated\"], \"categories\": [\"ja\", \"nee\"], \"unit\": null}"
+        "input": "Angiotensin II Receptor Blockers: Contraindicated?,categorical values: 1=yes|0=no",
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Angiotensin II receptor blockers (ARBs) plain\", \"additional_entities\": [\"contraindicated\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Dosage of Angiotensin II Receptor Blockers: dosage, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"Angiotensin II receptor blockers (ARBs), plain\\\"\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Angiotensin II receptor blockers (ARBs) plain\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "Angiotensin II Receptor Blockers inhibitors daily dosage (no unit)",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"Angiotensin II receptor blockers (ARBs), plain\\\"\", \"additional_entities\": [\"dosages\", \"frequency per day\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Angiotensin II receptor blockers (ARBs) plain\", \"additional_entities\": [\"Dosage\", \"frequency per day\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Angiotensin II Receptor Blockers inhibitors: daily dose frequency,categorical values: 1=once a day|2=twice a day|3=three times a day",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"Angiotensin II receptor blockers (ARBs), plain\\\"\", \"additional_entities\": [\"dosages\", \"total\"], \"categories\": [\"once a day\", \"twice a day\", \"three times a day\"], \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Angiotensin II receptor blockers (ARBs) plain\", \"additional_entities\": [\"Dosage\", \"total\"], \"categories\": [\"once a day\", \"twice a day\", \"three times a day\"], \"unit\": null}"
     },
     {
         "input": "Angiotensin II Receptor Blockers inhibitors: total daily dosage, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"Angiotensin II receptor blockers (ARBs), plain\\\"\", \"additional_entities\": null, \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Angiotensin II receptor blockers (ARBs) plain\", \"additional_entities\": null, \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "Renin-inhibitorss:Medication administered,categorical values: ja=yes|nee=no",
@@ -6817,19 +6817,19 @@
     },
     {
         "input": "Renin-inhibitors: dosage",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Renin-inhibitors\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Renin-inhibitors\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Renin-inhibitors : daily dosage (no unit)",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Renin-inhibitors\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Renin-inhibitors\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Renin-inhibitors:daily dose frequency",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Renin-inhibitors\", \"additional_entities\": [\"dosages\", \"frequency per day\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Renin-inhibitors\", \"additional_entities\": [\"Dosage\", \"frequency per day\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Renin-inhibitors inhibitors:total daily dose, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Renin-inhibitors\", \"additional_entities\": [\"dosages\", \"total\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Renin-inhibitors\", \"additional_entities\": [\"Dosage\", \"total\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "Beta blocking agent",
@@ -6853,19 +6853,19 @@
     },
     {
         "input": "Beta blocking agent therapy :daily dosage, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"BETA BLOCKING AGENTS\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"BETA BLOCKING AGENTS\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "Beta blocking agent:daily dosage (no unit)",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"BETA BLOCKING AGENTS\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"BETA BLOCKING AGENTS\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Beta blocking agent : dosing frequency,categorical values: 1=once a day|2=twice a day|3=three times a day",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"BETA BLOCKING AGENTS\", \"additional_entities\": [\"dosages\", \"frequency per day\"], \"categories\": [\"once a day\", \"twice a day\", \"three times a day\"], \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"BETA BLOCKING AGENTS\", \"additional_entities\": [\"Dosage\", \"frequency per day\"], \"categories\": [\"once a day\", \"twice a day\", \"three times a day\"], \"unit\": null}"
     },
     {
         "input": "Beta blocking agent:total daily dose",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"BETA BLOCKING AGENTS\", \"additional_entities\": [\"dosages\", \"total\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"BETA BLOCKING AGENTS\", \"additional_entities\": [\"Dosage\", \"total\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Beta blocking agent: Percentage of dose, unit: (percent )",
@@ -6885,43 +6885,43 @@
     },
     {
         "input": "Mineralocorticoid Receptor Antagonists : dosage, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Aldosterone antagonists\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Aldosterone antagonists\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "Mineralocorticoid Receptor Antagonists: daily dosage (no unit)",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Aldosterone antagonists\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Aldosterone antagonists\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Mineralocorticoid Receptor Antagonists:daily frequency",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Aldosterone antagonists\", \"additional_entities\": [\"dosages\", \"frequency per day\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Aldosterone antagonists\", \"additional_entities\": [\"Dosage\", \"frequency per day\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Mineralocorticoid Receptor Antagonists: total daily dose",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Aldosterone antagonists\", \"additional_entities\": [\"dosages\", \"total\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Aldosterone antagonists\", \"additional_entities\": [\"Dosage\", \"total\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Mineralocorticoid Receptor Antagonists: Percentage of dose, unit: (percent )",
         "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Aldosterone antagonists\", \"additional_entities\": [\"Fractionated dose\"], \"categories\": null, \"unit\": \"percent \"}"
     },
     {
-        "input": "Digoxine:Medication administered,categorical values: nvt| digoxine| gestopt ivm bijw| contraindicatie",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"digoxin\", \"additional_entities\": [\"Medication administration\"], \"categories\": [\"nvt\", \"digoxine\", \"gestopt ivm bijw\", \"contraindicatie\"], \"unit\": null}"
+        "input": "Digoxine:Medication administered,categorical values: nvt=not applicable| digoxine=digixon| gestopt ivm bijw=stopped| contraindicatie=contrainidicated",
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"digoxin\", \"additional_entities\": [\"Medication administration\"], \"categories\": [\"not applicable\", \"digixon\", \"stopped\", \"contrainidicated\"], \"unit\": null}"
     },
     {
         "input": "Digoxin: dosage, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"digoxin\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"digoxin\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "Digoxine:daily dosage (no unit)",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"digoxin\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"digoxin\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Digoxine: dosing frequency",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"digoxin\", \"additional_entities\": [\"dosages\", \"frequency per day\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"digoxin\", \"additional_entities\": [\"Dosage\", \"frequency per day\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Digoxine: total daily dose",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"digoxin\", \"additional_entities\": [\"dosages\", \"total\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"digoxin\", \"additional_entities\": [\"Dosage\", \"total\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Amiodarone,categorical values: nvt=Not applicable|amiodarone=amiodarone| gestopt ivm bijw=medication stopped due to side effects| contraindicatie=contraindicated",
@@ -6929,19 +6929,19 @@
     },
     {
         "input": "Amiodarone: dosage, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"amiodarone\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"amiodarone\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "Amiodarone:Daily dose",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"amiodarone\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"amiodarone\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Amiodarone:dosing frequency,categorical values: 1=once a day|2=twice a day|3=three times a day",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"amiodarone\", \"additional_entities\": [\"dosages\", \"frequency per day\"], \"categories\": [\"once a day\", \"twice a day\", \"three times a day\"], \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"amiodarone\", \"additional_entities\": [\"Dosage\", \"frequency per day\"], \"categories\": [\"once a day\", \"twice a day\", \"three times a day\"], \"unit\": null}"
     },
     {
         "input": "Amiodarone:total daily dose",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"amiodarone\", \"additional_entities\": [\"dosages\", \"total\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"amiodarone\", \"additional_entities\": [\"Dosage\", \"total\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Angiotensin Receptor Neprilysin Inhibitor",
@@ -6949,35 +6949,35 @@
     },
     {
         "input": "Angiotensin Receptor Neprilysin Inhibitor: dosage",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Renin-inhibitors\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Renin-inhibitors\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": null}"
     },
     {
-        "input": "Transferrin receptor.soluble/log Ferritin index [Mass Ratio] in Serum or Plasma,categorical values: nvt=not applicable|Ferritine 100-300ug/l +transferrine saturatie<20%=functional iron deficiency|Ferritine <100ug/l=absolute iron deficiency, unit: (ug/L)",
-        "output": "{\"domain\": \"measurement\", \"base_entity\": \"Transferrin receptor.soluble/log Ferritin index [Mass Ratio] in Serum or Plasma\", \"additional_entities\": [\"Medication administration\", \"serum ferritin measurement\", \"transferrin saturation\"], \"categories\": [\"not applicable\", \"functional iron deficiency\", \"absolute iron deficiency\"], \"unit\": \"ug/L\"}"
+        "input": "iron deficiency status,categorical values: nvt=not applicable|Ferritine 100-300ug/l +transferrine saturatie<20%=functional iron deficiency|Ferritine <100ug/l=absolute iron deficiency",
+        "output": "{\"domain\": \"observation\", \"base_entity\": \"Iron deficiency screening\", \"additional_entities\": null, \"categories\": [\"not applicable\", \"functional iron deficiency\", \"absolute iron deficiency\"], \"unit\": null}"
     },
     {
-        "input": "Optimization of drug dose of Angiotensin-converting enzyme inhibitor therapy,categorical values: nvt=Not applicable| max verdraagbaar=Maximum tolerated dose| targetdosis=tolerated dose| titratiefase=Titration phase| contraindicatie=contraindicated",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"ACE inhibitors, plain\\\"\", \"additional_entities\": [\"Optimization of drug dosage\"], \"categories\": [\"Not applicable\", \"Maximum tolerated dose\", \"tolerated dose\", \"Titration phase\", \"contraindicated\"], \"unit\": null}"
+        "input": "Optimization of drug dose of Angiotensin-converting enzyme inhibitor therapy,categorical values: nvt=Not applicable| max verdraagbaar=Maximum tolerated dose| targetdosis=target dose| titratiefase=Titration phase| contraindicatie=contraindicated",
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"ACE inhibitors, plain\\\"\", \"additional_entities\": [\"Optimization of drug dosage\"], \"categories\": [\"Not applicable\", \"Maximum tolerated dose\", \"target dose\", \"Titration phase\", \"contraindicated\"], \"unit\": null}"
     },
     {
-        "input": "optimization of drug dosage Angiotensin II Receptor Blockers inhibitor therapy,categorical values: nvt=Not applicable| max verdraagbaar=Maximum tolerated dose| targetdosis=tolerated dose| titratiefase=Titration phase| contraindicatie=contraindicated",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"Angiotensin II receptor blockers (ARBs), plain\\\"\", \"additional_entities\": [\"Optimization of drug dosage\"], \"categories\": [\"Not applicable\", \"Maximum tolerated dose\", \"tolerated dose\", \"Titration phase\", \"contraindicated\"], \"unit\": null}"
+        "input": "optimization of drug dosage Angiotensin II Receptor Blockers inhibitor therapy,categorical values: nvt=Not applicable| max verdraagbaar=Maximum tolerated dose| targetdosis=target dose| titratiefase=Titration phase| contraindicatie=contraindicated",
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"Angiotensin II receptor blockers (ARBs), plain\\\"\", \"additional_entities\": [\"Optimization of drug dosage\"], \"categories\": [\"Not applicable\", \"Maximum tolerated dose\", \"target dose\", \"Titration phase\", \"contraindicated\"], \"unit\": null}"
     },
     {
-        "input": "optimization of drug dose of Beta-Blocker therapy,categorical values: nvt=Not applicable| max verdraagbaar=Maximum tolerated dose| targetdosis=tolerated dose| titratiefase=Titration phase| contraindicatie=contraindicated",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"BETA BLOCKING AGENTS\", \"additional_entities\": [\"optimization of drug dosage\"], \"categories\": [\"Not applicable\", \"Maximum tolerated dose\", \"tolerated dose\", \"Titration phase\", \"contraindicated\"], \"unit\": null}"
+        "input": "optimization of drug dose of Beta-Blocker therapy,categorical values: nvt=Not applicable| max verdraagbaar=Maximum tolerated dose| targetdosis=target dose| titratiefase=Titration phase| contraindicatie=contraindicated",
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"BETA BLOCKING AGENTS\", \"additional_entities\": [\"optimization of drug dosage\"], \"categories\": [\"Not applicable\", \"Maximum tolerated dose\", \"target dose\", \"Titration phase\", \"contraindicated\"], \"unit\": null}"
     },
     {
-        "input": "optimization of drug dose of Mineralocorticoid Receptor Antagonists therapy,categorical values: nvt=Not applicable| max verdraagbaar=Maximum tolerated dose| targetdosis=tolerated dose| titratiefase=Titration phase| contraindicatie=contraindicated",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Aldosterone antagonists\", \"additional_entities\": [\"optimization of drug dosage\"], \"categories\": [\"Not applicable\", \"Maximum tolerated dose\", \"tolerated dose\", \"Titration phase\", \"contraindicated\"], \"unit\": null}"
+        "input": "optimization of drug dose of Mineralocorticoid Receptor Antagonists therapy,categorical values: nvt=Not applicable| max verdraagbaar=Maximum tolerated dose| targetdosis=target dose| titratiefase=Titration phase| contraindicatie=contraindicated",
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Aldosterone antagonists\", \"additional_entities\": [\"optimization of drug dosage\"], \"categories\": [\"Not applicable\", \"Maximum tolerated dose\", \"target dose\", \"Titration phase\", \"contraindicated\"], \"unit\": null}"
     },
     {
         "input": "Other drugs indicated during treatment plan",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"other therapeutic products\", \"additional_entities\": [\"developing a treatment plan\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"other therapeutic products\", \"additional_entities\": null, \"categories\": null, \"unit\": null}"
     },
     {
         "input": "surgical Intervention performed during treatment plan,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"surgical procedure\", \"additional_entities\": [\"developing a treatment plan\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"surgical procedure\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "medical devices used in intervention,categorical values: nvt=Not applicable|ICD=Implantable Cardioverter-Defibrillator| CRT-D=Cardiac Resynchronization Therapy with Defibrillator| Pacemaker=pacemaker|CRT-P=Cardiac Resynchronization Therapy with Pacemaker|Overwogen nvt in dossier=not applicable or not indicated|Mitraclip=Mitraclip|LVAD=Left Ventricular Assist Device",
@@ -6985,7 +6985,7 @@
     },
     {
         "input": "Date of intervention, unit: (dd/mm/yyyy)",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"date of procedure\", \"additional_entities\": [\"health intervention\"], \"categories\": null, \"unit\": \"dd/mm/yyyy\"}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"date of procedure\", \"additional_entities\": [\"health intervention\"], \"categories\": null, \"unit\": \"dd/mm/yyyy\"}"
     },
     {
         "input": "Date of Event, unit: (dd/mm/yyyy)",
@@ -6993,7 +6993,7 @@
     },
     {
         "input": "Telehealth monitoring,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"telehealth monitoring\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"telehealth monitoring\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "monitoring system used",
@@ -7041,11 +7041,11 @@
     },
     {
         "input": "ischemia detection: not applicable,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"ischemic heart disease screening\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"ischemic heart disease screening\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "An exercise stress test was performed for ischemia detection,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"exercise stress echocardiography\", \"additional_entities\": [\"ischemic heart disease screening\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"exercise stress echocardiography\", \"additional_entities\": [\"ischemic heart disease screening\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "myocardial perfusion scintigraphy:ischemia detection,categorical values: ja=yes|nee=no",
@@ -7053,15 +7053,15 @@
     },
     {
         "input": "CT coronary angiography for ischemia detection,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"ct angiography of coronary artery with contrast\", \"additional_entities\": [\"ischemic heart disease screening\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"ct angiography of coronary artery with contrast\", \"additional_entities\": [\"ischemic heart disease screening\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Coronary Angiography for ischemia detection,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"Angiography of coronary artery\", \"additional_entities\": [\"ischemic heart disease screening\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"Angiography of coronary artery\", \"additional_entities\": [\"ischemic heart disease screening\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Magnetic resoce imaging (MRI) for ischemia detection,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"magnetic resonance imaging\", \"additional_entities\": [\"ischemic heart disease screening\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"magnetic resonance imaging\", \"additional_entities\": [\"ischemic heart disease screening\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "ischemia,categorical values: 1=yes|0=no",
@@ -7093,14 +7093,14 @@
     },
     {
         "input": "is heart failure related to non cardiomyopathy?,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"condition_occurrence\", \"base_entity\": \"Nonischemic cardiomyopathy\\u0393\\u00f6\\u00bc\\u251c\\u00ed\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"condition_occurrence\", \"base_entity\": \"Nonischemic cardiomyopathy \", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "is heart failure related to Hypertensive Cardiomyopathy (CMP)?,categorical values: ja=yes|nee=no",
         "output": "{\"domain\": \"condition_occurrence\", \"base_entity\": \"cardiomyopathy due to hypertension\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
-        "input": "is heart failure related to other Cardiomyopathy (CMP) ?,categorical values: ja=yes|nee=no",
+        "input": "is heart failure related to other Cardiomyopathy (CMP)?,categorical values: ja=yes|nee=no",
         "output": "{\"domain\": \"condition_occurrence\", \"base_entity\": \"cardiomyopathy\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
@@ -7164,28 +7164,28 @@
         "output": "{\"domain\": \"measurement\", \"base_entity\": \"Estimated creatinine clearance calculated using actual body weight Cockcroft-Gault formula\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
-        "input": "perpherial artiary diseas,categorical values: ja=yes|nee=no",
+        "input": "perpherial artiary disease,categorical values: ja=yes|nee=no",
         "output": "{\"domain\": \"condition_occurrence\", \"base_entity\": \"peripheral arterial disease\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Surgical/procedural intervention performed,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"Surgical/procedural intervention\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"Surgical/procedural intervention\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Percutaneous Coronary Intervention performed,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"percutaneous coronary intervention performed\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"percutaneous coronary intervention performed\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Surgical intervention indicated,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"surgical intervention indicated\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"surgical intervention indicated\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Coronary Artery Bypass Grafting (CABG) performed,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"coronary artery bypass graft\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"coronary artery bypass graft\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "surgical/procedure Intervention performed,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"surgical procedure\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"surgical procedure\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "cardiac rehabilitation not applicable,categorical values: ja=yes|nee=no",
@@ -7193,7 +7193,7 @@
     },
     {
         "input": "continuous home support is part of rehabilitation program,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"procedure_occurence\", \"base_entity\": \"rehabilitation therapy\", \"additional_entities\": [\"home support\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"procedure_occurrence\", \"base_entity\": \"rehabilitation therapy\", \"additional_entities\": [\"home support\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Seen by dietitian in cardiac rehabilitation,categorical values: ja=yes|nee=no",
@@ -7245,11 +7245,11 @@
     },
     {
         "input": "Angiotensin-converting enzyme inhibitor:Medication administered,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"ACE inhibitors, plain\\\"\", \"additional_entities\": [\"Medication administration\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ACE inhibitors plain\", \"additional_entities\": [\"Medication administration\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Angiotensin II Receptor inhibitor:Medication administered,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"\\\"Angiotensin II receptor blockers (ARBs), plain\\\"\", \"additional_entities\": [\"Medication administration\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"Angiotensin II receptor blockers (ARBs) plain\", \"additional_entities\": [\"Medication administration\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Beta blocking agent:Medication administered,categorical values: ja=yes|nee=no",
@@ -7293,7 +7293,7 @@
     },
     {
         "input": "Angiotensin Receptor Neprilysin Inhibitor medication,categorical values: ja=yes|nee=no",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"valsartan and sacubitril; oral\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"unit\": null}"
+        "output": "{\"domain\": 1588648, \"base_entity\": \"valsartan and sacubitril\", \"additional_entities\": [\"drug_exposure\"], \"categories\": [\"yes\", \"no\"], \"unit\": null}"
     },
     {
         "input": "Renin-inhibitors:Medication administered",
@@ -7333,19 +7333,19 @@
     },
     {
         "input": "ivabradina: dosage, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ivabradine\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ivabradine\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "ivabradina: daily dosage (no unit)",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ivabradine\", \"additional_entities\": [\"dosages\"], \"categories\": null, \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ivabradine\", \"additional_entities\": [\"Dosage\"], \"categories\": null, \"unit\": null}"
     },
     {
         "input": "Ivabradina: dosing frequency,categorical values: 1=once a day|2=twice a day",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ivabradine\", \"additional_entities\": [\"dosages\", \"frequency per day\"], \"categories\": [\"once a day\", \"twice a day\"], \"unit\": null}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ivabradine\", \"additional_entities\": [\"Dosage\", \"frequency per day\"], \"categories\": [\"once a day\", \"twice a day\"], \"unit\": null}"
     },
     {
         "input": "ivabradina total daily dose, unit: (mg (miligram))",
-        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ivabradine\", \"additional_entities\": [\"dosages\", \"total\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
+        "output": "{\"domain\": \"drug_exposure\", \"base_entity\": \"ivabradine\", \"additional_entities\": [\"Dosage\", \"total\"], \"categories\": null, \"unit\": \"mg (miligram)\"}"
     },
     {
         "input": "Age at randomization",
