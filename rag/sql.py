@@ -467,7 +467,7 @@ class DataManager:
 # db = DataManager("variables.db")
 
 # with open(
-#     "/workspace/mapping_tool/data/defualt_variable_database_data.csv",
+#     "/Users/komalgilani/Desktop/cde_mapper/data/defualt_variable_database_data.csv",
 #     "r",
 #     newline="",
 # ) as file:
@@ -480,7 +480,7 @@ class DataManager:
 # data = db.select_all()
 # print(f"length of data {len(data)}")
 # with open(
-#     "/workspace/mapping_tool/data/variable_database.csv", "w", newline=""
+#     "/Users/komalgilani/Desktop/cde_mapper/data/variable_database.csv", "w", newline=""
 # ) as file:
 #     writer = csv.writer(file)
 #     writer.writerow([i[0] for i in db.cursor.description])

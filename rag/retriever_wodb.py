@@ -73,6 +73,7 @@ def map_data(
     results = []
     for _, item in enumerate(data):
         query_obj = item[1]
+        logger.info(f"procee item: {query_obj}")
         query_result = full_query_processing(
             query_text=query_obj,
             retriever=retriever,
@@ -124,7 +125,7 @@ def full_query_processing(
         if query_text is None:
             return {}
         else:
-            print(f"query_text={query_text.name}")
+            print(f"query_text={query_text}")
             results, mode = datamanager.query_variable(query_text.name)
             if mode == "full" and len(results) >= 4:
                 logger.info(f"Found results for {query_text} in RESERVOIR")

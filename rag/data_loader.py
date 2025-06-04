@@ -61,7 +61,7 @@ def custom_data_loader(source_path):
 
     # Define the required columns to check
     required_columns = {
-        "Variable Concept Label",
+        "Variable Concept Name",
         "Variable Concept OMOP ID",
         "Variable Concept Code",
     }
@@ -293,7 +293,7 @@ STOP_WORDS = [
 
 
 class GraphLoader(BaseLoader):
-    def __init__(self, graph_path=None, data_dir="/workspace/mapping_tool/data"):
+    def __init__(self, graph_path=None, data_dir="/Users/komalgilani/Desktop/cde_mapper/data"):
         self.graph_path = (
             graph_path if graph_path else f"{data_dir}/output/omop_bi_graph.pkl"
         )
@@ -437,7 +437,7 @@ class ConceptLoader(BaseLoader):
         )
 
 
-def load_concepts(file_path, data_dir="/workspace/mapping_tool/data"):
+def load_concepts(file_path, data_dir="/Users/komalgilani/Desktop/cde_mapper/data"):
     start_time = datetime.datetime.now()
     loader = GraphLoader(file_path, data_dir)
     concepts, max_len = loader.load_graph()

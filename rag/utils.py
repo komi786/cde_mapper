@@ -7,14 +7,15 @@ import os
 from .param import LOG_FILE, MAPPING_FILE
 from tqdm import tqdm
 import pandas as pd
-from simstring.feature_extractor.character_ngram import CharacterNgramFeatureExtractor
-from simstring.measure.cosine import CosineMeasure
-from simstring.database.dict import DictDatabase
-from simstring.searcher import Searcher
+# from simstring.feature_extractor.character_ngram import CharacterNgramFeatureExtractor
+# from simstring.measure.cosine import CosineMeasure
+# from simstring.database.dict import DictDatabase
+# from simstring.searcher import Searcher
+from rapidfuzz import process, fuzz
 from .py_model import RetrieverResultsModel, ProcessedResultsModel
 from itertools import chain
 import csv
-import tiktoken
+# import tiktoken
 import numpy as np
 from collections import defaultdict
 import re
@@ -653,65 +654,65 @@ def convert_db_result(result) -> RetrieverResultsModel:
     return [RetrieverResultsModel(**resut_dict)]
 
 
-def exact_match_found_no_vocab(query_text, documents, domain=None):
-    if not query_text or not documents:
-        return []
-    query_text = query_text.lower()
-    # Check if there is a high score match
+# def exact_match_found_no_vocab(query_text, documents, domain=None):
+#     if not query_text or not documents:
+#         return []
+#     query_text = query_text.lower()
+#     # Check if there is a high score match
 
-    # rerank the documents based on the score
-    documents = (
-        sorted(documents, key=lambda x: x.metadata.get("score", 0), reverse=True)
-        if "score" in documents[0].metadata
-        else documents
-    )
-    # check if any docs has score more than 0.95 return all those in ranked order
-    matched_docs = [doc for doc in documents if doc.metadata.get("score", 0) >= 0.95]
-    if len(matched_docs) > 1:
-        len_matches = len(matched_docs)
-        # append the remaining docs to the end
-        matched_docs += documents
-        return matched_docs, len_matches
-    # check for all docs where doc.metadata['label'] == query_text
-    matched_docs = [
-        doc
-        for doc in documents
-        if remove_punctuation(doc.metadata.get("label", ""))
-        == remove_punctuation(query_text)
-    ]
-    if len(matched_docs) > 1:
-        len_matches = len(matched_docs)
-        matched_docs += documents
-        return matched_docs, len_matches
+#     # rerank the documents based on the score
+#     documents = (
+#         sorted(documents, key=lambda x: x.metadata.get("score", 0), reverse=True)
+#         if "score" in documents[0].metadata
+#         else documents
+#     )
+#     # check if any docs has score more than 0.95 return all those in ranked order
+#     matched_docs = [doc for doc in documents if doc.metadata.get("score", 0) >= 0.95]
+#     if len(matched_docs) > 1:
+#         len_matches = len(matched_docs)
+#         # append the remaining docs to the end
+#         matched_docs += documents
+#         return matched_docs, len_matches
+#     # check for all docs where doc.metadata['label'] == query_text
+#     matched_docs = [
+#         doc
+#         for doc in documents
+#         if remove_punctuation(doc.metadata.get("label", ""))
+#         == remove_punctuation(query_text)
+#     ]
+#     if len(matched_docs) > 1:
+#         len_matches = len(matched_docs)
+#         matched_docs += documents
+#         return matched_docs, len_matches
 
-    # Create a database and populate it
-    label_to_docs = {}
-    db = DictDatabase(CharacterNgramFeatureExtractor(2))
-    for doc in documents:
-        label = doc.metadata.get("label", None)
-        if label:
-            db.add(doc.metadata["label"])
-            label_key = label.strip().lower()
-            if label_key not in label_to_docs:
-                label_to_docs[label_key] = []
-            label_to_docs[label_key].append(doc)
+#     # Create a database and populate it
+#     label_to_docs = {}
+#     db = DictDatabase(CharacterNgramFeatureExtractor(2))
+#     for doc in documents:
+#         label = doc.metadata.get("label", None)
+#         if label:
+#             db.add(doc.metadata["label"])
+#             label_key = label.strip().lower()
+#             if label_key not in label_to_docs:
+#                 label_to_docs[label_key] = []
+#             label_to_docs[label_key].append(doc)
 
-    # Create a searcher with cosine similarity
-    searcher = Searcher(db, CosineMeasure())
+#     # Create a searcher with cosine similarity
+#     searcher = Searcher(db, CosineMeasure())
 
-    # Normalize query text
-    results = searcher.search(query_text, 0.9)
-    if len(results) > 0:
-        matched_docs = [
-            doc
-            for result in results
-            if result in label_to_docs
-            for doc in label_to_docs[result]
-        ]
-        len_matches = len(matched_docs)
-        matched_docs += documents
-        return matched_docs, len_matches
-    return matched_docs, len(matched_docs) if len(matched_docs) > 0 else 0
+#     # Normalize query text
+#     results = searcher.search(query_text, 0.9)
+#     if len(results) > 0:
+#         matched_docs = [
+#             doc
+#             for result in results
+#             if result in label_to_docs
+#             for doc in label_to_docs[result]
+#         ]
+#         len_matches = len(matched_docs)
+#         matched_docs += documents
+#         return matched_docs, len_matches
+#     return matched_docs, len(matched_docs) if len(matched_docs) > 0 else 0
 
 
 # def sim_string_search(query, candidates):
@@ -728,21 +729,38 @@ def exact_match_found(query_text, documents, domain=None):
 
     # Create a database and populate it
     label_to_docs = {}
-    db = DictDatabase(CharacterNgramFeatureExtractor(2))
+    # db = DictDatabase(CharacterNgramFeatureExtractor(2))
+    # for doc in documents:
+    #     label = doc.metadata.get("label", None)
+    #     if label:
+    #         db.add(doc.metadata["label"])
+    #         label_key = label.strip().lower()
+    #         if label_key not in label_to_docs:
+    #             label_to_docs[label_key] = []
+    #         label_to_docs[label_key].append(doc)
+
+    label_to_docs = {}
+    label_list = []
     for doc in documents:
         label = doc.metadata.get("label", None)
         if label:
-            db.add(doc.metadata["label"])
             label_key = label.strip().lower()
+            label_list.append(label_key)
             if label_key not in label_to_docs:
                 label_to_docs[label_key] = []
             label_to_docs[label_key].append(doc)
-
     # Create a searcher with cosine similarity
-    searcher = Searcher(db, CosineMeasure())
+    # searcher = Searcher(db, CosineMeasure())
 
+    results = process.extract(
+        query_text,
+        label_list,
+        scorer=fuzz.WRatio,
+        score_cutoff=90.0,  # Equivalent to 0.9 threshold
+        limit=10
+    )
     # Normalize query text
-    results = searcher.search(query_text, 0.9)
+    # results = searcher.search(query_text, 0.9)
 
     # Select vocabulary
     selected_vocab = select_vocabulary(query_text, domain=domain)
@@ -813,32 +831,32 @@ def select_vocabulary(query_text=None, config_path=MAPPING_FILE, domain=None):
     return selected_vocab
 
 
-def exact_match_wo_vocab(query_text, documents, domain=None):
-    if not query_text or not documents:
-        # print("NO DOCUMENTS FOUND FOR QUERY={query_text}")
-        return []
+# def exact_match_wo_vocab(query_text, documents, domain=None):
+#     if not query_text or not documents:
+#         # print("NO DOCUMENTS FOUND FOR QUERY={query_text}")
+#         return []
 
-    # Create a database and populate it
-    db = DictDatabase(CharacterNgramFeatureExtractor(2))
-    for doc in documents:
-        if "label" in doc.metadata:
-            db.add(doc.metadata["label"])
+#     # Create a database and populate it
+#     db = DictDatabase(CharacterNgramFeatureExtractor(2))
+#     for doc in documents:
+#         if "label" in doc.metadata:
+#             db.add(doc.metadata["label"])
 
-    # Create a searcher with cosine similarity
-    searcher = Searcher(db, CosineMeasure())
+#     # Create a searcher with cosine similarity
+#     searcher = Searcher(db, CosineMeasure())
 
-    # Normalize query text
-    results = searcher.search(
-        query_text, 0.95
-    )  # Set threshold to 0.95 for high similarity
+#     # Normalize query text
+#     results = searcher.search(
+#         query_text, 0.95
+#     )  # Set threshold to 0.95 for high similarity
 
-    matched_docs = []
-    for result in results:
-        for doc in documents:
-            if doc.metadata["label"] == result:
-                print(f"EXACT MATCH FOUND FOR QUERY={query_text}")
-                matched_docs.append(doc)
-    return matched_docs[:1]
+#     matched_docs = []
+#     for result in results:
+#         for doc in documents:
+#             if doc.metadata["label"] == result:
+#                 print(f"EXACT MATCH FOUND FOR QUERY={query_text}")
+#                 matched_docs.append(doc)
+#     return matched_docs[:1]
 
 
 def create_document_string(doc):
@@ -1790,29 +1808,29 @@ def evaluate_ncgd(data):
     data.update(ncgd_at_k_avg)
     return data
 
-def count_tokens(prompt_text: str, model_name: str = "gpt-3.5-turbo") -> int:
-    """
-    Count the number of tokens in the given prompt text for the specified model.
+# def count_tokens(prompt_text: str, model_name: str = "gpt-3.5-turbo") -> int:
+#     """
+#     Count the number of tokens in the given prompt text for the specified model.
 
-    :param prompt_text: The text prompt for which to count tokens.
-    :param model_name: The name of the model (e.g., "gpt-3.5-turbo", "llama3.1").
-    :return: The total number of tokens in the prompt.
-    """
-    try:
-        # For models that work with tiktoken (like GPT)
-        encoding = tiktoken.encoding_for_model(model_name)
-        return len(encoding.encode(prompt_text))
-    except Exception as e:
-        print(f"tiktoken failed for model {model_name}: {e}")
+#     :param prompt_text: The text prompt for which to count tokens.
+#     :param model_name: The name of the model (e.g., "gpt-3.5-turbo", "llama3.1").
+#     :return: The total number of tokens in the prompt.
+#     """
+#     try:
+#         # For models that work with tiktoken (like GPT)
+#         encoding = tiktoken.encoding_for_model(model_name)
+#         return len(encoding.encode(prompt_text))
+#     except Exception as e:
+#         print(f"tiktoken failed for model {model_name}: {e}")
 
-    try:
-        # For models like LLaMA that may use a different tokenizer
-        from transformers import LlamaTokenizer
-        tokenizer = LlamaTokenizer.from_pretrained(model_name)
-        return len(tokenizer.encode(prompt_text))
-    except Exception as e:
-        print(f"Hugging Face tokenizer failed for model {model_name}: {e}")
+#     try:
+#         # For models like LLaMA that may use a different tokenizer
+#         from transformers import LlamaTokenizer
+#         tokenizer = LlamaTokenizer.from_pretrained(model_name)
+#         return len(tokenizer.encode(prompt_text))
+#     except Exception as e:
+#         print(f"Hugging Face tokenizer failed for model {model_name}: {e}")
 
-    # Fallback if no tokenizer is available
-    print("Warning: Using a simple word count as a fallback method.")
-    return len(prompt_text.split())
+#     # Fallback if no tokenizer is available
+#     print("Warning: Using a simple word count as a fallback method.")
+#     return len(prompt_text.split())

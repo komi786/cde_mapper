@@ -87,6 +87,7 @@ def map_data(
     results = []
     for _, item in enumerate(data):
         query_obj = item[1]
+        logger.info(f"Processing object: {query_obj}")
         # query_result = full_query_processing(
         #     query_text=query_obj,
         #     retriever=retriever,
@@ -270,12 +271,12 @@ def temp_process_query_details_db(
                 retriever_docs(
                     original_query_obj.base_entity,
                     retriever_cache,
-                    domain="all",
+                    domain=domain,
                     is_omop_data=is_omop_data,
                     topk=topk,
                 ),
                 llm_name,
-                "all",
+                domain,
                 belief_threshold=0.85,
             )
             if found_match and len(variable_label_matches) > 0:

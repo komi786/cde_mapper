@@ -11,7 +11,7 @@ from collections import defaultdict
 
 DetectorFactory.seed = 0  # Ensures reproducibility
 DATA_DIR = "/workspace/snomed_vocab"
-DATA_DIR = "/workspace/mapping_tool/data"
+DATA_DIR = "/Users/komalgilani/Desktop/cde_mapper/data"
 
 STOP_WORDS = [
     "stop",
@@ -614,7 +614,7 @@ def preprocess_data():
 
 
 def main_process(
-    data_directory="/workspace/mapping_tool/data/input/omop_v5.4/ALL_VOCAB_29_07_2024",
+    data_directory="/Users/komalgilani/Desktop/cde_mapper/data/input/omop_v5.4/ALL_VOCAB_29_07_2024",
     output_dir=DATA_DIR,
 ):
     print(f"Processing data in {data_directory}")
@@ -647,7 +647,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--data_dir",
         type=str,
-        default="/workspace/mapping_tool/data/input/omop_v5.4/ALL_VOCAB_29_07_2024",
+        default="/Users/komalgilani/Desktop/cde_mapper/data/input/omop_v5.4/ALL_VOCAB_29_07_2024",
         help="Directory containing the vocabulary data files",
     )
     parser.add_argument(
@@ -997,7 +997,7 @@ if __name__ == "__main__":
 #     return hierarchy
 # import os
 # import argparse
-# def main_process(data_directory='/workspace/mapping_tool/data/input/omop_v5.4/ALL_VOCAB_29_07_2024', output_dir=DATA_DIR):
+# def main_process(data_directory='/Users/komalgilani/Desktop/cde_mapper/data/input/omop_v5.4/ALL_VOCAB_29_07_2024', output_dir=DATA_DIR):
 #     print(f"Processing data in {data_directory}")
 #     concepts_df = fetch_concept(data_directory, sep='\t', output_dir = output_dir)
 #     concepts_df = fetch_synonyms(os.path.join(data_directory, 'CONCEPT_SYNONYM.csv'),concepts_df, output_dir=output_dir)
@@ -1008,7 +1008,7 @@ if __name__ == "__main__":
 #                             concepts_df,relationship_names, data_dir=output_dir)
 # if __name__ == "__main__":
 #     parser = argparse.ArgumentParser(description="Process vocabulary data.")
-#     parser.add_argument("--data_dir", type=str, default="/workspace/mapping_tool/data/input/omop_v5.4/ALL_VOCAB_29_07_2024",
+#     parser.add_argument("--data_dir", type=str, default="/Users/komalgilani/Desktop/cde_mapper/data/input/omop_v5.4/ALL_VOCAB_29_07_2024",
 #                         help="Directory containing the vocabulary data files")
 #     parser.add_argument("--output_dir", type=str, default=DATA_DIR,
 #                         help="Directory containing the vocabulary data files")

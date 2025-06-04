@@ -5,9 +5,8 @@ from langchain_core.prompts import (
     SystemMessagePromptTemplate,
     HumanMessagePromptTemplate,
 )
-import tiktoken
-from .utils import load_mapping, count_tokens
-from .utils import global_logger as logger
+# import tiktoken
+from .utils import load_mapping, global_logger as logger
 from pydantic.v1 import ValidationError
 from langchain_core.output_parsers import JsonOutputParser
 from langchain.output_parsers import OutputFixingParser
@@ -604,9 +603,9 @@ def extract_information_for_grouped_queries(
             # Extract text content from each formatted message
             prompt_text = "\n".join([message.content for message in formatted_messages])
             # count token from final prompt
-            token_count = count_tokens(prompt_text)
+            # token_count = count_tokens(prompt_text)
 
-            logger.info(f"Token count for extract_information={token_count}")
+            # logger.info(f"Token count for extract_information={token_count}")
             chain = final_prompt | active_model
 
             start_time = time.time()
@@ -679,6 +678,7 @@ def extract_information(query: QueryDecomposedModel, model_name=LLM_ID, prompt=N
                 logger.error("Failed to load mapping for domain", exc_info=True)
                 return None
             examples = mapping_for_domain["examples"]
+            logger.info(f"examples length={len(examples)}")
             select_examples = get_relevant_examples(
                 query.full_query, "extract_information", examples, topk=3, min_score=0.6
             )
@@ -771,9 +771,9 @@ def extract_information(query: QueryDecomposedModel, model_name=LLM_ID, prompt=N
             # Extract text content from each formatted message
             prompt_text = "\n".join([message.content for message in formatted_messages])
             # count token from final prompt
-            token_count = count_tokens(prompt_text)
+            # token_count = count_tokens(prompt_text)
 
-            logger.info(f"Token count for extract_information={token_count}")
+            # logger.info(f"Token count for extract_information={token_count}")
             chain = final_prompt | active_model
 
             start_time = time.time()
@@ -871,9 +871,9 @@ def evaluate_final_mapping(variable_object: Dict, llm_id: str = "llama3.1"):
     # Extract text content from each formatted message
     prompt_text = "\n".join([message.content for message in formatted_messages])
     # count token from final prompt
-    token_count = count_tokens(prompt_text)
+    # token_count = count_tokens(prompt_text)
 
-    logger.info(f"Token count for evaluate_final_mapping={token_count}")
+    # logger.info(f"Token count for evaluate_final_mapping={token_count}")
 
     chain = prompt | active_model
     result = chain.invoke({"variable_object": variable_object}).content
@@ -906,7 +906,7 @@ def generate_information_triples(query, active_model):
         save_triples_to_txt(
             query,
             chain_results,
-            "/workspace/mapping_tool/data/output/gissi_llama_triples.txt",
+            "/Users/komalgilani/Desktop/cde_mapper/data/output/gissi_llama_triples.txt",
         )
     except Exception as e:
         logger.info(f"Error loading LLM: {e}")
@@ -992,15 +992,15 @@ def generate_link_prediction_prompt(query, documents, domain=None, in_context=Tr
     # Extract text content from each formatted message
     prompt_text = "\n".join([message.content for message in formatted_messages])
     # count token from final prompt
-    token_count = count_tokens(prompt_text)
-    if in_context:
-        logger.info(
-            f"Token count for generate_link_prediction_prompt with ICL={token_count}"
-        )
-    else:
-        logger.info(
-            f"Token count for generate_link_prediction_prompt without ICL={token_count}"
-        )
+    # token_count = count_tokens(prompt_text)
+    # if in_context:
+    #     logger.info(
+    #         f"Token count for generate_link_prediction_prompt with ICL={token_count}"
+    #     )
+    # else:
+    #     logger.info(
+    #         f"Token count for generate_link_prediction_prompt without ICL={token_count}"
+    #     )
         # logger.info(f"final_prompt={final_prompt}")
     return final_prompt
 
@@ -1065,18 +1065,18 @@ def generate_ranking_prompt(query, domain=None, in_context=True, documents=None)
         )
         #  print(f"template={template_.format_messages()}")
 
-    formatted_messages = final_prompt.format_messages(query=query, documents=documents)
+    # formatted_messages = final_prompt.format_messages(query=query, documents=documents)
 
     # Extract text content from each formatted message
-    prompt_text = "\n".join([message.content for message in formatted_messages])
+    # prompt_text = "\n".join([message.content for message in formatted_messages])
     # count token from final prompt
-    token_count = count_tokens(prompt_text)
-    if in_context:
-        logger.info(f"Token count for generate_ranking_prompt with ICL={token_count}")
-    else:
-        logger.info(
-            f"Token count for generate_ranking_prompt without ICL={token_count}"
-        )
+    # token_count = count_tokens(prompt_text)
+    # if in_context:
+    #     logger.info(f"Token count for generate_ranking_prompt with ICL={token_count}")
+    # else:
+    #     logger.info(
+    #         f"Token count for generate_ranking_prompt without ICL={token_count}"
+        
     return final_prompt
 
 

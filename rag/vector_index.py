@@ -15,7 +15,6 @@ import argparse
 from rag.utils import (
     load_docs_from_jsonl,
     load_custom_docs_from_jsonl,
-    exact_match_found_no_vocab,
     evaluate_topk_acc,
     evaluate_ncgd,
 )
@@ -104,13 +103,23 @@ def _create_payload_index(client, collection_name):
     #                 wait=True
     #             )
 
+def check_collection_exists(collection_name:str):
+    """Check if a collection exists in Qdrant."""
+    client = QdrantClient(url=VECTOR_PATH, port=QDRANT_PORT, https=True, timeout=300)
+    try:
+        exists = client.collection_exists(collection_name)
+        logger.info(f"Collection '{collection_name}' exists: {exists}")
+        return exists
+    except Exception as e:
+        logger.error(f"Error checking collection existence: {e}")
+        return False
 
 def generate_vector_index(
     dense_embedding,
     sparse_embedding=None,
     url=VECTOR_PATH,
     port=QDRANT_PORT,
-    docs_file="/workspace/mapping_tool/data/output/concepts.jsonl",
+    docs_file="/Users/komalgilani/Desktop/cde_mapper/data/output/concepts.jsonl",
     mode="inference",
     collection_name="concept_mapping",
     topk=10,
@@ -490,7 +499,7 @@ def update_compressed_merger_retriever(
 ) -> CustomCompressionRetriever:
     try:
         retrievers = merger_retriever.base_retriever.retrievers
-
+        logger.info(f"retrievers: {retrievers}")
         dense_retriever = update_qdrant_search_filter(
             retrievers[0], domain=domain, topk=topk
         )
@@ -557,7 +566,7 @@ def set_compression_retriever(base_retriever) -> CustomCompressionRetriever:
 
 
 def log_accuracy(
-    correct_dict, input_file="/workspace/mapping_tool/data/eval_datasets/accuracy.txt"
+    correct_dict, input_file="/Users/komalgilani/Desktop/cde_mapper/data/eval_datasets/accuracy.txt"
 ):
     with open(input_file, "a") as f:
         for matric, value in correct_dict.items():
@@ -617,168 +626,172 @@ def evaluate_metrics(correct_dict, mrr_sum, max_queries, recall_dict, precision_
     return metrics
 
 
-def process_queries(ensemble_retriever, queries, max_queries, args):
-    """Main function to process queries and output in a format compatible with evaluation functions."""
-    data = {"queries": []}
+# def process_queries(ensemble_retriever, queries, max_queries, args):
+#     """Main function to process queries and output in a format compatible with evaluation functions."""
+#     data = {"queries": []}
 
-    # with open(args.output_file, "w") as f:
-    for query in queries[:max_queries]:
-        match_found = False
-        llm_found_match = False
-        if len(query) == 3:
-            code, query_text, _ = query[0], query[1].base_entity, query[1].domain
-        else:
-            code, query_text = query[0], query[1].base_entity
+#     # with open(args.output_file, "w") as f:
+#     for query in queries[:max_queries]:
+#         match_found = False
+#         llm_found_match = False
+#         if len(query) == 3:
+#             code, query_text, _ = query[0], query[1].base_entity, query[1].domain
+#         else:
+#             code, query_text = query[0], query[1].base_entity
 
-        codes_list = [str(c).strip().lower() for c in code.split("|")]
-        results = ensemble_retriever.invoke(query_text)
-        exact_results, len_matched = exact_match_found_no_vocab(query_text, results)
-        if exact_results:
-            results = exact_results  # Use exact results if available
-            match_found = True
-        if args.use_llm and not match_found:
-            print(
-                f"Query: {query}--\nResults: {[res.metadata['label'] for res in results]}"
-            )
-            results, llm_found_match = pass_to_chat_llm_chain(
-                query,
-                results,
-                llm_name=llm_id,
-                prompt_stage=args.prompt_stage,
-                domain="all",
-                in_context=True,
-            )
-        # Transform results into the expected candidate format for each mention
-        candidates = []
-        for idx, res in enumerate(results):
-            sid = str(res.metadata.get("sid", "")).strip().lower()
-            is_relevant = 0
-            if match_found and len_matched > 0:
-                if idx < len_matched:  # Only assign relevant up to len_matched
-                    is_relevant = 1
-            elif any(sid_part in codes_list for sid_part in sid.split("|")):
-                is_relevant = 1
-            if idx == 0 and llm_found_match:
-                # Ensure the top candidate is marked as relevant if LLM found a match
-                is_relevant = 1
-            if is_relevant:
-                logger.info(f"found relevant: {query_text}---{res.metadata['label']}")
+#         codes_list = [str(c).strip().lower() for c in code.split("|")]
+#         results = ensemble_retriever.invoke(query_text)
+#         exact_results, len_matched = exact_match_found_no_vocab(query_text, results)
+#         if exact_results:
+#             results = exact_results  # Use exact results if available
+#             match_found = True
+#         if args.use_llm and not match_found:
+#             print(
+#                 f"Query: {query}--\nResults: {[res.metadata['label'] for res in results]}"
+#             )
+#             results, llm_found_match = pass_to_chat_llm_chain(
+#                 query,
+#                 results,
+#                 llm_name=llm_id,
+#                 prompt_stage=args.prompt_stage,
+#                 domain="all",
+#                 in_context=True,
+#             )
+#         # Transform results into the expected candidate format for each mention
+#         candidates = []
+#         for idx, res in enumerate(results):
+#             sid = str(res.metadata.get("sid", "")).strip().lower()
+#             is_relevant = 0
+#             if match_found and len_matched > 0:
+#                 if idx < len_matched:  # Only assign relevant up to len_matched
+#                     is_relevant = 1
+#             elif any(sid_part in codes_list for sid_part in sid.split("|")):
+#                 is_relevant = 1
+#             if idx == 0 and llm_found_match:
+#                 # Ensure the top candidate is marked as relevant if LLM found a match
+#                 is_relevant = 1
+#             if is_relevant:
+#                 logger.info(f"found relevant: {query_text}---{res.metadata['label']}")
 
-            candidate = {"label": is_relevant, "id": sid}
-            candidates.append(candidate)
-        mentions = [
-            {"candidates": candidates, "mention": query_text, "golden_cui": codes_list}
-        ]
-        data["queries"].append({"mentions": mentions})
-    data = evaluate_topk_acc(data)
-    data = evaluate_ncgd(data)
-    # write data to file
-    with open(args.output_file, "w") as f:
-        json.dump(data, f, indent=2)
+#             candidate = {"label": is_relevant, "id": sid}
+#             candidates.append(candidate)
+#         mentions = [
+#             {"candidates": candidates, "mention": query_text, "golden_cui": codes_list}
+#         ]
+#         data["queries"].append({"mentions": mentions})
+#     data = evaluate_topk_acc(data)
+#     data = evaluate_ncgd(data)
+#     # write data to file
+#     with open(args.output_file, "w") as f:
+#         json.dump(data, f, indent=2)
 
-    return data
+#     return data
 
 
 if __name__ == "__main__":
-    start_time = time.time()
-    parser = argparse.ArgumentParser(description="Load Vector Store")
-    parser.add_argument(
-        "--model_name",
-        type=str,
-        default=EMB_MODEL_NAME,
-        help="Model identifier for embeddings",
-    )
-    parser.add_argument(
-        "--llm_id", type=str, default=LLM_ID, help="Model identifier for embeddings"
-    )
-    parser.add_argument(
-        "--mode", type=str, default="inference", help="The mode to run the model in"
-    )
-    parser.add_argument(
-        "--compress", action="store_true", help="Use compression retriever"
-    )
-    parser.add_argument(
-        "--collection_name",
-        type=str,
-        default="concept_mapping",
-        help="Generate vector index for given collection",
-    )
-    parser.add_argument(
-        "--document_file_path",
-        type=str,
-        default="/workspace/mapping_tool/data/output/concepts.jsonl",
-        help="Documents to index",
-    )
-    parser.add_argument(
-        "--dataset_name",
-        type=str,
-        default="icare4cvd",
-        help="Dataset name for evaluation",
-    )
-    parser.add_argument(
-        "--input_data",
-        type=str,
-        default="/workspace/mapping_tool/data/eval_datasets/custom_data/references.txt",
-        help="Documents to index",
-    )
-    parser.add_argument(
-        "--output_file",
-        type=str,
-        default="/workspace/mapping_tool/data/eval_datasets/results.txt",
-        help="Documents to index",
-    )
-    parser.add_argument(
-        "--prompt_stage", type=int, default=1, help="Prompt stage for LLM processing"
-    )
-    parser.add_argument("--use_llm", action="store_true", help="Use LLM for filtering")
-    args = parser.parse_args()
-    mode = args.mode
-    model_name = args.model_name
-    llm_id = args.llm_id
-    embeddings = SAPEmbeddings(model_id=model_name)
-    # in concept_mapping we used Qdrant/bm42-all-minilm-l6-v2-attentions
-    # in icare4cvd mapping we used prithivida/Splade_PP_en_v1
-    sparse_embeddings = FastEmbedSparse(
-        model_name="Qdrant/bm42-all-minilm-l6-v2-attentions"
-    )
-    print(f"doc file path: {args.document_file_path}")
-    # if args.compress:
-    #     topk = 10
+    
+    check_collection_exists("concept_mapping_1")
+    # check if qdrant collection exists
+    
+    # start_time = time.time()
+    # parser = argparse.ArgumentParser(description="Load Vector Store")
+    # parser.add_argument(
+    #     "--model_name",
+    #     type=str,
+    #     default=EMB_MODEL_NAME,
+    #     help="Model identifier for embeddings",
+    # )
+    # parser.add_argument(
+    #     "--llm_id", type=str, default=LLM_ID, help="Model identifier for embeddings"
+    # )
+    # parser.add_argument(
+    #     "--mode", type=str, default="inference", help="The mode to run the model in"
+    # )
+    # parser.add_argument(
+    #     "--compress", action="store_true", help="Use compression retriever"
+    # )
+    # parser.add_argument(
+    #     "--collection_name",
+    #     type=str,
+    #     default="concept_mapping",
+    #     help="Generate vector index for given collection",
+    # )
+    # parser.add_argument(
+    #     "--document_file_path",
+    #     type=str,
+    #     default="/Users/komalgilani/Desktop/cde_mapper/data/output/concepts.jsonl",
+    #     help="Documents to index",
+    # )
+    # parser.add_argument(
+    #     "--dataset_name",
+    #     type=str,
+    #     default="icare4cvd",
+    #     help="Dataset name for evaluation",
+    # )
+    # parser.add_argument(
+    #     "--input_data",
+    #     type=str,
+    #     default="/Users/komalgilani/Desktop/cde_mapper/data/eval_datasets/custom_data/references.txt",
+    #     help="Documents to index",
+    # )
+    # parser.add_argument(
+    #     "--output_file",
+    #     type=str,
+    #     default="/Users/komalgilani/Desktop/cde_mapper/data/eval_datasets/results.txt",
+    #     help="Documents to index",
+    # )
+    # parser.add_argument(
+    #     "--prompt_stage", type=int, default=1, help="Prompt stage for LLM processing"
+    # )
+    # parser.add_argument("--use_llm", action="store_true", help="Use LLM for filtering")
+    # args = parser.parse_args()
+    # mode = args.mode
+    # model_name = args.model_name
+    # llm_id = args.llm_id
+    # embeddings = SAPEmbeddings(model_id=model_name)
+    # # in concept_mapping we used Qdrant/bm42-all-minilm-l6-v2-attentions
+    # # in icare4cvd mapping we used prithivida/Splade_PP_en_v1
+    # sparse_embeddings = FastEmbedSparse(
+    #     model_name="Qdrant/bm42-all-minilm-l6-v2-attentions"
+    # )
+    # print(f"doc file path: {args.document_file_path}")
+    # # if args.compress:
+    # #     topk = 10
+    # # else:
+    # #     topk = 5
+
+    # topk = 10
+    # hybrid_vector_retriever = generate_vector_index(
+    #     embeddings,
+    #     sparse_embeddings,
+    #     docs_file=args.document_file_path,
+    #     mode=mode,
+    #     collection_name=args.collection_name,
+    #     topk=topk,
+    # )
+    # # hybrid_vector_retriever = update_qdrant_search_filter(hybrid_vector_retriever)
+
+    # # bm25_sparse_retriever = set_compression_retriever(bm25_sparse_retriever)
+    # # docs = load_docs_from_jsonl(args.document_file_path)
+    # # weaivate_vector = faiss_vector_store(collection_name=args.collection_name ,docs_file=args.document_file_path,embeddings=embeddings)
+
+    # # vector_search = VectorSearch(embedding=embeddings, documents=docs, collection_name=args.collection_name,
+    # #                              topk=10)
+    # # vector_search.create_qdrant_index()
+    # if args.dataset_name == "icare4cvd":
+    #     api_retriever = initiate_api_retriever()
+    #     bm25_sparse_retriever = set_compression_retriever(api_retriever)
     # else:
-    #     topk = 5
+    #     bm25_sparse_retriever = create_bm25_sparse_retriever(args.document_file_path)
+    #     # api_retriever = initiate_api_retriever_all_concepts()
 
-    topk = 10
-    hybrid_vector_retriever = generate_vector_index(
-        embeddings,
-        sparse_embeddings,
-        docs_file=args.document_file_path,
-        mode=mode,
-        collection_name=args.collection_name,
-        topk=topk,
-    )
-    # hybrid_vector_retriever = update_qdrant_search_filter(hybrid_vector_retriever)
-
-    # bm25_sparse_retriever = set_compression_retriever(bm25_sparse_retriever)
-    # docs = load_docs_from_jsonl(args.document_file_path)
-    # weaivate_vector = faiss_vector_store(collection_name=args.collection_name ,docs_file=args.document_file_path,embeddings=embeddings)
-
-    # vector_search = VectorSearch(embedding=embeddings, documents=docs, collection_name=args.collection_name,
-    #                              topk=10)
-    # vector_search.create_qdrant_index()
-    if args.dataset_name == "icare4cvd":
-        api_retriever = initiate_api_retriever()
-        bm25_sparse_retriever = set_compression_retriever(api_retriever)
-    else:
-        bm25_sparse_retriever = create_bm25_sparse_retriever(args.document_file_path)
-        # api_retriever = initiate_api_retriever_all_concepts()
-
-    ensemble_retriever = CustomMergeRetriever(
-        retrievers=[hybrid_vector_retriever, bm25_sparse_retriever]
-    )
-    if args.compress:
-        ensemble_retriever = set_compression_retriever(ensemble_retriever)
-    queries, _ = load_data(args.input_data)
-    process_queries(ensemble_retriever, queries, len(queries), args)
+    # ensemble_retriever = CustomMergeRetriever(
+    #     retrievers=[hybrid_vector_retriever, bm25_sparse_retriever]
+    # )
+    # if args.compress:
+    #     ensemble_retriever = set_compression_retriever(ensemble_retriever)
+    # queries, _ = load_data(args.input_data)
+    # process_queries(ensemble_retriever, queries, len(queries), args)
 
     # exact_founds = 0
     # queries, _ = load_data(args.input_data)

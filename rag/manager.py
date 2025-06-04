@@ -42,6 +42,7 @@ class LLMManager:
         try:
             # Create a unique key for each configuration
             key = f"{model}{'_hf' if hugging_face else ''}"
+            print(f"LLMManager: Getting instance for key: {key}")
             if key not in LLMManager._instances:
                 with LLMManager._lock:
                     # Double check locking pattern
@@ -229,7 +230,7 @@ class CustomSemanticSimilarityExampleSelector(SemanticSimilarityExampleSelector)
         **vectorstore_cls_kwargs: Any,
     ) -> "CustomSemanticSimilarityExampleSelector":
         if selector_path is None:
-            selector_path = f"/workspace/mapping_tool/data/db/faiss_index_{content_key}"
+            selector_path = f"/Users/komalgilani/Desktop/cde_mapper/data/db/faiss_index_{content_key}"
 
         if os.path.exists(selector_path):
             print(f"Selector path exist: {selector_path}")
@@ -292,7 +293,7 @@ class ExampleSelectorManager:
         #             if FAISS is None:
         #                 raise Exception("FAISS not initialized.")
         #             if selector_path is None:
-        #                 selector_path = f'/workspace/mapping_tool/data/output/selector_{context_key}.pkl'
+        #                 selector_path = f'/Users/komalgilani/Desktop/cde_mapper/data/output/selector_{context_key}.pkl'
 
         #             # Check if the selector pickle file exists
         #             if os.path.exists(selector_path):
@@ -335,7 +336,7 @@ class ExampleSelectorManager:
                 try:
                     if selector_path is None:
                         selector_path = (
-                            f"/workspace/mapping_tool/data/db/faiss_index_{context_key}"
+                            f"/Users/komalgilani/Desktop/cde_mapper/data/db/faiss_index_{context_key}"
                         )
                         os.makedirs(
                             os.path.dirname(selector_path), exist_ok=True

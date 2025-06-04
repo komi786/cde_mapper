@@ -22,7 +22,7 @@ from .vector_index import *
 
 # from .vector_search import *
 # from .qdrant import *
-from .retriever_ import *
+from .retriever import *
 from .py_model import *
 from .compress import *
 from .sql import *

@@ -621,7 +621,7 @@ class SAPEmbeddings(Embeddings):
     #     """
     #     Save the total token count to a text file.
     #     """
-    #     with open('/workspace/mapping_tool/data/output/total_token_count_agreegated_ent_synonym_embed.txt', 'w') as f:
+    #     with open('/Users/komalgilani/Desktop/cde_mapper/data/output/total_token_count_agreegated_ent_synonym_embed.txt', 'w') as f:
     #         f.write(str(total_token_count))
 
     # def embed_query(self, text: str) -> List[float]:
@@ -698,7 +698,7 @@ def store_embedding_tsv_file(embeddings: List[List[float]]):
     Store the embeddings in a TSV file.
     """
     with open(
-        "/workspace/mapping_tool/data/output/embeddings_aggregated_ent_synonym.tsv", "a"
+        "/Users/komalgilani/Desktop/cde_mapper/data/output/embeddings_aggregated_ent_synonym.tsv", "a"
     ) as f:
         for emb in embeddings:
             f.write("\t".join(map(str, emb)) + "\n")

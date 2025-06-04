@@ -811,7 +811,7 @@ data = [
 ]
 
 # Write the data to a CSV file
-# csv_filename = "/workspace/mapping_tool/data/eval_datasets/mapped_cohorts/GISSI-HF/custom_codes.csv"
+# csv_filename = "/Users/komalgilani/Desktop/cde_mapper/data/eval_datasets/mapped_cohorts/GISSI-HF/custom_codes.csv"
 # with open(csv_filename, "w", newline="") as csvfile:
 #     csvwriter = csv.writer(csvfile, delimiter=",")
 #     csvwriter.writerows(data)
