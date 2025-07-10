@@ -1,8 +1,8 @@
-# CDE-Mapper: Using Retrieval-Augmented Language Models for Linking Clinical Data Elements to Controlled Vocabularies
+# CDE-Linker: Using Retrieval-Augmented Language Models for Linking Clinical Data Elements to Controlled Vocabularies
 
 ![image](https://github.com/user-attachments/assets/54577286-9d04-45a3-852e-66684bd1a2fc)
 
-CDE_Mapper is an automated concept linking tool designed to find appropriate standardized terms in OMOP Athena vocabularies for clinical terms found in data dictionaries. Built with advanced Retrieval Augmented Generation (RAG) methods, CDE_Mapper leverages the power of generative models and vector stores to enhance the accuracy of linking composite concepts. This tool enables data custodians to transform ambiguous and semi-structured clinical data into a harmonized schema effectively.
+CT_Mapper is an automated concept linking tool designed to find appropriate standardized terms in OMOP Athena vocabularies for clinical terms found in data dictionaries. Built with advanced Retrieval Augmented Generation (RAG) methods, CT_Mapper leverages the power of generative models and vector stores to enhance the accuracy of linking composite concepts. This tool enables data custodians to transform ambiguous and semi-structured clinical data into a harmonized schema effectively.
 
 
 ## Table of Contents
@@ -26,7 +26,7 @@ Instead of mapping individual terms, we focus on mapping data dictionaries prese
 
 ## Installation Requirements
 
-To run **CDE_Mapper**, you need to install the packages mentioned in requirements.in file:
+To run **CT_Mapper**, you need to install the packages mentioned in requirements.in file:
 
 You can install these dependencies using `pip`:
 
@@ -61,7 +61,7 @@ PYTHONPATH=python3 mapping_tool/rag/vector_index.py' \
 For enhanced inference using the LLAMA3.1 model, execute the following command:
 
 ```
-PYTHONPATH=mapping_tool python3 'rag/vector_index.py' \
+PYTHONPATH=mapping_tool python3 'mapping_tool/rag/vector_index.py' \
   --mode inference \
   --collection_name bc5cdr_custom_collection \
   --document_file_path mapping_tool/data/original_bc5cdr-disease/test_dictionary_docs.jsonl \

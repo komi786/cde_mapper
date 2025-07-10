@@ -532,140 +532,141 @@ def get_labels(query: List[QueryDecomposedModel]):
     return labels_list
 
 
-def extract_information_for_grouped_queries(
-    query: List[QueryDecomposedModel], model_name=LLM_ID, prompt=None
-):
-    if query:
-        # global chat_history
-        try:
-            active_model = LLMManager.get_instance(model=model_name)
-            mapping_for_domain, _, _ = load_mapping(MAPPING_FILE, "all")
-            if mapping_for_domain is None:
-                logger.error("Failed to load mapping for domain", exc_info=True)
-                return None
-            examples = mapping_for_domain["examples"]
+# def extract_information_for_grouped_queries(
+#     query: List[QueryDecomposedModel], model_name=LLM_ID, prompt=None
+# ):
+#     if query:
+#         # global chat_history
+#         try:
+#             active_model = LLMManager.get_instance(model=model_name)
+#             mapping_for_domain, _, _ = load_mapping(MAPPING_FILE, "all")
+#             if mapping_for_domain is None:
+#                 logger.error("Failed to load mapping for domain", exc_info=True)
+#                 return None
+#             examples = mapping_for_domain["examples"]
 
-            labels_list = get_labels(query)
-            if len(labels_list) == 0:
-                print("No labels found")
-                return None
-            select_examples = get_relevant_examples(
-                labels_list[0], "extract_information", examples, topk=3, min_score=0.6
-            )
-            if select_examples is None:
-                logger.error("No relevant examples found", exc_info=True)
-                select_examples = []
-            few_shot_prompt = FewShotChatMessagePromptTemplate(
-                examples=select_examples,
-                example_prompt=ChatPromptTemplate.from_messages(
-                    [("human", "{input}"), ("ai", "{output}")]
-                ),
-                input_variables=["input"],
-            )
-            if prompt:
-                base_prompt = prompt
-            else:
-                base_prompt = f"""Role: You are a helpful assistant with expertise in data science and the biomedical domain.
-                ***Task Description:
-                    - Extract information from the provided list of medical query which includes the base entity, associated entities, categories, and unit of measurement. This information will be used to link the medical query to standard medical terminologies.
-                ** perform the following actions in order to identify relevant information from each medical query in the list:
-                    -Rewrite medical query in english language to ensure all terms are expanded to their full forms. Always translate all non-english terms to english.
-                    -Identify if there are any acronyms and abbreviations in given medical query and expand them.
-                    -Before breaking down the query, assess whether it contains more than one clinical concept.
-                    **Extract Domain: Determine the most appropriate OHDSI OMOP standards from list of following domains: [Condition, Anatomic Site, Body Structure, Measurement, Procedure, Drug, Device, Unit,  Visit,  Death,  Demographics, Family History, Life Style, History of Events].
-                    **Extract Entities:
-                        - Base Entity: The primary concept mentioned in the medical query. It represents the key medical or clinical element being measured, observed, or evaluated.
-                        - Associated Entities: Extract list of associated entities like time points, anatomical locations, related procedures, or clinical events that clarify the base entity's context within the query. Don't mention entities not given in the query.
-                    **Extract Unit: Unit of measurement associated if mentioned.
-                    **Extract categories:
-                       - If mentioned, provide list of categories associated with the base entity. categories values are qualifiers that provide outcome context.
-                **Considerations::
-                    -Don't consider categorical values as context. Assume they are categorical values.
-                    -Don't Perform an unnecessary expansion of the query to divide into base entity and associated entities.
-                    -Don't add additional unit of measurement if not mentioned in the query.
-                    - All visit started from 1 and onwards should be considered as follow-up visits.
-                    - Before breaking down the query, assess whether it contains more than one clinical concept.
-                ** Check Examples: If examples are provided, Please use them to guide your extraction. If no examples or relevant examples are provided, generate new examples to aid the extraction process.
-                **Desired format: Return List of Dictionaries with the following fields: 'domain', 'base_entity', 'additional_entities', 'categories' and 'unit'. I repeat, Return List of Dictionaries with the following fields: 'domain', 'base_entity', 'additional_entities', 'categories' and 'unit'. Do not add any preamble or explanations.
-                medical query: {input}
-                Output:
-                """
-            final_prompt = (
-                SystemMessagePromptTemplate.from_template(base_prompt)
-                + few_shot_prompt
-                + HumanMessagePromptTemplate.from_template("{input}")
-            )
+#             labels_list = get_labels(query)
+#             if len(labels_list) == 0:
+#                 print("No labels found")
+#                 return None
+#             select_examples = get_relevant_examples(
+#                 labels_list[0], "extract_information", examples, topk=5, min_score=0.6
+#             )
+#             if select_examples is None:
+#                 logger.error("No relevant examples found", exc_info=True)
+#                 select_examples = []
+#             few_shot_prompt = FewShotChatMessagePromptTemplate(
+#                 examples=select_examples,
+#                 example_prompt=ChatPromptTemplate.from_messages(
+#                     [("human", "{input}"), ("ai", "{output}")]
+#                 ),
+#                 input_variables=["input"],
+#             )
+#             if prompt:
+#                 base_prompt = prompt
+#             else:
+#                 base_prompt = f"""Role: You are a helpful assistant with expertise in data science and the biomedical domain.
+#                 ***Task Description:
+#                     - Extract information from the provided list of medical query which includes the base entity, associated entities, categories, unit of measurement and visit information. This information will be used to link the medical query to standard medical terminologies.
+#                 ** perform the following actions in order to identify relevant information from each medical query in the list:
+#                     -Rewrite medical query in english language to ensure all terms are expanded to their full forms. Always translate all non-english terms to english.
+#                     -Identify if there are any acronyms and abbreviations in given medical query and expand them.
+#                     -Before breaking down the query, assess whether it contains more than one clinical concept.
+#                     **Extract Domain: Determine the most appropriate domain from list of following domains: [Condition, Anatomic Site, Body Structure, Measurement, Procedure, Drug, Device, Unit,  Visit,  Death,  Demographics, Family History, Life Style, History of Events].
+#                     **Extract Entities:
+#                         - Base Entity: The primary concept mentioned in the medical query. It represents the key medical or clinical element being measured, observed, or evaluated.
+#                         - Associated Entities: Extract list of associated entities like time points, anatomical locations, related procedures, or clinical events that clarify the base entity's context within the query. Don't mention entities not given in the query.
+#                     **Extract Unit: Unit of measurement associated if mentioned.
+#                     **Extract categories:
+#                        - If mentioned, provide list of categories associated with the base entity. categories values are qualifiers that provide outcome context.
+#                 **Considerations::
+#                     -Don't consider categorical values as context. Assume they are categorical values.
+#                     -Don't Perform an unnecessary expansion of the query to divide into base entity and associated entities.
+#                     -Don't add additional unit of measurement if not mentioned in the query.
+#                     - All visit started from 1 and onwards should be considered as follow-up visits.
+#                     - Before breaking down the query, assess whether it contains more than one clinical concept.
+#                 ** Check Examples: If examples are provided, Please use them to guide your extraction. If no examples or relevant examples are provided, generate new examples to aid the extraction process.
+#                 **Desired format: Return List of Dictionaries with the following fields: 'domain', 'base_entity', 'additional_entities', 'categories' and 'unit'. I repeat, Return List of Dictionaries with the following fields: 'domain', 'base_entity', 'additional_entities', 'categories' and 'unit'. Do not add any preamble or explanations.
+#                 medical query: {input}
+#                 Output:
+#                 """
+#             final_prompt = (
+#                 SystemMessagePromptTemplate.from_template(base_prompt)
+#                 + few_shot_prompt
+#                 + HumanMessagePromptTemplate.from_template("{input}")
+#             )
 
-            formatted_messages = final_prompt.format_messages(
-                input="Your input text here"
-            )
+#             formatted_messages = final_prompt.format_messages(
+#                 input="Your input text here"
+#             )
 
-            # Extract text content from each formatted message
-            prompt_text = "\n".join([message.content for message in formatted_messages])
-            # count token from final prompt
-            # token_count = count_tokens(prompt_text)
+#             # Extract text content from each formatted message
+#             prompt_text = "\n".join([message.content for message in formatted_messages])
+#             # count token from final prompt
+#             # token_count = count_tokens(prompt_text)
 
-            # logger.info(f"Token count for extract_information={token_count}")
-            chain = final_prompt | active_model
+#             # logger.info(f"Token count for extract_information={token_count}")
+#             chain = final_prompt | active_model
 
-            start_time = time.time()
-            result = chain.invoke({"input": query})
-            print(f"Time taken for extract information={time.time()-start_time}")
-            answer_list = []
-            if not isinstance(result, list):
-                if isinstance(result, str):
-                    result = fixing_parser.parse(result)
-                else:
-                    result = fixing_parser.parse(result.content)
-            for query_obj, res in zip(query, result):
-                if not isinstance(res, dict):
-                    try:
-                        print("res=", res)
-                        res = fixing_parser.parse(res)
-                        if res is None:
-                            answer_list.append(None)
-                        elif isinstance(res, dict):
-                            res = sanitize_keys(res)
-                            res = validate_result(res)
-                            rel = extract_ir(
-                                base_entity=res.get("base_entity", None),
-                                associated_entities=res.get("additional_entities", [])
-                                or res.get("categories", []),
-                                active_model=active_model,
-                            )
-                            res["rel"] = rel
-                            res["base_entity"] = res.get("base_entity", None)
-                            res["full_query"] = query_obj.full_query
-                            res["name"] = query_obj.name
-                            res["original_label"] = query_obj.original_label
-                            print(f"extract_information result={res}")
-                            answer_list.append(QueryDecomposedModel(**res))
+#             start_time = time.time()
+#             result = chain.invoke({"input": query})
+#             print(f"Time taken for extract information={time.time()-start_time}")
+#             answer_list = []
+#             if not isinstance(result, list):
+#                 if isinstance(result, str):
+#                     result = fixing_parser.parse(result)
+#                 else:
+#                     result = fixing_parser.parse(result.content)
+#             for query_obj, res in zip(query, result):
+#                 if not isinstance(res, dict):
+#                     try:
+#                         print("res=", res)
+#                         res = fixing_parser.parse(res)
+#                         if res is None:
+#                             answer_list.append(None)
+#                         elif isinstance(res, dict):
+#                             res = sanitize_keys(res)
+#                             res = validate_result(res)
+#                             rel = extract_ir(
+#                                 base_entity=res.get("base_entity", None),
+#                                 associated_entities=res.get("additional_entities", [])
+#                                 or res.get("categories", []),
+#                                 active_model=active_model,
+#                             )
+#                             res["rel"] = rel
+#                             res["base_entity"] = res.get("base_entity", None)
+#                             res["full_query"] = query_obj.full_query
+#                             res["name"] = query_obj.name
+#                             res["original_label"] = query_obj.original_label
+                            
+#                             print(f"extract_information result={res}")
+#                             answer_list.append(QueryDecomposedModel(**res))
 
-                    except ValidationError as e:
-                        logger.info(f"Validation Error: {e}")
-                        answer_list.append(None)
-                else:
-                    res = sanitize_keys(res)
-                    res = validate_result(res)
-                    # chat_history.extend([HumanMessage(content=f"query:{query}, output:{result}")])
-                    rel = extract_ir(
-                        res.get("base_entity", None),
-                        res.get("additional_entities", []),
-                        active_model=active_model,
-                    )
-                    res["name"] = query_obj.name
-                    res["original_label"] = query_obj.original_label
-                    res["rel"] = rel
-                    res["full_query"] = query_obj.full_query
-                    print(f"extract_information result={res}")
-                    answer_list.append(QueryDecomposedModel(**res))
-            return answer_list
-        except Exception as e:
-            logger.info(f"Error in prompt:{e}", exc_info=True)
-            return None
-    else:
-        print("No query found")
-        return None
+#                     except ValidationError as e:
+#                         logger.info(f"Validation Error: {e}")
+#                         answer_list.append(None)
+#                 else:
+#                     res = sanitize_keys(res)
+#                     res = validate_result(res)
+#                     # chat_history.extend([HumanMessage(content=f"query:{query}, output:{result}")])
+#                     rel = extract_ir(
+#                         res.get("base_entity", None),
+#                         res.get("additional_entities", []),
+#                         active_model=active_model,
+#                     )
+#                     res["name"] = query_obj.name
+#                     res["original_label"] = query_obj.original_label
+#                     res["rel"] = rel
+#                     res["full_query"] = query_obj.full_query
+#                     print(f"extract_information result={res}")
+#                     answer_list.append(QueryDecomposedModel(**res))
+#             return answer_list
+#         except Exception as e:
+#             logger.info(f"Error in prompt:{e}", exc_info=True)
+#             return None
+#     else:
+#         print("No query found")
+#         return None
 
 
 def extract_information(query: QueryDecomposedModel, model_name=LLM_ID, prompt=None):
@@ -733,31 +734,72 @@ def extract_information(query: QueryDecomposedModel, model_name=LLM_ID, prompt=N
                 # ---
                 # **Medical Query**: {input}
                 # """
-                base_prompt = f"""Role: You are a helpful assistant with expertise in data science and the biomedical domain.
-                ***Task Description:
-                    - Extract information from the provided medical query which includes the base entity, associated entities, categories, and unit of measurement. This information will be used to link the medical query to standard medical terminologies.
-                **Perform the following actions in order to identify relevant information:
-                    -Rewrite the medical query in english language to ensure all terms are expanded to their full forms. Always translate all non-english terms to english.
-                    -Identify if there are any acronyms and abbreviations in given medical query and expand them.
-                    -Before breaking down the query, assess whether it contains more than one clinical concept.
-                    **Extract Domain: Determine the most appropriate OHDSI OMOP standards from list of following domains: [Condition, Anatomic Site, Body Structure, Measurement, Procedure, Drug, Device, Unit,  Visit,  Death,  Demographics, Family History, Life Style, History of Events].
-                    **Extract Entities:
-                        - Base Entity: The primary concept mentioned in the medical query. It represents the key medical or clinical element being measured, observed, or evaluated.
-                        - Associated Entities: Extract list of associated entities like time points, anatomical locations, related procedures, or clinical events that clarify the base entity's context within the query. Don't mention entities not given in the query.
-                    **Extract Unit: Unit of measurement associated if mentioned.
-                    **Extract categories:
-                       - If mentioned, provide list of categories associated with the base entity. categories values are qualifiers that provide outcome context.
-                **Considerations::
-                    -Don't consider categorical values as context. Assume they are categorical values.
-                    -Don't Perform an unnecessary expansion of the query to divide into base entity and associated entities.
-                    -Don't add additional unit of measurement if not mentioned in the query.
-                    - All visit started from 1 and onwards should be considered as follow-up visits.
-                    - Before breaking down the query, assess whether it contains more than one clinical concept.
-                ** Check Examples: If examples are provided, Please use them to guide your extraction. If no examples or relevant examples are provided, generate new examples to aid the extraction process.
-                **Desired format: Provide the output in JSON format with the following fields: 'domain', 'base_entity', 'additional_entities', 'categories' and 'unit'. I repeat, provide the output in JSON format with the following fields: 'domain', 'base_entity', 'additional_entities', 'categories' and 'unit'.Do not add any preamble or explanations.
-                medical query: {input}
-                Output:
-                """
+                # base_prompt_v1 = f"""Role: You are a helpful assistant with expertise in data science and the biomedical domain.
+                # ***Task Description:
+                #     - Extract information from the provided medical query which includes the base entity, associated entities, categories, and unit of measurement. This information will be used to link the medical query to standard medical terminologies.
+                # **Perform the following actions in order to identify relevant information:
+                #     -Rewrite the medical query in english language to ensure all terms are expanded to their full forms. Always translate all non-english terms to english.
+                #     -Identify if there are any acronyms and abbreviations in given medical query and expand them.
+                #     -Before breaking down the query, assess whether it contains more than one clinical concept.
+                #     **Extract Domain**: Determine the most appropriate category from list of following domains: [condition_occurrence, drug_exposure, measurement, procedure_occurrence, device_exposure, visit, person, drug_era, device_era, condition_era].
+                #     **Extract Entities**:
+                #         - Base Entity: The primary concept mentioned in the medical query. It represents the key medical or clinical element being measured, observed, or evaluated.
+                #         - Associated Entities: Extract list of associated entities like time points, anatomical locations, related procedures, or clinical events that clarify the base entity's context within the query. Don't mention entities not given in the query.
+                #     **Extract Unit**: Unit of measurement associated if mentioned.
+                #     **Extract categories**:
+                #        - If mentioned, provide list of categories associated with the base entity. categories values are qualifiers that provide outcome context.
+                # **Considerations::
+                #     -Don't consider categorical values as context. Assume they are categorical values.
+                #     -Don't Perform an unnecessary expansion of the query to divide into base entity and associated entities.
+                #     -Don't add additional unit of measurement if not mentioned in the query.
+                #     - All visit started from 1 and onwards should be considered as follow-up visits.
+                #     - Before breaking down the query, assess whether it contains more than one clinical concept.
+                # ** Check Examples: If examples are provided, Please use them to guide your extraction.
+                # **Desired format: Provide the output in JSON format with the following fields: 'domain', 'base_entity', 'additional_entities', 'categories' and 'unit'. I repeat, provide the output in JSON format with the following fields: 'domain', 'base_entity', 'additional_entities', 'categories' and 'unit'.Do not add any preamble or explanations.
+                # medical query: {input}
+                # Output:
+                # """
+                
+                base_prompt = """ You are a clinical data reasoning agent trained in biomedical informatics. Your task is to transform a free-text clinical query into a structured semantic representation, ensuring alignment with standardized terminology mappings used in the provided examples.
+                            ---
+                            ### TASK OBJECTIVE:
+                            Break down the clinical query into:
+                                - `domain`: OMOP domain (must match one of the given options)
+                                - `base_entity`: main concept of interest
+                                - `additional_entities`: contextual elements (e.g., time, location, reason, cause, qualifiers )
+                                - 'visit': visit information (if present)
+                                - `categories`: categorical values or qualifiers (if present)
+                                - `unit`: only if explicitly stated
+
+                            ---
+
+                            ### STEP-BY-STEP INSTRUCTIONS:
+                                    1. **Translate** all non-English words to English.
+                                    2. **Expand** all acronyms to their full form.
+                                    3. **Determine Domain** from:  
+                                    [ `person`, `condition_occurrence`, `drug_exposure`, `measurement`, `procedure_occurrence`, `device_exposure`, `visit_occurrence`]
+                                    4. **Extract Entities**:
+                                    - Base entity (main clinical concept)
+                                    - Additional entities (e.g., visit, anatomical site, related procedure)
+                                    5. **Only extract unit if present. Do NOT infer.**
+                                    6. **If the visit contains numeric code ≥1**, treat it as follow-up.
+
+                            ---
+
+                           
+                            **Expected JSON output**:
+                         
+                                ```json
+                                {{
+                                "domain": "Person",
+                                "base_entity": "Patient hospital number",
+                                "additional_entities": [],
+                                "categories": [],
+                                "unit": null,
+                                "visit": "baseline time"
+                                }}
+                            ## FOLLOW THE EXAMPLES BELOW STRICTLY
+                            """
             final_prompt = (
                 SystemMessagePromptTemplate.from_template(base_prompt)
                 + few_shot_prompt
@@ -770,15 +812,16 @@ def extract_information(query: QueryDecomposedModel, model_name=LLM_ID, prompt=N
 
             # Extract text content from each formatted message
             prompt_text = "\n".join([message.content for message in formatted_messages])
+            prompt_text = prompt_text.replace("`", "")
             # count token from final prompt
             # token_count = count_tokens(prompt_text)
-
+            logger.info(f"Prompt text={prompt_text}")
             # logger.info(f"Token count for extract_information={token_count}")
             chain = final_prompt | active_model
 
             start_time = time.time()
             result = chain.invoke({"input": query})
-            print(f"Time taken for extract information={time.time()-start_time}")
+            logger.info(f"Time taken for extract information={time.time()-start_time} for result={result}")
             if not isinstance(result, dict):
                 try:
                     result = fixing_parser.parse(result.content)
@@ -839,21 +882,17 @@ def validate_result(result: Dict) -> Dict:
     if isinstance(result.get("unit", None), list):
         if len(result["unit"]) > 0:
             result["unit"] = result["unit"][0]
+    if isinstance(result.get("visit"), str):
+        result["visit"] = result["visit"].strip()
     return result
 
 
 def evaluate_final_mapping(variable_object: Dict, llm_id: str = "llama3.1"):
     active_model = LLMManager.get_instance(model=llm_id)
-    human_template = f"""
-    Task: You are tasked with evaluating the correctness of the mapping codes for a variable in a clinical context. The variable represents a column metadata from healthcare records that may be compound in nature. Your goal is to assess whether the mapping to standard clinical codes (e.g., SNOMED, LOINC, UCUM, RxNorm, ATC etc.) is accurate. Your goal is to assess whether the mapping to standard clinical codes (e.g., SNOMED, LOINC, OMOP) is accurate. Focus solely on evaluating the correctness of the mappings without altering or judging the division of the variable itself. Note that some variables may not have additional context or unit information; take this into account in your evaluation.
-    **Instructions: Perform the following steps to evaluate the mapping of variable label and its associated attributes:
-        * Domain: Confirm that the Domain aligns with the type of measurement or concept.
-        * Assess additional context (if provided): If additional context is present (e.g. visit ), confirm that it is accurately captured by the mapped standard labels.
-        * For each provided standard label: Verify that the standard label accurately corresponds to the clinical concept(s) described by the variable. If labels are correct, code and ID is considered correct.
-        * Evaluate categories (if present): If the variable includes categorical values, verify that these categories are correctly mapped to standard labels and aligned with the clinical context respectively.
-        * Evaluate units (if present): If unit information is provided, ensure that the unit matches the expected unit for this measurement or concept. The absence of unit information may be acceptable for certain variables.
-    **Output Format: Return the result as a single string, with the explanation and final classification on separate lines, structured as follows:
-    ** Explanation: Provide a clear explanation of whether the mapping is correct, partially correct, or incorrect. Include reasoning based on the analysis of the variable and its mapped codes.
+    human_template = f""" Task: Given the variable object as input, assess the mapping accuracy. Use the provided codes and names as correct and do not infer or substitute alternate codes. Additionally, provide an evaluation:
+        - Output "correct" if all codes and domains match input fields.
+        - Output "partially correct" only if some fields are missing.
+        - Do not replace or question provided LOINC/OMOP codes unless they are obviously invalid.
     **Final Classification: Choose one of the following final classifications and return it on a new line:
             - correct
             - partially correct
@@ -861,15 +900,18 @@ def evaluate_final_mapping(variable_object: Dict, llm_id: str = "llama3.1"):
     Variable : {variable_object}
     Don't add preamble or additional information. Focus on evaluating the correctness of the mapping codes.
     """
-    system = "You are a helpful assistant with expertise in semantic web and biomedical domain."
+    system = "You are a helpful assistant with expertise in clinical data standardization and harmonization."
     prompt = ChatPromptTemplate.from_messages(
         [("system", system), ("human", human_template)], template_format="mustache"
     )
 
-    formatted_messages = prompt.format_messages(variable_object="Your input text here")
+    # formatted_messages = prompt.format_messages(variable_object="Your input text here")
 
+    # The above code is using the `format` method on a string variable `prompt` to insert a value into
+    # the string. The value being inserted is "Your input text here" assigned to the `variable_object`
+    # placeholder in the string.
     # Extract text content from each formatted message
-    prompt_text = "\n".join([message.content for message in formatted_messages])
+    # prompt_text = "\n".join([message.content for message in formatted_messages])
     # count token from final prompt
     # token_count = count_tokens(prompt_text)
 
@@ -906,7 +948,7 @@ def generate_information_triples(query, active_model):
         save_triples_to_txt(
             query,
             chain_results,
-            "/Users/komalgilani/Desktop/cde_mapper/data/output/gissi_llama_triples.txt",
+            "data/output/gissi_llama_triples.txt",
         )
     except Exception as e:
         logger.info(f"Error loading LLM: {e}")
@@ -926,8 +968,12 @@ def save_triples_to_txt(query, triples, output_file):
 
 
 def generate_link_prediction_prompt(query, documents, domain=None, in_context=True):
+    logger.info("generate link prediction prompt")
     if in_context:
         _, _, link_prediction_examples = load_mapping(MAPPING_FILE, "all")
+        logger.info(
+            f"{len(link_prediction_examples)}:link prediction examples loaded"
+        )
         examples = get_relevant_examples(
             query, "link_prediction", link_prediction_examples, topk=1, min_score=0.6
         )
@@ -1006,7 +1052,7 @@ def generate_link_prediction_prompt(query, documents, domain=None, in_context=Tr
 
 
 def generate_ranking_prompt(query, domain=None, in_context=True, documents=None):
-    logger.info("generate_ranking_prompt")
+    logger.info("generate ranking prompt")
     if in_context:
         _, ranking_examples, _ = load_mapping(MAPPING_FILE, domain=domain)
         print(f"{len(ranking_examples)}:ranking examples loaded")

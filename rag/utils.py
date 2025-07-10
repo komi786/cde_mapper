@@ -267,36 +267,53 @@ def save_json_data(file_path, data):
     print(f"Data saved to {file_path}")
 
 
+# def init_logger(log_file_path=LOG_FILE) -> logging.Logger:
+#     # Create a logger
+#     logger = logging.getLogger(__name__)
+#     logger.setLevel(logging.DEBUG)  # Set the logging level to DEBUG
+#     # Create a file handler
+#     file_handler = logging.FileHandler(log_file_path)
+#     file_handler.setLevel(logging.DEBUG)  # Set the logging level for the file handler
+
+#     # Create a stream handler (to print to console)
+#     stream_handler = logging.StreamHandler()
+#     stream_handler.setLevel(
+#         logging.INFO
+#     )  # Set the logging level for the stream handler
+
+#     # Define the format for log messages
+#     formatter = logging.Formatter(
+#         "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+#     )
+#     file_handler.setFormatter(formatter)
+#     stream_handler.setFormatter(formatter)
+
+#     # Add the handlers to the logger
+#     logger.addHandler(file_handler)
+#     logger.addHandler(stream_handler)
+
+#     return logger
+
+
+# 
+
 def init_logger(log_file_path=LOG_FILE) -> logging.Logger:
-    # Create a logger
     logger = logging.getLogger(__name__)
-    logger.setLevel(logging.DEBUG)  # Set the logging level to DEBUG
-    # Create a file handler
-    file_handler = logging.FileHandler(log_file_path)
-    file_handler.setLevel(logging.DEBUG)  # Set the logging level for the file handler
-
-    # Create a stream handler (to print to console)
-    stream_handler = logging.StreamHandler()
-    stream_handler.setLevel(
-        logging.INFO
-    )  # Set the logging level for the stream handler
-
-    # Define the format for log messages
-    formatter = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
-    file_handler.setFormatter(formatter)
-    stream_handler.setFormatter(formatter)
-
-    # Add the handlers to the logger
-    logger.addHandler(file_handler)
-    logger.addHandler(stream_handler)
-
+    logger.setLevel(logging.DEBUG)
+    # Only add handlers if none exist!
+    if not logger.handlers:
+        file_handler = logging.FileHandler(log_file_path)
+        file_handler.setLevel(logging.DEBUG)
+        stream_handler = logging.StreamHandler()
+        stream_handler.setLevel(logging.INFO)
+        formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+        file_handler.setFormatter(formatter)
+        stream_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
+        logger.addHandler(stream_handler)
     return logger
 
-
 global_logger = init_logger()
-
 
 def save_txt_file(file_path, data) -> None:
     with open(file_path, "a") as file:
@@ -387,11 +404,11 @@ def post_process_candidates(candidates: List[Document], max=1):
         label = doc.metadata.get("label", "none")
         label = f'"{label}"' if "|" in label else label
         current_doc_dict = {
-            "standard_label": label,
+            "label": label,
             "domain": f"{doc.metadata['domain']}",
-            "concept_class": f"{doc.metadata['concept_class']}",
-            "standard_code": f"{doc.metadata['vocab']}:{doc.metadata['scode']}",
-            "standard_omop_id": str(doc.metadata["sid"]),
+            # "concept_class": f"{doc.metadata['concept_class']}",
+            "code": f"{doc.metadata['vocab']}:{doc.metadata['scode']}",
+            "omop_id": str(doc.metadata["sid"]),
             "vocab": doc.metadata["vocab"],
         }
         doc_obj = RetrieverResultsModel(**current_doc_dict)
@@ -411,14 +428,14 @@ def save_to_csv(data, filename):
         "Domain",
         "Variable Concept Label",
         "Variable Concept Code",
-        "Variable Concept OMOP ID",
+        "Variable OMOP ID",
         "Additional Context Concept Label",
         "Additional Context Concept Code",
         "Additional Context OMOP ID",
         "Primary to Secondary Context Relationship",
         "Categorical Values Concept Label",
         "Categorical Values Concept Code",
-        "Categorical Values Concept OMOP ID",
+        "Categorical Values OMOP ID",
         "UNIT",
         "Unit Concept Label",
         "Unit Concept Code",
@@ -431,13 +448,13 @@ def save_to_csv(data, filename):
     def map_and_combine_fields(row):
         # Map fields
         mapped_row = {
-            "VARIABLE NAME": row.get("VARIABLE NAME", ""),
-            "VARIABLE LABEL": row.get("VARIABLE LABEL", ""),
-            "Variable Concept Label": row.get("Variable Concept Label", ""),
-            "Variable Concept OMOP ID": row.get("Variable Concept OMOP ID", ""),
+            "VARIABLENAME": row.get("VARIABLE NAME", ""),
+            "VARIABLELABEL": row.get("VARIABLE LABEL", ""),
+            "Variable Concept Name": row.get("Variable Concept Label", ""),
+            "Variable OMOP ID": row.get("Variable OMOP ID", ""),
             "Variable Concept Code": row.get("Variable Concept Code", ""),
             "Domain": row.get("Domain", ""),
-            "Additional Context Concept Label": row.get(
+            "Additional Context Concept Name": row.get(
                 "Additional Context Concept Label", ""
             ),
             "Additional Context Concept Code": row.get(
@@ -447,16 +464,16 @@ def save_to_csv(data, filename):
             "Primary to Secondary Context Relationship": row.get(
                 "Primary to Secondary Context Relationship", ""
             ),
-            "Categorical Values Concept Label": row.get(
+            "Categorical Values Concept Name": row.get(
                 "Categorical Values Concept Label", ""
             ),
             "Categorical Values Concept Code": row.get(
                 "Categorical Values Concept Code", ""
             ),
-            "Categorical Values Concept OMOP ID": row.get(
-                "Categorical Values Concept OMOP ID", ""
+            "Categorical Values OMOP ID": row.get(
+                "Categorical Values OMOP ID", ""
             ),
-            "Unit Concept Label": row.get("Unit Concept Label", ""),
+            "Unit Concept Name": row.get("Unit Concept Label", ""),
             "Unit Concept Code": row.get("Unit Concept Code", ""),
             "Unit OMOP ID": row.get("Unit OMOP ID", ""),
             "Reasoning": row.get("reasoning", ""),
@@ -465,7 +482,7 @@ def save_to_csv(data, filename):
         # Combine fields
         # label_ids = '|'.join(filter(None, [row.get('standard_concept_id'), row.get('additional_context_omop_ids')]))
         # label_codes = '|'.join(filter(None, [row.get('standard_code'), row.get('additional_context_codes')]))
-        # mapped_row['Variable Concept OMOP ID'] = label_ids
+        # mapped_row['Variable OMOP ID'] = label_ids
         # mapped_row['Label Concept CODE'] = label_codes
         return mapped_row
 
@@ -483,7 +500,7 @@ def save_to_csv(data, filename):
 
 
 def load_mapping(filename, domain):
-    # print(f"domain={domain}")
+    print(f"domain to get re-ranking examples={domain}")
     try:
         with open(filename, "r") as file:
             data = json.load(file)
@@ -496,6 +513,7 @@ def load_mapping(filename, domain):
         relevance_examples = data.get("rel_relevance_examples", {}).get(domain, [])
         ranking_examples = data.get("ranking_examples", {}).get(domain, [])
         # print(f"ranking_examples={ranking_examples[:2]} for domain={domain}")
+        # print(f"relevance_examples={relevance_examples[:2]} for domain={domain}")
         # Format examples as string representations of dictionaries
         relevance_examples_string = [
             {
@@ -543,7 +561,7 @@ def load_mapping(filename, domain):
         print("JSON decoding error.")
         return None, None, None
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred loading mapping: {e}")
         return None, None, None
 
 
@@ -631,27 +649,16 @@ def save_result_to_jsonl(array: Iterable[dict], file_path: str) -> None:
 
 
 def convert_db_result(result) -> RetrieverResultsModel:
-    #  dict must have four elemenets according to sql query result if a component of query is found as subset of variable standard_omop_id
-    # check total items in result
-    if len(result) > 6:
-        resut_dict = {
-            "standard_label": str(result[3]),
-            "standard_code": str(result[4]),
-            "standard_omop_id": str(result[5]),
+
+    result_dict = {
+            "label": str(result[2]), # Baseline time
+            "code": str(result[3]),  # loinc:64103-5
+            "omop_id": str(result[4]),  # 40766819
             "score": 10.0,
             "domain": "",
-            "vocab": "",
+            "vocab": str(result[3]).split(":")[0] if ":" in str(result[3]) else "",
         }
-    else:
-        resut_dict = {
-            "standard_label": str(result[1]),
-            "standard_code": str(result[2]),
-            "standard_omop_id": str(result[3]),
-            "score": 10.0,
-            "domain": "",
-            "vocab": "",
-        }
-    return [RetrieverResultsModel(**resut_dict)]
+    return RetrieverResultsModel(**result_dict)
 
 
 # def exact_match_found_no_vocab(query_text, documents, domain=None):
@@ -1237,115 +1244,129 @@ def create_processed_result(result_object: ProcessedResultsModel = None) -> dict
         - 'query_text': The original query.
         - 'revised_query': The revised version of the query.
         - 'domain': The domain of the query.
-        - 'standard_label': The combined standard label for the query.
-        - 'standard_code': The combined standard codes.
-        - 'standard_concept_id': The combined concept IDs.
+        - 'label': The combined standard label for the query.
+        - 'code': The combined standard codes.
+        - 'omop_id': The combined concept IDs.
         - 'additional_context', 'categorical_values', 'unit': Processed values, status, and unit information.
     """
-    if result_object is None:
-        return {
-            "VARIABLE NAME": None,
-            "VARIABLE LABEL": None,
-            "Domain": None,
-            "Variable Concept Label": None,
-            "Variable Concept Code": None,
-            "Variable Concept OMOP ID": None,
-            "Additional Context Concept Label": None,
-            "Additional Context Concept Code": None,
-            "Additional Context OMOP ID": None,
-            "Primary to Secondary Context Relationship": None,
-            "Categorical Values Concept Label": None,
-            "Categorical Values Concept Code": None,
-            "Categorical Values OMOP ID": None,
-            "Unit Concept Label": None,
-            "Unit Concept Code": None,
-            "Unit OMOP ID": None,
+    
+    try:
+        if result_object is None:
+            return {
+                "VARIABLE NAME": None,
+                "VARIABLE LABEL": None,
+                "Categorical Values Concept Name": None,
+                "Categorical Values Concept Code": None,
+                "Categorical Values OMOP ID": None,
+                "Variable Concept Label": None,
+                "Variable Concept Code": None,
+                "Variable OMOP ID": None,
+                "Additional Context Concept Name": None,
+                "Additional Context Concept Code": None,
+                "Additional Context OMOP ID": None,
+                "Unit Concept Name": None,
+                "Unit Concept Code": None,
+                "Unit OMOP ID": None,
+                "Domain": None,
+                "Visit Concept Name": None,
+                "Visit Concept Code": None,
+                "Visit OMOP ID": None,
+                
+                # "Primary to Secondary Context Relationship": None,
+            }
+        additional_entities = result_object.additional_entities
+        additional_entities_matches = result_object.additional_entities_matches
+        categorical_values = result_object.categories
+        categorical_values_matches = result_object.categories_matches
+        # main_term = result_object.base_entity
+        main_term_matches = result_object.base_entity_matches
+        # query_text = result_object.original_query
+
+        (
+            additional_entities_labels,
+            additional_entities_codes,
+            additional_entities_omop_ids,
+        ) = format_categorical_values(
+            additional_entities_matches, additional_entities, type="additional"
+        )
+        categorical_values_labels, categorical_values_codes, categorical_values_omop_ids = (
+            format_categorical_values(categorical_values_matches, categorical_values)
+        )
+        main_term_labels = (
+            main_term_matches[0].label if len(main_term_matches) >= 1 else None
+        )
+        main_term_codes = (
+            main_term_matches[0].code if len(main_term_matches) >= 1 else None
+        )
+        main_term_omop_id = (
+            main_term_matches[0].omop_id if len(main_term_matches) >= 1 else None
+        )
+        # if additional_entities:
+        #     combined_labels=combine_if_different(main_term_labels, additional_entities_labels, separator="|")
+        #     combined_codes=combine_if_different(main_term_codes, additional_entities_codes, separator="|")
+        #     combined_omop_ids=combine_if_different(main_term_omop_id, additional_entities_omop_ids, separator="|")
+
+        # else:
+        #     combined_labels = join_or_single(main_term_labels)
+        #     combined_codes = join_or_single(main_term_codes)
+        #     combined_omop_ids = join_or_single(main_term_omop_id)
+        results = {
+            "VARIABLE NAME": result_object.variable_name,
+            "VARIABLE LABEL": result_object.original_query,
+            "Categorical Values Concept Code": categorical_values_codes,
+            "Categorical Values Concept Name": categorical_values_labels,
+            "Categorical Values OMOP ID": categorical_values_omop_ids,
+            
+            "Variable Concept Code": main_term_codes,
+            "Variable Concept Name": main_term_labels,
+            "Variable OMOP ID": main_term_omop_id,
+            
+            "Additional Context Concept Name": additional_entities_labels,
+            "Additional Context Concept Code": additional_entities_codes,
+            "Additional Context OMOP ID": additional_entities_omop_ids,
+           
+
+            "Unit Concept Name": result_object.unit_matches[0].label if result_object.unit_matches and len(result_object.unit_matches) >= 1 else None,
+            "Unit Concept Code": result_object.unit_matches[0].code if result_object.unit_matches and len(result_object.unit_matches) >= 1 else None,
+            "Unit OMOP ID": result_object.unit_matches[0].omop_id if result_object.unit_matches and len(result_object.unit_matches) >= 1 else None,
+            "Domain": result_object.domain,
+            "Visit Concept Name": result_object.visit_matches[0].label if result_object.visit_matches and len(result_object.visit_matches) >= 1 else None,
+            "Visit Concept Code": result_object.visit_matches[0].code if result_object.visit_matches and len(result_object.visit_matches) >= 1 else None,
+            "Visit OMOP ID": result_object.visit_matches[0].omop_id if result_object.visit_matches and len(result_object.visit_matches) >= 1 else None,
+            "Primary to Secondary Context Relationship": result_object.primary_to_secondary_rel
         }
-    additional_entities = result_object.additional_entities
-    additional_entities_matches = result_object.additional_entities_matches
-    categorical_values = result_object.categories
-    categorical_values_matches = result_object.categories_matches
-    # main_term = result_object.base_entity
-    main_term_matches = result_object.base_entity_matches
-    # query_text = result_object.original_query
-
-    (
-        additional_entities_labels,
-        additional_entities_codes,
-        additional_entities_omop_ids,
-    ) = format_categorical_values(
-        additional_entities_matches, additional_entities, type="additional"
-    )
-    categorical_values_labels, categorical_values_codes, categorical_values_omop_ids = (
-        format_categorical_values(categorical_values_matches, categorical_values)
-    )
-    main_term_labels = (
-        main_term_matches[0].standard_label if len(main_term_matches) >= 1 else None
-    )
-    main_term_codes = (
-        main_term_matches[0].standard_code if len(main_term_matches) >= 1 else None
-    )
-    main_term_omop_id = (
-        main_term_matches[0].standard_omop_id if len(main_term_matches) >= 1 else None
-    )
-    # if additional_entities:
-    #     combined_labels=combine_if_different(main_term_labels, additional_entities_labels, separator="|")
-    #     combined_codes=combine_if_different(main_term_codes, additional_entities_codes, separator="|")
-    #     combined_omop_ids=combine_if_different(main_term_omop_id, additional_entities_omop_ids, separator="|")
-
-    # else:
-    #     combined_labels = join_or_single(main_term_labels)
-    #     combined_codes = join_or_single(main_term_codes)
-    #     combined_omop_ids = join_or_single(main_term_omop_id)
-    results = {
-        "VARIABLE NAME": result_object.variable_name,
-        "VARIABLE LABEL": result_object.original_query,
-        "Domain": result_object.domain,
-        "Variable Concept Label": main_term_labels,
-        "Variable Concept Code": main_term_codes,
-        "Variable Concept OMOP ID": main_term_omop_id,
-        "Additional Context Concept Label": additional_entities_labels,
-        "Additional Context Concept Code": additional_entities_codes,
-        "Additional Context OMOP ID": additional_entities_omop_ids,
-        "Primary to Secondary Context Relationship": result_object.primary_to_secondary_rel,
-        "Categorical Values Concept Label": categorical_values_labels,
-        "Categorical Values Concept Code": categorical_values_codes,
-        "Categorical Values OMOP ID": categorical_values_omop_ids,
-        "Unit Concept Label": result_object.unit_matches[0].standard_label
-        if len(result_object.unit_matches) >= 1
-        else None,
-        "Unit Concept Code": result_object.unit_matches[0].standard_code
-        if len(result_object.unit_matches) >= 1
-        else None,
-        "Unit OMOP ID": result_object.unit_matches[0].standard_omop_id
-        if len(result_object.unit_matches) >= 1
-        else None,
-    }
-    # print(f"Processed Result={results}")
-    return results
+        # logger.info(f"Processed Result={results}")
+        print(f"Processed Result={results}")
+        return results
+    except Exception as e:
+        print(f"Error in create processed result: {e}")
+        return {}
 
 
-def create_result_dict(tuple_item):
-    result = {
-        "VARIABLE NAME": tuple_item[0],
-        "VARIABLE LABEL": tuple_item[1],
-        "Domain": tuple_item[2],
-        "Variable Concept Label": tuple_item[3],
-        "Variable Concept Code": tuple_item[4],
-        "Variable Concept OMOP ID": tuple_item[5],
-        "Additional Context Concept Label": tuple_item[6],
-        "Additional Context Concept Code": tuple_item[7],
-        "Additional Context OMOP ID": tuple_item[8],
-        "Primary to Secondary Context Relationship": tuple_item[9],
-        "Categorical Values Concept Label": tuple_item[10],
-        "Categorical Values Concept Code": tuple_item[11],
-        "Categorical Values OMOP ID": tuple_item[12],
-        "Unit Concept Label": tuple_item[13],
-        "Unit Concept Code": tuple_item[14],
-        "Unit OMOP ID": tuple_item[15],
-    }
-    print(f"EXISTING MAPPING RESULT={result}")
-    return result
+# not using create_result_dict in retriever_v2.py anymore
+
+# def create_result_dict(tuple_item):
+#     result = {
+#         "VARIABLE NAME": tuple_item[0],
+#         "VARIABLE LABEL": tuple_item[1],
+#         "Categorical Values Concept Code": tuple_item[11],
+#         "Domain": tuple_item[2],
+#         "Variable Concept Name": tuple_item[3],
+#         "Variable Concept Code": tuple_item[4],
+#         "Variable  OMOP ID": tuple_item[5],
+#         "Additional Context Concept Name": tuple_item[6],
+#         "Additional Context Concept Code": tuple_item[7],
+#         "Additional Context OMOP ID": tuple_item[8],
+#         "Primary to Secondary Context Relationship": tuple_item[9],
+#         "Categorical Values Concept Name": tuple_item[10],
+      
+#         "Categorical Values OMOP ID": tuple_item[12],
+#         "Unit Concept Name": tuple_item[13],
+#         "Unit Concept Code": tuple_item[14],
+#         "Unit OMOP ID": tuple_item[15],
+#     }
+#     print(f"EXISTING MAPPING RESULT ={result}")
+#     return result
 
 
 def format_categorical_values(
@@ -1371,9 +1392,9 @@ def format_categorical_values(
             #     codes.append(' and/or '.join(remove_duplicates([doc.standard_code for doc in docs])))
             #     ids.append(' and/or '.join(remove_duplicates(doc.standard_concept_id)) for doc in docs])))
             # elif len(docs) == 1:
-            labels.append(docs[0].standard_label)
-            codes.append(docs[0].standard_code)
-            ids.append(docs[0].standard_omop_id)
+            labels.append(docs[0].label)
+            codes.append(docs[0].code)
+            ids.append(docs[0].omop_id)
         elif type == "categorical":
             labels.append("na")
             codes.append("na")
@@ -1485,7 +1506,61 @@ def pretty_print_docs(docs) -> None:
         )
     )
 
+# Evaluating variable: {'VARIABLE NAME': 'date_of_visit', 'VARIABLE LABEL': 'date of patient visit', 'Categorical Values Concept Code': None, 'Categorical Values Concept Name': None, 'Categorical Values OMOP ID': None, 'Variable Concept Code': 'snomed:406543005', 'Variable Concept Name': 'date of visit', 'Variable OMOP ID': '4231970', 'Additional Context Concept Name': None, 'Additional Context Concept Code': None, 'Additional Context OMOP ID': None, 'Primary to Secondary Context Relationship': None, 'Unit Concept Name': None, 'Unit Concept Code': None, 'Unit OMOP ID': None, 'Domain': 'visit_occurrence', 'Visit Concept Name': None, 'Visit Concept Code': None, 'Visit OMOP ID': None}
 
+def convert_row_to_entities(row: dict) -> List[Dict[str, str]]:
+    """
+    Convert a row of variable data into a list of entities.
+    Each entity is represented as a dictionary with keys 'label' and 'code'.
+    """
+    result_rows = []
+    # make all keys small case
+    row = {k.lower(): v for k, v in row.items()}
+    if pd.notna(row.get("variable name")) and row.get("variable name") != "":
+            print(f"Processing variable: {row['variable name']}")
+            if pd.notna(row.get("variable concept name")) and row.get("variable concept name") != "":
+                result_rows.append({
+                    "variable_name": row["variable label"],
+                    "concept_code":row.get("variable concept code"),
+                    "standard_label": row.get("variable concept name").strip(),
+                    "omop_id": int(row.get("variable omop id") if pd.notna(row.get("variable omop id")) else None)
+            })
+
+            # construct dictionary using each categorical value separately and its corresponding concept code and omop id
+            if pd.notna(row.get("categorical")) and pd.notna(row.get("categorical value concept code")):
+
+                for categorical_value, concept_code, omop_id, standard_label in zip(
+                    row.get("categorical", "").split("|"),
+                    row.get("categorical value concept code", "").split("|"),
+                    row.get("categorical value omop id", "").split("|"),
+                    row.get("categorical value concept name", "").split("|")  # Assuming standard label is the first part
+                ):
+                    print(f"Processing categorical value: {categorical_value.strip()} for variable name: {row['variablename']}")
+                    result_rows.append({
+                        "variable_name": categorical_value.strip(),
+                        "concept_code": concept_code.strip(),
+                        "standard_label": standard_label.strip() if standard_label else None,
+                        "omop_id": int(omop_id) if pd.notna(omop_id) and omop_id.strip() else None
+                    })
+            # add visit concept code, label and omop id if they exist
+            if pd.notna(row.get("visits")) and pd.notna(row.get("visit concept code")):
+                print(f"Processing visit: {row['visits']} for variable name: {row['variablename']}")  # Debugging output
+                result_rows.append({
+                    "variable_name": row.get("visits", "").strip(),
+                    "concept_code": row.get("visit concept code", ""),
+                    "standard_label": row.get("visit concept name", "").strip(),
+                    "omop_id": int(row.get("visit omop id") if pd.notna(row.get("visit omop id")) else None)
+                })
+            # add unit concept code, label and omop id if they exist
+            if pd.notna(row.get("unit concept code")) and pd.notna(row.get("units")):
+                result_rows.append({
+                    "variable_name": row.get("units", ""),
+                    "concept_code": row.get("unit concept code", ""),
+                    "standard_label": row.get("unit concept name", ""),
+                    "omop_id": int(row.get("unit omop id") if pd.notna(row.get("unit omop id")) else None)
+                })
+    print(f"Converted row to entities: {result_rows}")
+    return result_rows
 # def estimate_token_cost(text,filename):
 #     # Get the encoder for the GPT-4 model
 #     enc = tiktoken.encoding_for_model("gpt-4")
@@ -1497,15 +1572,215 @@ def pretty_print_docs(docs) -> None:
 #     with open(filename, 'w') as f:
 #         f.write(f"Token count: {n_tokens}")
 
-#     print(f"Token count saved to {filename}")
+# def append_results_to_csv(
+#     input_file, results, output_suffix="_mapped.csv", llm_id: str = ""
+# ) -> None:
+#     """
+#     Reads the input CSV file, uses the number of rows according to `results` length, appends new columns,
+#     and saves it with a new name with the suffix '_mapped.csv'.
+
+#     Parameters:
+#     -----------
+#     input_file : str
+#         The path to the input CSV file.
+#     results : list of dict
+#         A list of dictionaries containing processed data. Each dictionary corresponds to a row.
+#     output_suffix : str, optional
+#         The suffix to append to the output CSV file name. Default is '_mapped.csv'.
+
+#     Returns:
+#     --------
+#     None
+#     """
+#     output_suffix = f"_{llm_id}_mapped.csv"
+#     # Step 1: Load the input CSV file
+#     df = pd.read_csv(input_file)
+#     df.columns = df.columns.str.lower()  # Normalize column names to lower case
+#     # if df has column 'visit
+#     # Step 2: Use only the number of rows that match the length of `results`
+#     if len(df) != len(results):
+#         df = df.iloc[: len(results)]
+
+#     # Step 3: Extract data from `results` to create new columns
+#     new_columns_data = {
+#         "Categorical Values Concept Code": [
+#             result.get("Categorical Values Concept Code", None) for result in results
+#         ],
+#         "Categorical Values Concept Name": [
+#             result.get("Categorical Values Concept Label", None) for result in results
+#         ],
+#         "Categorical Values OMOP ID": [
+#             result.get("Categorical Values OMOP ID", None) for result in results
+#         ],
+#         "Variable Concept Code": [
+#             result.get("Variable Concept Code", None) for result in results
+#         ],
+#         "Variable Concept Name": [
+#             result.get("Variable Concept Label", None) for result in results
+#         ],
+       
+#         "Variable OMOP ID": [
+#             result.get("Variable OMOP ID", None) for result in results
+#         ],
+       
+#         "Additional Context Concept Name": [
+#             result.get("Additional Context Concept Label", None) for result in results
+#         ],
+#         "Additional Context Concept Code": [
+#             result.get("Additional Context Concept Code", None) for result in results
+#         ],
+#         "Additional Context OMOP ID": [
+#             result.get("Additional Context OMOP ID", None) for result in results
+#         ],
+        
+        
+        
+#         # "Primary to Secondary Context Relationship": [
+#         #     result.get("Primary to Secondary Context Relationship", None)
+#         #     for result in results
+#         # ],
+        
+       
+#         "Unit Concept Name": [
+#             result.get("Unit Concept Name", None) for result in results
+#         ],
+#         "Unit Concept Code": [
+#             result.get("Unit Concept Code", None) for result in results
+#         ],
+#         "Unit OMOP ID": [result.get("Unit OMOP ID", None) for result in results],
+#         "Domain": [result.get("Domain", None) for result in results],
+        
+        
+        
+#     }
+
+#     # Step 4: Append the new columns to the dataframe
+#     for column_name, column_data in new_columns_data.items():
+#         df[column_name] = column_data
+
+#     # Step 5: Save the updated dataframe to a new CSV file
+#     print(f"Saving results to {input_file} with suffix {output_suffix}")
+#     file_name, _ = os.path.splitext(input_file)
+#     output_file = f"{file_name}{output_suffix}"
+#     df.to_csv(output_file, index=False)
+
+#     print(f"File saved: {output_file}")
+#     return df
 
 
-def append_results_to_csv(
-    input_file, results, output_suffix="_mapped.csv", llm_id: str = ""
-) -> None:
+
+
+# def append_results_to_csv(input_file, results, output_suffix="_mapped.csv", llm_id: str = "") -> pd.DataFrame:
+#     """
+#     Reads the input CSV file, uses the number of rows according to `results` length, appends new columns,
+#     and saves it with a new name with the suffix '_mapped.csv'. If 'visit' column exists in the original file,
+#     visit-related info is extracted from 'Additional Context' and new standardized visit columns are created.
+
+#     Parameters:
+#     -----------
+#     input_file : str
+#         The path to the input CSV file.
+#     results : list of dict
+#         A list of dictionaries containing processed data. Each dictionary corresponds to a row.
+#     output_suffix : str, optional
+#         The suffix to append to the output CSV file name. Default is '_mapped.csv'.
+
+#     Returns:
+#     --------
+#     pd.DataFrame
+#         The updated DataFrame.
+#     """
+#     output_suffix = f"_{llm_id}_mapped.csv"
+#     df = pd.read_csv(input_file)
+#     df.columns = df.columns.str.lower()
+
+#     if len(df) != len(results):
+#         df = df.iloc[: len(results)]
+
+#     def extract_context(key):
+#         return [res.get(key, None) for res in results]
+
+#     def extract_split_last(values):
+#         return [val.split("|")[-1].strip() if isinstance(val, str) and "|" in val else None for val in values]
+
+
+#     def remove_duplicate_context(context_list, variable_item):
+#         cleaned = []
+#         for context_str, var_val in zip(context_list, variable_item):
+#             if isinstance(context_str, str):
+#                 parts = [p.strip() for p in context_str.split("|")]
+#                 if var_val in parts:
+#                     parts = [p for p in parts if p != var_val]
+#                 cleaned.append("|".join(parts) if parts else None)
+#             else:
+#                 cleaned.append(context_str)
+#         return cleaned
+    
+    
+#     new_columns_data = {
+#         "Categorical Values Concept Code": extract_context("Categorical Values Concept Code"),
+#         "Categorical Values Concept Name": extract_context("Categorical Values Concept Label"),
+#         "Categorical Values OMOP ID": extract_context("Categorical Values OMOP ID"),
+#         "Variable Concept Code": extract_context("Variable Concept Code"),
+#         "Variable Concept Name": extract_context("Variable Concept Label"),
+#         "Variable OMOP ID": extract_context("Variable OMOP ID"),
+#         "Additional Context Concept Name": extract_context("Additional Context Concept Label"),
+        
+        
+        
+#         "Additional Context Concept Code": extract_context("Additional Context Concept Code"),
+#         "Additional Context OMOP ID": extract_context("Additional Context OMOP ID"),
+#         "Unit Concept Name": extract_context("Unit Concept Name"),
+#         "Unit Concept Code": extract_context("Unit Concept Code"),
+#         "Unit OMOP ID": extract_context("Unit OMOP ID"),
+#         "Domain": extract_context("Domain"),
+#     }
+
+#     # If 'visit' exists in original df, extract last item from additional context and move it to new visit columns
+#     if 'visits' in df.columns:
+#         add_ctx_labels = new_columns_data["Additional Context Concept Name"]
+#         add_ctx_codes = new_columns_data["Additional Context Concept Code"]
+#         add_ctx_omops = new_columns_data["Additional Context OMOP ID"]
+#         new_columns_data["Visit OMOP ID"] = extract_split_last(add_ctx_omops)
+#         new_columns_data["Visit Concept Name"] = extract_split_last(add_ctx_labels)
+#         new_columns_data["Visit Concept Code"] = extract_split_last(add_ctx_codes)
+        
+
+#         # Remove the last item from original context columns
+#         def remove_last_item(value):
+#             if isinstance(value, str) and "|" in value:
+#                 return "|".join(value.split("|")[:-1]).strip()
+#             return value
+
+#         new_columns_data["Additional Context Concept Name"] = [remove_last_item(val) for val in add_ctx_labels]
+#         new_columns_data["Additional Context Concept Code"] = [remove_last_item(val) for val in add_ctx_codes]
+#         new_columns_data["Additional Context OMOP ID"] = [remove_last_item(val) for val in add_ctx_omops]
+
+#     # Append new columns to df
+#     for col, vals in new_columns_data.items():
+#         df[col] = vals
+
+#     # Ensure original 'visit' column (if exists) is placed as the fourth-last column
+#     if 'visits' in df.columns:
+#         visit_col = df.pop('visits')
+#         insert_pos = len(df.columns) - 3  # fourth last
+#         df.insert(insert_pos, 'visits', visit_col)
+
+#     # Save to file
+#     file_name, _ = os.path.splitext(input_file)
+#     output_file = f"{file_name}{output_suffix}"
+#     df.to_csv(output_file, index=False)
+#     print(f"File saved: {output_file}")
+
+#     return df
+
+def append_results_to_csv(input_file, results, logger:any, output_suffix="_mapped.csv", llm_id: str = "") -> pd.DataFrame:
     """
     Reads the input CSV file, uses the number of rows according to `results` length, appends new columns,
-    and saves it with a new name with the suffix '_mapped.csv'.
+    and saves it with a new name with the suffix '_mapped.csv'. If 'visits' column exists in the original file,
+    visit-related info is extracted from 'Additional Context' and new standardized visit columns are created.
+
+    Additionally, prevents duplication of variable information in the Additional Context columns.
 
     Parameters:
     -----------
@@ -1518,73 +1793,110 @@ def append_results_to_csv(
 
     Returns:
     --------
-    None
+    pd.DataFrame
+        The updated DataFrame.
     """
+
     output_suffix = f"_{llm_id}_mapped.csv"
-    # Step 1: Load the input CSV file
     df = pd.read_csv(input_file)
 
-    # Step 2: Use only the number of rows that match the length of `results`
-    if len(df) != len(results):
-        df = df.iloc[: len(results)]
+    # Preserve original column names for renaming
+    original_columns = df.columns.tolist()
+    df.columns = df.columns.str.lower()
 
-    # Step 3: Extract data from `results` to create new columns
+    # Create a map from variable name to result
+    result_map = {res.get("VARIABLE NAME", "").lower(): res for res in results if res.get("VARIABLE NAME")}
+
+    def extract_context(key):
+        return [result_map.get(row["variablename"].lower(), {}).get(key, None) for _, row in df.iterrows()]
+
+    def extract_last_component(values):
+        last_split = [val.split("|")[-1].strip() if isinstance(val, str) else val for val in values]
+        # what if there is no | present
+        logger.info(f"Extracted last items: {last_split}")
+        return last_split
+
+    def remove_last_if_multiple(value):
+        logger.info(f"Removing last item from additional value: {value}")
+        if isinstance(value, str) and "|" in value:
+            parts = [v.strip() for v in value.split("|")]
+            if len(parts) > 1:
+                return "|".join(parts[:-1])
+        return value
+
+    # def remove_duplicate_context(context_list, variable_item):
+    #     cleaned = []
+    #     for context_str, var_val in zip(context_list, variable_item):
+    #         if isinstance(context_str, str):
+    #             parts = [p.strip() for p in context_str.split("|")]
+    #             if var_val in parts:
+    #                 parts = [p for p in parts if p != var_val]
+    #             cleaned.append("|".join(parts) if parts else None)
+    #         else:
+    #             cleaned.append(context_str)
+    #     return cleaned
+
+    # Extract raw fields
+    var_label = extract_context("Variable Concept Name")
+    var_code = extract_context("Variable Concept Code")
+    var_omop = extract_context("Variable OMOP ID")
+    add_ctx_labels = extract_context("Additional Context Concept Name")
+    add_ctx_codes = extract_context("Additional Context Concept Code")
+    add_ctx_omops = extract_context("Additional Context OMOP ID")
+    logger.info(f"Processed Additional Context: {add_ctx_labels}, {add_ctx_codes}, {add_ctx_omops}")
+
     new_columns_data = {
-        "Variable Concept Label": [
-            result.get("Variable Concept Label", None) for result in results
-        ],
-        "Variable Concept Code": [
-            result.get("Variable Concept Code", None) for result in results
-        ],
-        "Variable Concept OMOP ID": [
-            result.get("Variable Concept OMOP ID", None) for result in results
-        ],
-        "Domain": [result.get("Domain", None) for result in results],
-        "Additional Context Concept Label": [
-            result.get("Additional Context Concept Label", None) for result in results
-        ],
-        "Additional Context Concept Code": [
-            result.get("Additional Context Concept Code", None) for result in results
-        ],
-        "Additional Context OMOP ID": [
-            result.get("Additional Context OMOP ID", None) for result in results
-        ],
-        "Primary to Secondary Context Relationship": [
-            result.get("Primary to Secondary Context Relationship", None)
-            for result in results
-        ],
-        "Categorical Values Concept Label": [
-            result.get("Categorical Values Concept Label", None) for result in results
-        ],
-        "Categorical Values Concept Code": [
-            result.get("Categorical Values Concept Code", None) for result in results
-        ],
-        "Categorical Values Concept OMOP ID": [
-            result.get("Categorical Values Concept OMOP ID", None) for result in results
-        ],
-        "Unit Concept Label": [
-            result.get("Unit Concept Label", None) for result in results
-        ],
-        "Unit Concept Code": [
-            result.get("Unit Concept Code", None) for result in results
-        ],
-        "Unit OMOP ID": [result.get("Unit OMOP ID", None) for result in results],
-        "Reasoning": [result.get("reasoning", None) for result in results],
-        "Prediction": [result.get("prediction", None) for result in results],
+        "Categorical Values Concept Code": extract_context("Categorical Values Concept Code"),
+        "Categorical Values Concept Name": extract_context("Categorical Values Concept Name"),
+        "Categorical Values OMOP ID": extract_context("Categorical Values OMOP ID"),
+        "Variable Concept Code": var_code,
+        "Variable Concept Name": var_label,
+        "Variable OMOP ID": var_omop,
+        "Additional Context Concept Name": add_ctx_labels,
+        "Additional Context Concept Code": add_ctx_codes,
+        "Additional Context OMOP ID": add_ctx_omops,
+        "Unit Concept Name": extract_context("Unit Concept Name"),
+        "Unit Concept Code": extract_context("Unit Concept Code"),
+        "Unit OMOP ID": extract_context("Unit OMOP ID"),
+        "Domain": extract_context("Domain"),
+        "Visit Concept Name": extract_context("Visit Concept Name"),
+        "Visit Concept Code": extract_context("Visit Concept Code"),
+        "Visit OMOP ID": extract_context("Visit OMOP ID"),
+        "Prediction": extract_context("prediction"),
+        "Reasoning": extract_context("reasoning"),
+        
     }
 
-    # Step 4: Append the new columns to the dataframe
-    for column_name, column_data in new_columns_data.items():
-        df[column_name] = column_data
+    # if 'visits' in df.columns:
+    #     # Extract visit-related values
+    #     new_columns_data["Visit Concept Name"] = extract_last_component(add_ctx_labels)
+    #     new_columns_data["Visit Concept Code"] = extract_last_component(add_ctx_codes)
+    #     new_columns_data["Visit OMOP ID"] = extract_last_component(add_ctx_omops)
 
-    # Step 5: Save the updated dataframe to a new CSV file
+    #     # Remove visit from additional context only if there are multiple items
+    #     new_columns_data["Additional Context Concept Name"] = [remove_last_if_multiple(val) for val in new_columns_data["Additional Context Concept Name"]]
+    #     new_columns_data["Additional Context Concept Code"] = [remove_last_if_multiple(val) for val in new_columns_data["Additional Context Concept Code"]]
+    #     new_columns_data["Additional Context OMOP ID"] = [remove_last_if_multiple(val) for val in new_columns_data["Additional Context OMOP ID"]]
+
+    # Append new columns
+    for col, vals in new_columns_data.items():
+        df[col] = vals
+
+    # Reinsert 'visits' column to fourth-last position
+    # if 'visits' in df.columns:
+    #     visit_col = df.pop('visits')
+    #     df.insert(len(df.columns) - 3, 'visits', visit_col)
+    
+    # Rename columns back to original case
+    df.rename(columns={col: original_col for col, original_col in zip(df.columns, original_columns)}, inplace=True)
+
+    # Save
     file_name, _ = os.path.splitext(input_file)
     output_file = f"{file_name}{output_suffix}"
     df.to_csv(output_file, index=False)
-
     print(f"File saved: {output_file}")
+   
     return df
-
 
 def remove_repeated_phrases(text):
     words = text.split()

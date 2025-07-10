@@ -46,6 +46,7 @@ EXPLANATION_PATTERN = re.compile(
 
 def perform_mapping_eval_for_variable(var_: dict, llm_id: str = "llama3.1"):
     variable = var_
+    print(f"Evaluating variable: {variable}")
     # delete VARIABLE NAME key from variable
     # variable.pop("VARIABLE NAME")
     explanation = evaluate_final_mapping(variable, llm_id)
@@ -74,3 +75,4 @@ def perform_mapping_eval_for_variable(var_: dict, llm_id: str = "llama3.1"):
     variable["prediction"] = cleaned_prediction
     # variable["VARIABLE NAME"] = var_["VARIABLE NAME"]
     return variable
+

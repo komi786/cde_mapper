@@ -230,7 +230,7 @@ def compute_metrics_per_type(data_samples, threshold=60):
 start_time = time.time()
 
 with open(
-    "/workspace/mapping_tool/data/eval_datasets/custom_data/decompsiition_test.json"
+    "data/eval_datasets/custom_data/decompsiition_test.json"
 ) as json_file:
     query_decomposition = json.load(json_file)
 
@@ -294,12 +294,12 @@ print(f"len(data_samples): {len(data_samples)}")
 threshold = 60
 # Save the results to a JSON file
 with open(
-    f"/workspace/mapping_tool/data/output/query_decomposition_{LLM_ID}_{threshold}.json",
+    f"data/output/query_decomposition_{LLM_ID}_{threshold}.json",
     "w",
 ) as f:
     json.dump(data_samples, f, indent=4)
 # with open(
-#     f"/workspace/mapping_tool/data/output/query_decomposition_{LLM_ID}.json", "r"
+#     f"data/output/query_decomposition_{LLM_ID}.json", "r"
 # ) as f:
 #     data_samples = json.load(f)
 

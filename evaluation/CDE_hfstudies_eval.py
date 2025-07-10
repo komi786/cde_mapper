@@ -252,8 +252,8 @@ def evaluate_precision_at_k(data):
 
 
 cde_data = classify_results_based_on_cde_type(
-    "/workspace/mapping_tool/data/eval_datasets/reported_results/reported_in_article/llm_ranking/hf_studies/biobert_snomed.json",
-    "/workspace/mapping_tool/data/eval_datasets/hf_studies/hf_studies_cdes.txt",
+    "data/eval_datasets/reported_results/reported_in_article/llm_ranking/hf_studies/biobert_snomed.json",
+    "data/eval_datasets/hf_studies/hf_studies_cdes.txt",
 )
 for key in cde_data:
     print(f"\nResults for {key.upper()}")

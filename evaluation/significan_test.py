@@ -109,7 +109,7 @@ def main():
     ]  # Replace with actual model names
 
     # Directory structure: data/<dataset>/<model>.json
-    base_dir = "/workspace/mapping_tool/data/eval_datasets/reported_results/reported_in_article/llm_ranking"  # Replace with the actual base directory containing the datasets
+    base_dir = "data/eval_datasets/reported_results/reported_in_article/llm_ranking"  # Replace with the actual base directory containing the datasets
 
     results = []
     pairwise_results = []

@@ -301,6 +301,7 @@ class SAPEmbeddings(Embeddings):
             attn_implementation="eager",
             output_attentions=True,
         )
+        self.EMBED_CACHE = {}
         self.model.to(self.device)
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_id, use_fast=True, do_lower_case=True, cache_dir=CACHE_DIR
@@ -320,34 +321,38 @@ class SAPEmbeddings(Embeddings):
         embeddings = []
         # pbar = tqdm(total=len(texts), desc="Embedding Documents", unit="doc")
         for text in texts:
-            entity, synonyms, domain = parse_text(text)
-            entity_embedding = self.embed_text(
-                entity
-            )  # Ensure it's two-dimensional for stacking
-            if synonyms:
-                synonym_embeddings = [self.embed_text(syn) for syn in synonyms]
-                all_embeddings = torch.cat(
-                    [entity_embedding] + synonym_embeddings, dim=0
-                )
+            if text not in self.EMBED_CACHE:
+                
+                entity, synonyms, _ = parse_text(text)
+                entity_embedding = self.embed_text(
+                    entity
+                )  # Ensure it's two-dimensional for stacking
+                if synonyms:
+                    synonym_embeddings = [self.embed_text(syn) for syn in synonyms]
+                    all_embeddings = torch.cat(
+                        [entity_embedding] + synonym_embeddings, dim=0
+                    )
 
+                else:
+                    all_embeddings = entity_embedding
+
+                # print(f"Entity Embedding: {entity_embedding.shape}")
+                # dont avergae if synonym and domain is none
+                if not synonyms:
+                    # print(f"type of entity_embedding: {type(entity_embedding)}")
+                    mean_embedding = entity_embedding.squeeze(0)
+                    # embeddings.append(flattened_embedding.cpu().tolist())
+                    # continue
+                else:
+                    mean_embedding = torch.mean(
+                        all_embeddings, dim=0
+                    )  # Average the embeddings
+                # print(f"Mean Entity Embedding: {entity_embedding.shape}")
+                embeddings.append(mean_embedding.cpu().tolist())  # Convert tensor to list
+                # pbar.update(1)
+                self.EMBED_CACHE[text] = mean_embedding.cpu().tolist()
             else:
-                all_embeddings = entity_embedding
-
-            # print(f"Entity Embedding: {entity_embedding.shape}")
-            # dont avergae if synonym and domain is none
-            if not synonyms:
-                # print(f"type of entity_embedding: {type(entity_embedding)}")
-                mean_embedding = entity_embedding.squeeze(0)
-                # embeddings.append(flattened_embedding.cpu().tolist())
-                # continue
-            else:
-                mean_embedding = torch.mean(
-                    all_embeddings, dim=0
-                )  # Average the embeddings
-            # print(f"Mean Entity Embedding: {entity_embedding.shape}")
-            embeddings.append(mean_embedding.cpu().tolist())  # Convert tensor to list
-            # pbar.update(1)
-
+                embeddings.append(self.EMBED_CACHE[text])
         # pbar.close()
         return embeddings
 
@@ -621,7 +626,7 @@ class SAPEmbeddings(Embeddings):
     #     """
     #     Save the total token count to a text file.
     #     """
-    #     with open('/Users/komalgilani/Desktop/cde_mapper/data/output/total_token_count_agreegated_ent_synonym_embed.txt', 'w') as f:
+    #     with open('data/output/total_token_count_agreegated_ent_synonym_embed.txt', 'w') as f:
     #         f.write(str(total_token_count))
 
     # def embed_query(self, text: str) -> List[float]:
@@ -698,7 +703,7 @@ def store_embedding_tsv_file(embeddings: List[List[float]]):
     Store the embeddings in a TSV file.
     """
     with open(
-        "/Users/komalgilani/Desktop/cde_mapper/data/output/embeddings_aggregated_ent_synonym.tsv", "a"
+        "data/output/embeddings_aggregated_ent_synonym.tsv", "a"
     ) as f:
         for emb in embeddings:
             f.write("\t".join(map(str, emb)) + "\n")

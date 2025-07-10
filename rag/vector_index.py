@@ -11,12 +11,12 @@ from rag.data_loader import load_data
 from rag.manager import LLMManager
 
 # from langchain.schema import Document
-import argparse
+# import argparse
 from rag.utils import (
     load_docs_from_jsonl,
     load_custom_docs_from_jsonl,
-    evaluate_topk_acc,
-    evaluate_ncgd,
+    # evaluate_topk_acc,
+    # evaluate_ncgd,
 )
 
 from langchain_qdrant import FastEmbedSparse, RetrievalMode
@@ -24,18 +24,18 @@ from qdrant_client import QdrantClient
 from qdrant_client.http.models import Distance
 import qdrant_client.http.models as rest
 from rag.param import VECTOR_PATH, QDRANT_PORT, EMB_MODEL_NAME, LLM_ID
-import time
+# import time
 from rag.qdrant import CustomQdrantVectorStore
-from rag.llm_chain import pass_to_chat_llm_chain
+# from rag.llm_chain import pass_to_chat_llm_chain
 from rag.athena_api_retriever import RetrieverAthenaAPI, AthenaFilters
-from langchain_community.retrievers import BM25Retriever
+# from langchain_community.retrievers import BM25Retriever
 
 
-def create_bm25_sparse_retriever(docs_file):
-    docs = load_custom_docs_from_jsonl(docs_file)
-    bm25_retriever = BM25Retriever.from_documents(docs)
-    bm25_retriever.k = 10
-    return bm25_retriever
+# def create_bm25_sparse_retriever(docs_file):
+#     docs = load_custom_docs_from_jsonl(docs_file)
+#     bm25_retriever = BM25Retriever.from_documents(docs)
+#     bm25_retriever.k = 10
+#     return bm25_retriever
 
 
 def filter_results(query, results):
@@ -232,9 +232,9 @@ def initiate_api_retriever(compress=True):
                 "OMOP Extension",
                 "ATC",
                 "RxNorm",
-                "Gender",
                 "Race",
                 "Ethnicity",
+                "CDISC",
             ],
             standard_concept=["Standard", "Classification"],
         ),
@@ -270,7 +270,8 @@ def initiate_api_retriever_all_concepts():
     return compression_retriever
 
 
-def update_api_search_filter(api_retriever, domain="observation", topk=10):
+def update_api_search_filter(api_retriever_wrapper, domain="observation", topk=10):
+    api_retriever = api_retriever_wrapper.base_retriever
     if domain == "unit":
         api_retriever.filters = AthenaFilters(
             domain=None, vocabulary=["UCUM"], standard_concept=["Standard"]
@@ -499,7 +500,7 @@ def update_compressed_merger_retriever(
 ) -> CustomCompressionRetriever:
     try:
         retrievers = merger_retriever.base_retriever.retrievers
-        logger.info(f"retrievers: {retrievers}")
+        logger.info(f"retrievers= {retrievers}")
         dense_retriever = update_qdrant_search_filter(
             retrievers[0], domain=domain, topk=topk
         )
@@ -520,12 +521,14 @@ def update_merger_retriever(
 ) -> CustomCompressionRetriever:
     try:
         retrievers = merger_retriever.retrievers
+        logger.info(f"retrievers: {retrievers}")
         api_retriever = update_api_search_filter(
             retrievers[1], domain=domain, topk=topk
         )
         dense_retriever = update_qdrant_search_filter(
             retrievers[0], domain=domain, topk=topk
         )
+        
         merger_retriever = CustomMergeRetriever(
             retrievers=[dense_retriever, api_retriever]
         )

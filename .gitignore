@@ -33,3 +33,6 @@ secrets.json
 *.swp
 *.pyc
 *.DS_Store
+poetry.lock
+resources/models/.locks/models--cambridgeltl--SapBERT-from-PubMedBERT-fulltext/8342f3adf937298e71303d4b7e7a605689e5a844.lock
+*.lock

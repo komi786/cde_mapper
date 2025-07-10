@@ -1,0 +1,37 @@
+[project]
+name = "cde-mapper"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Komal Gilani",email = "komalsyeda29@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<4"
+dependencies = [
+    "langchain-qdrant (>=0.2.0,<0.3.0)",
+    "langchain (>=0.3.25,<0.4.0)",
+    "pydantic (>=2.11.5,<3.0.0)",
+    "torch (>=2.7.0,<3.0.0)",
+    "transformers (>=4.52.3,<5.0.0)",
+    "langchain-core (>=0.3.62,<0.4.0)",
+    "langchain-community (>=0.3.24,<0.4.0)",
+    "numpy (>=2.2.6,<3.0.0)",
+    "fastembed (>=0.7.0,<0.8.0)",
+    "pandas (>=2.2.3,<3.0.0)",
+    "networkx (>=3.4.2,<4.0.0)",
+    "qdrant-client (>=1.9.0,<1.11.0)",
+    "json-repair (>=0.46.0,<0.47.0)",
+    "rapidfuzz (>=3.13.0,<4.0.0)",
+    "langchain-huggingface (>=0.2.0,<0.3.0)",
+    "langchain-groq (>=0.3.2,<0.4.0)",
+    "langchain-openai (>=0.3.18,<0.4.0)",
+    "langchain-together (>=0.3.0,<0.4.0)",
+    "langchain-ollama (>=0.3.3,<0.4.0)",
+    "langdetect (>=1.0.9,<2.0.0)",
+    "faiss-cpu (>=1.11.0,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

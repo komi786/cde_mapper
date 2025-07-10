@@ -31,6 +31,7 @@ class MyEmbeddingsFilter(EmbeddingsFilter):
     """Custom EmbeddingsFilter class that inherits from EmbeddingsFilter
     and updates the `compress_documents` function to remove state information.
     """
+    # add caching to save of documents and query for time efficiency
 
     def compress_documents(
         self,

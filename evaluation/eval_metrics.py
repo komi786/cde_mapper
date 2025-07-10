@@ -285,8 +285,8 @@ def convert_to_eval_format(query_file, mapped_file):
 
 
 data = convert_to_eval_format(
-    "/workspace/mapping_tool/data/eval_datasets/hf_studies/hf_studies.txt",
-    "/workspace/mapping_tool/data/eval_datasets/reported_results/reported_in_article/llm_ranking/hf_studies/references_v3_gpt4_prompt2_mapped.txt",
+    "data/eval_datasets/hf_studies/hf_studies.txt",
+    "data/eval_datasets/reported_results/reported_in_article/llm_ranking/hf_studies/references_v3_gpt4_prompt2_mapped.txt",
 )
 data = evaluate_topk_acc(data)
 data = evaluate_ncgd(data)
@@ -294,7 +294,7 @@ data = evaluate_recall_mrr(data)
 
 # save in json
 with open(
-    "/workspace/mapping_tool/data/eval_datasets/reported_results/reported_in_article/llm_ranking/hf_studies/references_v3_gpt4_prompt2_mapped.json",
+    "data/eval_datasets/reported_results/reported_in_article/llm_ranking/hf_studies/references_v3_gpt4_prompt2_mapped.json",
     "w",
 ) as f:
     json.dump(data, f, indent=4)

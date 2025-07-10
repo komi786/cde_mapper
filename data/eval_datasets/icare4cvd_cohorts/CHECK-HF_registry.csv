@@ -1,0 +1,208 @@
+VARIABLENAME,VARIABLELABEL,VARTYPE,UNITS,CATEGORICAL,Missing,COUNT,NA,MIN,MAX,Definition,Formula,Visits
+N_A,exacerbation of heart failure,int,,1=yes|0=no,,11332,,0,1,,,baseline
+DosisfrequentieACE,Angiotensin-Converting Enzyme inhibitors: daily frequency,int,,1=once a day|2=twice a day|3=three times a day,9999,11332,,1,9999,,,baseline
+DagdosisStatines,statin:total daily dosage,int,mg (miligram),,,11332,,0,9999,,,baseline
+Ischemiedetectie_dsestressecho,Dobutamine Stress Echocardiography (DSE) is performed for ischemia detection,str,,1=yes|0=no,,11332,,,,,,baseline
+RAS,Renin-angiotensin system (RAS):Medication administered,int,,1=yes|0=no,,11332,,0,1,,,baseline
+Geslacht,patient sex,str,,man=male|vrouw=female,,11332,,,,,,baseline
+HFREFsystHF,heart failure with reduced ejection fraction (HFrEF) or Systolic Heart Failure,str,,1=yes|0=no,,11332,,,,,,baseline
+Patiëntnummer,Patient hospital number,int,,,,11332,,1,11332,,,baseline
+Select,Patient entered into trial: heart failure,int,,1=yes|0=no,,11332,,0,1,,,baseline
+Leeftijd,Age,int,Years,,,11332,,18,103,,,baseline
+Gewichtkg,Body weight,int,kg,,,11332,,29,180,,,baseline
+Lengtecm,Body height,int,cm,,,11332,,126,205,,,baseline
+HFpEF,heart failure with preserved ejection fraction (HFpEF),int,,1=yes|0=no,,11332,,0,1,,,baseline
+BMI,Body Mass Index,int,,,,11332,,14,61,,kg/m2,baseline
+Hartfalenpoli,Patient entered into trial: heart failure,str,,1=yes|0=no,,11332,,,,,,baseline
+PulsPressure,Pulse pressure,int,mmHg,,,11332,,8,160,,,baseline
+BDsyst,Systolic blood pressure,int,mmHg,,,11332,,65,231,,,baseline
+BDdiast,diastolic blood pressure,int,mmHg,,,11332,,30,148,,,baseline
+Oedeem,edema,str,,1=yes|0=no,,11332,,,,,,baseline
+Vulling,blood volume finding,str,,normo volemisch=a normal volume of blood in the body|hyper volemisch=fluid overload|hypo volemisch=volume depletion or volume contraction,,11332,,,,,,baseline
+HFPEFdiasHF,heart failure with preserved ejection fraction (HFpEF) or Diastolic heart failure,str,,1=yes|0=no,,11332,,,,,,baseline
+HFrEF,heart failure with reduced ejection fraction,int,,1=yes|0=no,,11332,,0,1,,,baseline
+EFBegin,Ejection fraction in the beginning of a treatment,int,,,,11332,,5,80,,,baseline
+EFNu,Ejection fraction during treatment,int,,,,11332,,5,80,,,baseline
+TIgradient,Tricuspid atrioventricular gradient,str,MmHg,<30mmHg=Tricuspid Atrioventricular Gradient <30 mmHg|>30mmHg=Tricuspid Atrioventricular Gradient >30 mmHg|30mmHg=Tricuspid Atrioventricular Gradient =30 mmHg,,11332,,,,,,baseline
+DiastolischLVfunctierestrictief,Left ventricular diastolic dysfunction,str,,1=yes|0=no,,11332,,,,,,baseline
+VenaCavaInferiordiameter,Inferior vena cava Diameter by US,str,mm,15-25mm=Inferior vena cava Diameter between at 15 and 25| <15mm=Inferior vena cava Diameter less than 15| >25mm=Inferior vena cava Diameter more than 25,,11332,,,,,,baseline
+VCICollaps,collapse of vena cava,str,,>50%=more than 50%| <50%=less than 50| 100%=full,,11332,,,,,,baseline
+RVfalen,Right Ventricular Failure finding,str,,1=yes|0=no,,11332,,,,,,baseline
+NYHA,New York Heart Association classification that range from I:(no limitation) to IV:(severe limitation),str,, NYHA I=new york heart failure class 1|NYHA II=new york heart failure class 2| NYHA III=new york heart failure class 3| NYHA IV=new york heart failure class 4,,11332,,,,,,baseline
+Stabiel,Patient's condition stable:finding,str,,1=yes|0=no,,11332,,,,,,baseline
+Redeninstabiel,reason of patient's unstable condition,str,,,,11332,,,,,,baseline
+Rusthartfrequentie,Resting heart rate,int,beats per minute,,,11332,,33,180,,,baseline
+Ritme,Cardiac Rhythm diagnosed,str,,"Sinusritme=Sinus Rhythm|AF permanent=Permanent Atrial Fibrillation|Pacemaker ritme=Pacemaker Rhythm|AF persisterend=Persistent Atrial Fibrillation|AF maar type onbekend=Atrial Fibrillation, type unknown|AF paroxysmaal=Paroxysmal Atrial Fibrillation|Ectopisch=Ectopic Rhythm",,11332,,,,,,baseline
+Ectopischritme,Type of Ectopic Rhythm diagnosed,str,,,,11332,,,,,,baseline
+Geleidingsstoornissen2,conduction system disorder,str,,LBTB=Left Bundle Branch Block|geleidingsvertraging=Conduction Delay|1e graads AV blok=First-degree AV Block|3e graads AV blok=Third-degree AV Block|Gecombineerde geleidingsstoornis=Combined Conduction Disorder|Bifasciculair blok=Bifascicular Block|2e graads AV blok=Second-degree AV Block|Trifasciculair blok=Trifascicular Block,,11332,,,,,,baseline
+Geleidingsstoornissen1,conduction system disorder,str,,Geen geleidingsstoornis=No Conduction Disorder|Ventriculaire geleidingsstoornis=Ventricular Conduction Disorder|AV geleidingsstoornis=AV Conduction Disorder|SA-blok=Sinoatrial Block|Gecombineerde geleidingsstoornis=Combined Conduction Disorder,,11332,,,,,,baseline
+LBTB,Left Bundle Branch Block(LBBB) disorder,str,,1=yes|0=no,,11332,,,,,,baseline
+RBTB,Right Bundle Branch Block(RBBB) disorder,str,,1=yes|0=no,,11332,,,,,,baseline
+QRS_2,QRS terminal amplitude in lead V2,int,,,,11332,,60,256,,,baseline
+CreatineumolL,Creatinine level in micromoles per liter,int,umol/L,,,11332,,3.8,9102,,,baseline
+eGFR,estimated glomerular filtration rate,float,mL/min/(173.10*-2.m2),,,11332,,2.36,151.06,,,baseline
+KaliummmolL,Potassium level in micromoles per liter,str,umol/L,,,11332,,,,,,baseline
+Maligniteit,malignant neoplasm,str,,1=yes|0=no,,11332,,,,,,baseline
+Polygrafie,polysomnography performed,str,,1=yes|0=no,,11332,,,,,,baseline
+Vochtbeperking,fluid intake restrictions,str,,1=yes|0=no,,11332,,,,,,baseline
+Natriumbeperking,sodium chloride intake restrictions,str,,1=yes|0=no,,11332,,,,,,baseline
+Antistolling,anticoagulation (blood-thinning) therapy,str,,OAC=Oral Anticoagulant|Tromb aggregatie remmers=Antiplatelet Drugs|DAPT=Dual Antiplatelet Therapy|nvt=Not applicable|NOAC=Non-vitamin K Oral Anticoagulant (DOAC)|OAC + tromb aggregatieremmer=OAC+Antiplatelet|TAPT=Triple Antiplatelet Therapy|Contraindicatie=Contraindicated|Gestopt ivm bijwerkingen=Discontinued due to side effects|OAC DAPT=OAC+DAPT|NOAC + tromb aggregatie remmer=NOAC+Antiplatelet|NOAC + DAPT=NOAC+DAPT|OAC NOAC=Both OAC and NOAC,,11332,,,,,,baseline
+Diuretica,diuretics,str,,Furosemide=Furosemide|Bumetanide=Bumetanide|nvt=Not applicable|HCTZ=Hydrochlorothiazide|Gestopt ivm bijwerkingen=Discontinued due to side effects|Triamtereen=Triamterene|Contraindicatie=Contraindicated,999|7,11332,,,,,,baseline
+DoseringDiuretica,diuretics: dosage,str,mg (miligram),,,11332,,,,,,baseline
+DosisDiuretica,diuretic: daily dosage (no unit),float,,,,11332,,0.5,1040,,,baseline
+DosisfrequentieDiuretica,diuretic:daily frequency,int,,1=once a day|2=twice a day,,11332,,1=ja|0=nee4,120,,,baseline
+DagdosisDiuretica,diuretic: total daily dosage,int,,,,11332,,0,1500,,,baseline
+Furosemide_equivalent,diuretics dose expressed in an amount equivalent to Furosemide,int,mg (miligram),,,11332,,0,9600,,,baseline
+Statines,statin therapy,str,,simvastatine=Simvastatin|nvt=Not applicable|atorvastatine=Atorvastatin|rosuvastatine=Rosuvastatin|pravastatine=Pravastatin|gestopt ivm bijwerkingen=Discontinued due to side effects|ezetimibe/simvastatine=Ezetimibe/Simvastatin combination|fluvastatine=Fluvastatin|contraindicatie=Contraindicated,,11332,,,,,,baseline
+Statine,statin therapy:Medication administered,int,,1=yes|0=no,,11332,,0,1,,,baseline
+DoseringStatines,statin: daily dosage,str,mg (miligram),,,11332,,,,,,baseline
+DosisStatines,statin: daily dosage (no unit),float,,,,11332,,5,100,,,baseline
+DosisfrequentieStatines,statins: daily frequency,int,,,9999,11332,,1,9999,,,baseline
+ACE,Angiotensin-converting enzyme inhibitor,str,,nvt=Not applicable|perindopril=Perindopril|lisinopril=Lisinopril|ramipril=Ramipril|gestopt ivm bijwerkingen=Discontinued due to side effects|quinapril=Quinapril|enalapril=Enalapril|fosinopril=Fosinopril|contraindicatie=Contraindicated|captopril=Captopril|trandolapril=Trandolapril|zofenopril=Zofenopril,,11332,,,,,,baseline
+ACEinhibitor,Angiotensin-converting enzyme:Medication administered,int,,1=yes|0=no,,11332,,0,1,,,baseline
+ACE_contra,angiotensin-converting enzyme inhibitors: contraindications,int,,1=yes|0=no,,11332,,0,1,,,baseline
+DoseringACE,Angiotensin-Converting Enzyme drug:dosage,str,mg (miligram),,,11332,,,,,,baseline
+DosisACE,Angiotensin-Converting Enzyme inhibitors: daily dosage (no unit),float,,,,11332,,0.625,9999,,,baseline
+DagdosisACE,Angiotensin-Converting Enzyme inhibitors:total daily dosage,float,mg (miligram),,,11332,,0,9999,,,baseline
+ACEDose,Angiotensin-converting enzyme: Percentage of target dose,float,percent ,,,11332,,0,400,,,baseline
+ARB,Angiotensin II Receptor Blockers,str,,nvt=Not applicable|valsartan=Valsartan|losartan=Losartan|irbesartan=Irbesartan|candesartan=Candesartan|telmisartan=Telmisartan|olmesartan=Olmesartan|gestopt ivm bijwerkingen=Discontinued due to side effects|contraindica,,11332,,,,,,baseline
+ARB01,Angiotensin II Receptor Blockers: Medication administered,int,,1=yes|0=no,,11332,,0,1,,,baseline
+ARB_contra,Angiotensin II Receptor Blockers: Contraindicated?,int,,1=yes|0=no,,11332,,0,1,,,baseline
+DoseringARB,Dosage of Angiotensin II Receptor Blockers: dosage,str,mg (miligram),,,11332,,,,,,baseline
+DosisARB,Angiotensin II Receptor Blockers inhibitors daily dosage (no unit),float,,,,11332,,2,340,,,baseline
+DosisfrequentieARB,Angiotensin II Receptor Blockers inhibitors: daily dose frequency,int,,1=once a day|2=twice a day|3=three times a day,,11332,,1,3,,,baseline
+DagdosisARB,Angiotensin II Receptor Blockers inhibitors: total daily dosage,float,mg (miligram),,,11332,,0,600,,,baseline
+Renineremmer,Renin-inhibitorss:Medication administered,str,,ja=yes|nee=no,,11332,,,,,,baseline
+DoseringRenineremmer,Renin-inhibitors: dosage,str,,,,11332,,,,,,baseline
+DosisRenineremmer,Renin-inhibitors : daily dosage (no unit),float,,,,11332,,150,300,,,baseline
+DosisfrequentieRenineremmer,Renin-inhibitors:daily dose frequency,int,,,,11332,,1,2,,,baseline
+DagdosisRenineremmer,Renin-inhibitors inhibitors:total daily dose,int,mg (miligram),,,11332,,0,300,,,baseline
+Betablocker,Beta blocking agent,str,,,,11332,,,,,,baseline
+BB,Beta blocking agent:Medication administered,int,,1=yes|0=no,,11332,,0,1,,,baseline
+BB_excl_sotalol,Beta blocking agent except sotalol:Medication administered,int,,1=yes|0=no,,11332,,0,1,,,baseline
+Sotalol,sotalol:Medication administered,int,,1=yes|0=no,,11332,,0,1,,,baseline
+BB_contra,Beta blocking agent:contraindication?,int,,1=yes|0=no,,11332,,0,1,,,baseline
+DoseringBblocker,Beta blocking agent therapy :daily dosage,str,mg (miligram),,,11332,,,,,,baseline
+DosisBblocker,Beta blocking agent:daily dosage (no unit),float,,,,11332,,1,400,,,baseline
+DosisfrequentieBblocker,Beta blocking agent : dosing frequency,int,,1=once a day|2=twice a day|3=three times a day,,11332,,1,3,,,baseline
+DagdosisBblocker,Beta blocking agent:total daily dose,float,,,,11332,,0,800,,,baseline
+BBDose,Beta blocking agent: Percentage of dose,float,percent ,,,11332,,0,2000,,,baseline
+MRA,Mineralocorticoid Receptor Antagonists,str,,nvt=Not applicable|spironolactone=spironolactone| gestopt ivm bijw=medication stopped due to side effects| contraindicatie=contraindicated,,11332,,,,,,baseline
+MRA01,Mineralocorticoid Receptor Antagonists:Medication administered,int,,1=yes|0=no,,11332,,0,1,,,baseline
+MRA_contra,Mineralocorticoid Receptor Antagonists:contraindication ?,int,,1=yes|0=no,,11332,,0,1,,,baseline
+DoseringMRA,Mineralocorticoid Receptor Antagonists : dosage,str,mg (miligram),,,11332,,,,,,baseline
+DosisMRA,Mineralocorticoid Receptor Antagonists: daily dosage (no unit),float,,,,11332,,3125,200,,,baseline
+DosisfrequentieMRA,Mineralocorticoid Receptor Antagonists:daily frequency,int,,,,11332,,0.42,3,,,baseline
+DagdosisMRA,Mineralocorticoid Receptor Antagonists: total daily dose,float,,,,11332,,0,200,,,baseline
+MRADose,Mineralocorticoid Receptor Antagonists: Percentage of dose,float,percent ,,,11332,,0,200,,,baseline
+Digoxine,Digoxine:Medication administered,str,,nvt=not applicable| digoxine=digixon| gestopt ivm bijw=stopped| contraindicatie=contrainidicated,,11332,,,,,,baseline
+DoseringDigoxine,Digoxin: dosage,str,mg (miligram),,,11332,,,,,,baseline
+DosisDigoxine,Digoxine:daily dosage (no unit),float,,,,11332,,0.0165,0.625,,,baseline
+DosisfrequentieDigoxine,Digoxine: dosing frequency,int,,,,11332,,1,1,,,baseline
+DagdosisDigoxine,Digoxine: total daily dose,float,,,,11332,,0,0.625,,,baseline
+Amiodarone,Amiodarone,str,,nvt=Not applicable|amiodarone=amiodarone| gestopt ivm bijw=medication stopped due to side effects| contraindicatie=contraindicated,,11332,,,,,,baseline
+DoseringAmiodarone,Amiodarone: dosage,str,mg (miligram),,,11332,,,,,,baseline
+DosisAmiodarone,Amiodarone:Daily dose,float,,,,11332,,50,400,,,baseline
+DosisfrequentieAmiodarone,Amiodarone:dosing frequency,int,,1=once a day|2=twice a day|3=three times a day,,11332,,1,3,,,baseline
+DagdosisAmiodarone,Amiodarone:total daily dose,float,,,,11332,,0,600,,,baseline
+ARNI,Angiotensin Receptor Neprilysin Inhibitor,str,,,,11332,,,,,,baseline
+DoseringARNI,Angiotensin Receptor Neprilysin Inhibitor: dosage,float,,,,11332,,,,,,baseline
+IJzerstatus,iron deficiency status,str,,nvt=not applicable|Ferritine 100-300ug/l +transferrine saturatie<20%=functional iron deficiency|Ferritine <100ug/l=absolute iron deficiency,,11332,,,,,,baseline
+ACEroptimaal,Optimization of drug dose of Angiotensin-converting enzyme inhibitor therapy,str,,nvt=Not applicable| max verdraagbaar=Maximum tolerated dose| targetdosis=target dose| titratiefase=Titration phase| contraindicatie=contraindicated,,11332,,,,,,baseline
+ARBoptimaal,optimization of drug dosage Angiotensin II Receptor Blockers inhibitor therapy,str,,nvt=Not applicable| max verdraagbaar=Maximum tolerated dose| targetdosis=target dose| titratiefase=Titration phase| contraindicatie=contraindicated,,11332,,,,,,baseline
+BBoptimaal,optimization of drug dose of Beta-Blocker therapy,str,,nvt=Not applicable| max verdraagbaar=Maximum tolerated dose| targetdosis=target dose| titratiefase=Titration phase| contraindicatie=contraindicated,,11332,,,,,,baseline
+MRAoptimaal,optimization of drug dose of Mineralocorticoid Receptor Antagonists therapy,str,,nvt=Not applicable| max verdraagbaar=Maximum tolerated dose| targetdosis=target dose| titratiefase=Titration phase| contraindicatie=contraindicated,,11332,,,,,,baseline
+Extrainformatiemedicatie,Other drugs indicated during treatment plan,str,,,,11332,,,,,,baseline
+Interventie,surgical Intervention performed during treatment plan,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Devices,medical devices used in intervention,str,,nvt=Not applicable|ICD=Implantable Cardioverter-Defibrillator| CRT-D=Cardiac Resynchronization Therapy with Defibrillator| Pacemaker=pacemaker|CRT-P=Cardiac Resynchronization Therapy with Pacemaker|Overwogen nvt in dossier=not applicable or not indicated|Mitraclip=Mitraclip|LVAD=Left Ventricular Assist Device,,11332,,,,,,baseline
+Datumplaatsing,Date of intervention,DATETIME,dd/mm/yyyy,,,11332,,,,,,baseline
+DatumEvents,Date of Event,DATETIME,dd/mm/yyyy,,,11332,,,,,,baseline
+Telemonitoring,Telehealth monitoring,str,,ja=yes|nee=no,,11332,,,,,,baseline
+IngebruikzijndeSysteem,monitoring system used,str,,,,11332,,,,,,baseline
+Schildklier,Thyroid gland Finding,str,,,,11332,,,,,,baseline
+Anemie,Anemia,str,,,,11332,,,,,,baseline
+GFR,Glomerular Filtration Rate measurement,str,,,,11332,,,,,,baseline
+NTproBNP,N-terminal pro b-type natriuretic peptide in blood,str,pmol/L,,,11332,,,,,,baseline
+pmol,N terminal pro-brain natriuretic peptide level,int,,1=yes|0=no,,11332,,0,1,,,baseline
+pgml,N terminal pro-brain natriuretic peptide level,int,pg/ml,1=yes|0=no,,11332,,0,1,,,baseline
+NTBNP_raw,N terminal pro-brain natriuretic peptide level,int,,,,11332,,2,100000,,,baseline
+NTBNP,N terminal pro-brain natriuretic peptide level,int,,,,11332,,2,234452.4,,,baseline
+BNP,Natriuretic peptide.B prohormone N-Terminal in Serum or Plasma,str,,,,11332,,,,,,baseline
+VitamineD,Vitamin D,str,,,,11332,,,,,,baseline
+Ischemiedetectie_Nvt,ischemia detection: not applicable,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Ischemiedetectie_Ergometrie,An exercise stress test was performed for ischemia detection,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Ischemiedetectie_Myocardscintigrafie,myocardial perfusion scintigraphy:ischemia detection,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Ischemiedetectie_CTcoronairen,CT coronary angiography for ischemia detection,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Ischemiedetectie_CAG,Coronary Angiography for ischemia detection,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Ischemiedetectie_mristressecho,Magnetic resoce imaging (MRI) for ischemia detection,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Ischemisch,ischemia,int,,1=yes|0=no,,11332,,0,1,,,baseline
+Ischemisch_CMP,Ischemic cardiomyopathy,int,,1=yes|0=no,,11332,,0,1,,,baseline
+Non_ischemisch_CMP,Cardiomyopathy,int,,1=yes|0=no,,11332,,0,1,,,baseline
+OorzaakHF_onbekend,is reason of heart failure known?,str,,ja=yes|nee=no,,11332,,,,,,baseline
+OorzaakHF_Ischemischinfarct,is heart failure related to ischemic infarct?,str,,ja=yes|nee=no,,11332,,,,,,baseline
+OorzaakHF_IschemischCMP,is heart failure related to cardiomyopathy?,str,,ja=yes|nee=no,,11332,,,,,,baseline
+OorzaakHFischemisch,is heart failure related to ischemic conditions?,int,,1=yes|0=no,,11332,,0,1,,,baseline
+OorzaakHF_NonIschemischCMP,is heart failure related to non cardiomyopathy?,str,,ja=yes|nee=no,,11332,,,,,,baseline
+OorzaakHF_HypertensieCMP,is heart failure related to Hypertensive Cardiomyopathy (CMP)?,str,,ja=yes|nee=no,,11332,,,,,,baseline
+OorzaakHF_OverigeCMP,is heart failure related to other Cardiomyopathy (CMP)?,str,,ja=yes|nee=no,,11332,,,,,,baseline
+OorzaakHF_Kleplijden,is heart failure related to valvular heart disease?,str,,ja=yes|nee=no,,11332,,,,,,baseline
+OorzaakHF_Boezemfibrillerenflutter,Is heart failure related to Atrial Fibrillation or Atrial Flutter?,str,,ja=yes|nee=no,,11332,,,,,,baseline
+OorzaakHF_Overigeritmestoornissen,Is heart failure is attributed to arrhythmias,str,,ja=yes|nee=no,,11332,,,,,,baseline
+OorzaakHF_ImpulsGeleiding,Is heart failure is associated with or by impulse conduction disorder- pacemaker is giving worse heart function?,str,,ja=yes|nee=no,,11332,,,,,,baseline
+OorzaakHF_Overig,heart failure cause not specified,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Comorbiditeit_Nvt,are there no applicable commodities or additional conditions present?,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Comorbiditeit_Anemie,Anemia,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Comorbiditeit_HT,hypertension,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Comorbiditeit_DM1,Diabetes Mellitus Type 1 (DM1),str,,ja=yes|nee=no,,11332,,,,,,baseline
+Comorbiditeit_DM2,Diabetes Mellitus Type 2 (DM2),str,,ja=yes|nee=no,,11332,,,,,,baseline
+Comorbiditeit_COPD,Chronic Obstructive Pulmonary Disease (COPD) finding status,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Comorbiditeit_OSAS,Obstructive Sleep Apnea Syndrome,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Comorbiditeit_Hypercholesterolemie,hypercholesterolemia as a comorbid condition,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Comorbiditeit_Nierfalen,kidney failure (renal failure),str,,ja=yes|nee=no,,11332,,,,,,baseline
+Nierfalen_eGFR,Glomerular filtration rate testing,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Comorbiditeit_Vaatlijden,perpherial artiary disease,str,,ja=yes|nee=no,,11332,,,,,,baseline
+interventie_Geen,Surgical/procedural intervention performed,str,,ja=yes|nee=no,,11332,,,,,,baseline
+interventie_PCI,Percutaneous Coronary Intervention performed,str,,ja=yes|nee=no,,11332,,,,,,baseline
+interventie_Klepok,Surgical intervention indicated,str,,ja=yes|nee=no,,11332,,,,,,baseline
+interventie_CABG,Coronary Artery Bypass Grafting (CABG) performed,str,,ja=yes|nee=no,,11332,,,,,,baseline
+interventie_Ander,surgical/procedure Intervention performed,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Hartrevalidatie_Nvt,cardiac rehabilitation not applicable,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Hartrevalidatie_Continueondersteuningthuis,continuous home support is part of rehabilitation program,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Hartrevalidatie_Ergotherapie,Seen by dietitian in cardiac rehabilitation,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Hartrevalidatie_Fysiotherapie,Seen by occupational therapy service as part of the cardiac rehabilitation program,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Hartrevalidatie_Psychologie,Seen by physiotherapy as part of cardiac rehabilitation program,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Ritme_AF,Atrial Fibrillation finding status,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Events_Op,Admitted in hospital,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Events_Herop,Patient Readmission,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Events_Overleden,Patient status determination| deceased/dead,str,,ja=yes|nee=no,,11332,,,,,,baseline
+Jaar_DatumeersteHFpolibezoek,baseline visit to Heart Failure Clinic,DATETIME,dd/mm/yyyy,,,11332,,,,,,baseline
+Jaar_DatumHF,Diagnosis confirmed for heart failure,DATETIME,dd/mm/yyyy,,,11332,,,,,,baseline
+Jaar_DatumEvents,Date of enrollment in heart failure registry,DATETIME,dd/mm/yyyy,,,11332,,,,,,baseline
+DiureticumYN,Diuretics:Medication administered,str,,ja=yes|nee=no,,11332,,,,,,baseline
+StatineYN,statins therapy:Medication administered,str,,ja=yes|nee=no,,11332,,,,,,baseline
+ACEYN,Angiotensin-converting enzyme inhibitor:Medication administered,str,,ja=yes|nee=no,,11332,,,,,,baseline
+ARBYN,Angiotensin II Receptor inhibitor:Medication administered,str,,ja=yes|nee=no,,11332,,,,,,baseline
+BetablockerYN,Beta blocking agent:Medication administered,str,,ja=yes|nee=no,,11332,,,,,,baseline
+ACEorARBYN,"ACE and ATR2, Medication administered",str,,ja=yes|nee=no,,11332,,,,,,baseline
+ACEenARBYN,"ACE or ATR2, Medication administered",str,,ja=yes|nee=no,,11332,,,,,,baseline
+CHECKHF1ekeer,Initial assessment for heart failure,str,,ja=yes|nee=no,,11332,,,,,,baseline
+CHECKHF2ekeer,Follow-up cardiac assessment,str,,ja=yes|nee=no,,11332,,,,,,baseline
+AFYN,Atrial Fibrillation finding status,str,,ja=yes|nee=no,,11332,,,,,,baseline
+MRAYN,Mineralocorticoid Receptor Antagonist,str,,ja=yes|nee=no,,11332,,,,,,baseline
+IfremmerYN,ivabradina,str,,ja=yes|nee=no,,11332,,,,,,baseline
+DigoxineYN,digoxin,str,,ja=yes|nee=no,,11332,,,,,,baseline
+AmiodaroneYN,Amiodarone,str,,ja=yes|nee=no,,11332,,,,,,baseline
+ARNIYN,Angiotensin Receptor Neprilysin Inhibitor medication,str,,ja=yes|nee=no,,11332,,,,,,baseline
+RenineremmerYN,Renin-inhibitors:Medication administered,str,,,,11332,,,,,,baseline
+filter_$,Heart failure confirmed,str,,,,11332,,,,,,baseline
+interventies,total medical interventions performed,int,,1=only once|0=No|2=two interventions| 3=three interventions|4=four interventions,,11332,,0,4,,,baseline
+HFmrEF_obv_beginEF,Patient has Heart Failure with mid range ejection fractionn (HFmrEF): baseline time,str,,HFpEF=Heart Failure with preserved Ejection Fraction| HFrEF=Heart Failure with reduced Ejection Fraction| HfmrEF=Heart Failure with mid range Ejection Fraction,,11332,,,,,,baseline
+HFmrEF_obv_EFNu,Assessment of Heart Failure with mid range Ejection Fraction (HfmrEF),str,,HFpEF=Heart failure with preserved ejection fraction| HFrEF=Heart failure with reduced ejection fraction| HfmrEF=Heart failure with mig range ejection fraction,,11332,,,,,,baseline
+HFpEF_BMI,Body Mass Index (BMI) for patients diagnosed with Heart Failure with preserved Ejection Fraction (HFpEF) is determined,str,,BMI 25-30=overweight| BMI>30=obesity| BMI<25=normal or underweight,,11332,,,,,,baseline
+HFpEF_SRvsHFpEF_AF,Atrial flutter diagnosis,str,,HFpEF + SR=patient with HFpEF who also has sinus rythm| HFpEF + AF=patient with HFpEF who also has Atrial Fibrillation| 2=both,,11332,,,,,,baseline
+timeevent,time of event,int,,,,11332,,,,,,baseline
+Ifremmer,ivabradina:Medication administered,str,,nvt=not applicable|ivabradina=ivabradina| gestopt ivm bijw=Stopped due to side effects|contraindicatie=contraindicated,,,,,,,,baseline
+DoseringIfremmer,ivabradina: dosage,str,mg (miligram),,,,,,,,,baseline
+DosisIfremmer,ivabradina: daily dosage (no unit),float,,,,,,,,,,baseline
+DosisfrequentieIfremmer,Ivabradina: dosing frequency,int,,1=once a day|2=twice a day,,,,,,,,baseline
+DagdosisIfremmer,ivabradina total daily dose,float,mg (miligram),,,,,,,,,baseline

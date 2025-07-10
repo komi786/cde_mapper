@@ -1,6 +1,6 @@
 from typing import Optional, List, Any, Dict
 from pydantic import BaseModel, Field, validator
-
+from pydantic import root_validator
 
 class QueryDecomposedModel(BaseModel):
     id: str = Field(default=None, description="Unique identifier for the query.")
@@ -18,6 +18,9 @@ class QueryDecomposedModel(BaseModel):
     )
     formula: Optional[str] = Field(
         default=None, description="Formula associated with the entity, if applicable."
+    )
+    visit: Optional[str] = Field(
+        default=None, description="Visit information if applicable (e.g., baseline time)."
     )
     additional_entities: Optional[List[str]] = Field(
         default=None, description="Additional entities if applicable."
@@ -101,10 +104,10 @@ def sanitize_keys(input_dict):
 
 
 class RetrieverResultsModel(BaseModel):
-    standard_label: Optional[str] = None
+    label: Optional[str] = None
     domain: Optional[str] = None
-    standard_code: Optional[str] = None
-    standard_omop_id: Optional[str] = None
+    code: Optional[str] = None
+    omop_id: Optional[str] = None
     vocab: Optional[str] = None
     score: Optional[float] = None  # In case there's a score for relevance
 
@@ -119,18 +122,19 @@ class ProcessedResultsModel(BaseModel):
     original_query: str
     base_entity: str
     domain: Optional[str]
-    base_entity_matches: Optional[List[RetrieverResultsModel]] = []
+    base_entity_matches: Optional[List[RetrieverResultsModel]] = Field(default_factory=list)
+
     categories: Optional[List[str]] = None
-    categories_matches: Optional[
-        Dict[str, List["RetrieverResultsModel"]]
-    ] = {}  # Accepting dict
+    categories_matches: Optional[Dict[str, List[RetrieverResultsModel]]] = Field(default_factory=dict)
+  # Accepting dict
     unit: Optional[str] = None
     unit_matches: Optional[Any] = None
-    additional_entities: Optional[List[str]] = []
-    additional_entities_matches: Optional[
-        Dict[str, List[RetrieverResultsModel]]
-    ] = {}  # Accepting dict
+    additional_entities: Optional[List[str]] = Field(default_factory=list)
+    additional_entities_matches: Optional[Dict[str, List[RetrieverResultsModel]]] = Field(default_factory=dict)
+  # Accepting dict
     primary_to_secondary_rel: Optional[str] = None
+    visit: Optional[str] = None
+    visit_matches: Optional[List[RetrieverResultsModel]] = Field(default_factory=list)
 
     # primary_to_secondary_rel: Optional[List] = []
 
@@ -141,6 +145,19 @@ class ProcessedResultsModel(BaseModel):
     #         return value
     #     return []
     # validator for additional entities
+    
+    # @root_validator(pre=True)
+    # def remove_duplicate_base_from_additional(cls, values):
+    #     base_entity = values.get("base_entity", "").strip().lower()
+    #     additional_entities = values.get("additional_entities")
+
+    #     if additional_entities and isinstance(additional_entities, list):
+    #         cleaned = [
+    #             ent for ent in additional_entities
+    #             if isinstance(ent, str) and ent.strip().lower() != base_entity
+    #         ]
+    #         values["additional_entities"] = cleaned if cleaned else None
+    #     return values
     @validator("additional_entities", pre=True, always=True)
     def parse_additional_entities(cls, value):
         if value and isinstance(value, list):
@@ -166,24 +183,24 @@ class ProcessedResultsModel(BaseModel):
 
     #    f len(base_entity_matches) > 0 and base_entity == str(base_entity_matches[0].standard_label): than remove additional entities and its matches\
 
-    @validator("additional_entities", pre=True, always=True)
-    def validate_additional_entities(cls, value, values):
-        base_entity_matches = values.get("base_entity_matches", [])
-        full_query = values.get("full_query", "")
-        # Check if any of the base_entity_matches have a standard_label matching full_query
+    # @validator("additional_entities", pre=True, always=True)
+    # def validate_additional_entities(cls, value, values):
+    #     base_entity_matches = values.get("base_entity_matches", [])
+    #     full_query = values.get("full_query", "")
+    #     # Check if any of the base_entity_matches have a standard_label matching full_query
 
-        for match in base_entity_matches:
-            if match.standard_label.lower() == full_query.lower():
-                # If there's an exact match, set additional_entities to None
-                return None
+    #     for match in base_entity_matches:
+    #         if match.standard_label.lower() == full_query.lower():
+    #             # If there's an exact match, set additional_entities to None
+    #             return None
 
-        return value  # Return the original value if no match is found
+    #     return value  # Return the original value if no match is found
 
-    @validator("additional_entities_matches", pre=True, always=True)
-    # if additional entities is None, then additional_entities_matches should be None
+    # @validator("additional_entities_matches", pre=True, always=True)
+    # # if additional entities is None, then additional_entities_matches should be None
 
-    def validate_additional_entities_matches(cls, value, values):
-        additional_entities = values.get("additional_entities", [])
-        if not additional_entities:
-            return None
-        return value
+    # def validate_additional_entities_matches(cls, value, values):
+    #     additional_entities = values.get("additional_entities", [])
+    #     if not additional_entities:
+    #         return None
+    #     return value

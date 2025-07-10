@@ -37,6 +37,7 @@ class AthenaFilters(BaseModel):
             "Gender",
             "Race",
             "Ethnicity",
+            "CDISC",
         ],
     )
     page: int = Field(
@@ -84,15 +85,14 @@ class AthenaFilters(BaseModel):
     def validate_vocabulary(self, item: str) -> str:
         valid_vocabularies = [
             "SNOMED",
-            "MeSH",
             "UCUM",
             "OMOP Extension",
             "LOINC",
             "ATC",
             "RxNorm",
-            "Gender",
             "Race",
             "Ethnicity",
+            "CDISC",
         ]
         if item not in valid_vocabularies:
             raise ValueError(

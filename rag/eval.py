@@ -161,14 +161,14 @@ def evaluate_with_multiple_mappings(
     #         "Domain": result_object.domain,
     #         "Variable Concept Label": main_term_labels,
     #         "Variable Concept Code": main_term_codes,
-    #         "Variable Concept OMOP ID": main_term_omop_id,
+    #         "Variable OMOP ID": main_term_omop_id,
     #         "Additional Context Concept Label": additional_entities_labels,
     #         "Additional Context Concept Code": additional_entities_codes,
     #         "Additional Context OMOP ID": additional_entities_omop_ids,
     #         "Primary to Secondary Context Relationship": result_object.primary_to_secondary_rel,
     #         "Categorical Values Concept Label": categorical_values_labels,
     #         "Categorical Values Concept Code": categorical_values_codes,
-    #         "Categorical Values Concept OMOP ID": categorical_values_omop_ids,
+    #         "Categorical Values OMOP ID": categorical_values_omop_ids,
     #         "Unit Concept Label": result_object.unit_matches[0].standard_label
     for k in k_values:
         correct_predictions = 0
@@ -201,7 +201,7 @@ def evaluate_with_multiple_mappings(
             # print(f"values_codes={values_codes}")
 
             # Handle standard_concept_id
-            standard_concept_id = result.get("Variable Concept OMOP ID", "")
+            standard_concept_id = result.get("Variable OMOP ID", "")
             if "|" in standard_concept_id:
                 retrieved_codes = standard_concept_id.split("|")
             else:

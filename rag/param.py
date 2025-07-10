@@ -1,5 +1,6 @@
 
 import os
+from datetime import datetime
 CLASS = 'omop_v5.4' #class
 os.environ['HF_HOME'] = 'resources/models'
 CUDA_NUM = 0 # used GPU num
@@ -23,7 +24,7 @@ LLAMA_CACHE_DIR = 'resources/models/llama'
 DATA_DIR="data"
 RETRIEVER = 'dense+sparse'
 MODEL_NAME = 'llama3.1'   #'gpt-4o-mini'
-# MAPPING_CACHE_FILE = '/Users/komalgilani/Desktop/cde_mapper/data/output/mapping.csv'
+# MAPPING_CACHE_FILE = 'data/output/mapping.csv'
 # MAPPING_CACHE_FILE = f"../data/output/mapping_{MODEL_NAME}.csv"
 # DB_PATH = '/workspace/rag_pipeline/db/llama_mapping_bm25.csv'
 TOPK = 10
@@ -33,9 +34,9 @@ DOCUMENT_PATH = f"{DATA_DIR}/output/bm25docs.pkl"
 GRAPH_DATA = f"{DATA_DIR}/input/omop_v5.4/omop_bi_graph.pkl"
 INPUT_DATA_PATH = f"{DATA_DIR}/input/omop_v5.4/concepts.csv"
 OUTPUT_DATA_PATH = f"{DATA_DIR}/output/sapbert_emb_docs_json.jsonl"
-# concepts.jsonl,/Users/komalgilani/Desktop/cde_mapper/data/output/sapbert_emb_docs_json.jsonl
+# concepts.jsonl,data/output/sapbert_emb_docs_json.jsonl
 DES_DICT_PATH = None #description data path
-LOG_FILE = "resources/logs/log.txt"
+LOG_FILE = f"resources/logs/log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
 DES_LIMIT_LENGTH = 256
 MAPPING_FILE = f"{DATA_DIR}/input/mapping_templates.json"
 SELECTOR_PATH = "data/output/selector_.pkl"

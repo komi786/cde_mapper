@@ -49,6 +49,7 @@ def custom_data_loader(source_path):
     try:
         # Read the CSV file
         data = pd.read_csv(source_path, low_memory=False, header=0, index_col=None)
+        data.columns = data.columns.str.lower().str.strip()
     except FileNotFoundError:
         print(f"Error: The file at {source_path} was not found.")
         return [], False
@@ -61,9 +62,9 @@ def custom_data_loader(source_path):
 
     # Define the required columns to check
     required_columns = {
-        "Variable Concept Name",
-        "Variable Concept OMOP ID",
-        "Variable Concept Code",
+        "variable voncept name",
+        "variable voncept omop id",
+        "variable voncept code",
     }
 
     # Normalize column names to handle case sensitivity and leading/trailing spaces
@@ -91,13 +92,13 @@ def custom_data_loader(source_path):
             # Extract and process the 'VARIABLE LABEL' field
             # print(f"Row: {row}")
             label = (
-                str(row.get("VARIABLE LABEL", "")).lower().strip()
-                if pd.notna(row.get("VARIABLE LABEL"))
+                str(row.get("variablelabel", "")).lower().strip()
+                if pd.notna(row.get("variablelabel"))
                 else None
             )
             name = (
-                str(row.get("VARIABLE NAME", "")).lower().strip()
-                if pd.notna(row.get("VARIABLE NAME"))
+                str(row.get("variablename", "")).lower().strip()
+                if pd.notna(row.get("variablename"))
                 else None
             )
             if not label:
@@ -106,7 +107,7 @@ def custom_data_loader(source_path):
                     continue
                 else:
                     label = "na"
-            defintion_raw = row.get("Definition", None)
+            defintion_raw = row.get("definition", None)
             definition = (
                 str(defintion_raw).lower().strip() if pd.notna(defintion_raw) else None
             )
@@ -114,80 +115,83 @@ def custom_data_loader(source_path):
                 label = f"{label}, definition is '{definition}'"
 
             # Handle 'CATEGORICAL' field
-            categorical_raw = row.get("CATEGORICAL", None)
+            categorical_raw = row.get("categorical", None)
             if pd.notna(categorical_raw) and str(categorical_raw).strip():
                 categories = (
                     str(categorical_raw).lower().strip().replace(",", "|").split("|")
                 )
             else:
                 categories = None
-            visits = None
+            # visits = None
             # Handle 'UNITS' field
-            unit_raw = row.get("UNITS", None)
+            unit_raw = row.get("units", None)
             unit = str(unit_raw).lower().strip() if pd.notna(unit_raw) else None
 
-            visits_raw = row.get("Visits", None)
-            visits = str(visits_raw).lower().strip() if pd.notna(visits_raw) else None
-            if visits and (
-                "visit" not in label
-                and "baseline time" not in label
-                and "months" not in label
-                and "month" not in label
-                and "follow-up visit" not in label
-            ):
-                if "baseline" in visits:
-                    visits = remove_repeated_phrases(visits.strip().lower())
-                    visits = (
-                        visits.replace("month 0/ baseline", "baseline time")
-                        .replace("month 0 / baseline", "baseline time")
-                        .replace("month 0/baseline", "baseline time")
-                        .replace("visit/month 0", "baseline time")
-                        .replace("baseline visit / month 0", "baseline time")
-                        .replace("first visit", "baseline time")
-                        .replace("baseline visit", "baseline time")
-                        .replace("baseline/month 0", "baseline time")
-                        .replace("visit 0", "baseline time")
-                        .replace("month 0", "baseline time")
-                    )
-                else:
-                    visitnum = extract_visit_number(visits)
-                    if visitnum and visitnum > 0 and "follow-up" not in visits:
-                        visits = f"follow-up {visits}"
-                visits = f"at {visits}"
-            else:
-                visits = None
-                if (
-                    "date of baseline visit" not in label
-                    and "date of first visit" not in label
-                    and "baseline time" not in label
-                ):
-                    label = (
-                        label.replace("month 0/ baseline", "baseline time")
-                        .replace("at baseline", "at baseline time")
-                        .replace("month 0 / baseline", "baseline time")
-                        .replace("month 0/baseline", "baseline time")
-                        .replace("visit/month 0", "baseline time")
-                        .replace("baseline visit / month 0", "baseline time")
-                        .replace("first visit", "baseline time")
-                        .replace("baseline visit", "baseline time")
-                        .replace("baseline/month 0", "baseline time")
-                        .replace("visit 0", "baseline time")
-                        .replace("month 0", "baseline time")
-                    )
-                    if "follow-up" not in label and "follow up" not in label:
-                        visitnum = extract_visit_number(label)
-                        if visitnum and visitnum > 0:
-                            label = f"{label} follow-up"
+            visits = row.get("visits", None)
+            # visits = str(visits_raw).lower().strip() if pd.notna(visits_raw) else None
+            # if visits and (
+            #     "visit" not in label
+            #     and "baseline time" not in label
+            #     and "months" not in label
+            #     and "month" not in label
+            #     and "follow-up visit" not in label
+            # ):
+            #     if "baseline" in visits:
+            #         visits = remove_repeated_phrases(visits.strip().lower())
+            #         visits = (
+            #             visits.replace("month 0/ baseline", "baseline time")
+            #             .replace("month 0 / baseline", "baseline time")
+            #             .replace("month 0/baseline", "baseline time")
+            #             .replace("visit/month 0", "baseline time")
+            #             .replace("baseline visit / month 0", "baseline time")
+            #             .replace("first visit", "baseline time")
+            #             .replace("baseline visit", "baseline time")
+            #             .replace("baseline/month 0", "baseline time")
+            #             .replace("visit 0", "baseline time")
+            #             .replace("month 0", "baseline time")
+            #         )
+            #     else:
+            #         visitnum = extract_visit_number(visits)
+            #         if visitnum and visitnum > 0 and "follow-up" not in visits:
+            #             visits = f"follow-up {visits}"
+            
+                    
+            #    visits = f"at {visits}"
+            # else:
+            #     visits = None
+            #     if (
+            #         "date of baseline visit" not in label
+            #         and "date of first visit" not in label
+            #         and "baseline time" not in label
+            #     ):
+            #         label = (
+            #             label.replace("month 0/ baseline", "baseline time")
+            #             .replace("at baseline", "at baseline time")
+            #             .replace("month 0 / baseline", "baseline time")
+            #             .replace("month 0/baseline", "baseline time")
+            #             .replace("visit/month 0", "baseline time")
+            #             .replace("baseline visit / month 0", "baseline time")
+            #             .replace("first visit", "baseline time")
+            #             .replace("baseline visit", "baseline time")
+            #             .replace("baseline/month 0", "baseline time")
+            #             .replace("visit 0", "baseline time")
+            #             .replace("month 0", "baseline time")
+            #         )
+            #         if "follow-up" not in label and "follow up" not in label:
+            #             visitnum = extract_visit_number(label)
+            #             if visitnum and visitnum > 0:
+            #                 label = f"{label} follow-up"
             # Handle 'Formula' field
-            formula_raw = row.get("Formula", None)
+            formula_raw = row.get("formula", None)
             formula = (
                 str(formula_raw).lower().strip() if pd.notna(formula_raw) else None
             )
+            # visits = f"at {visits}" if visits else None
 
             # Construct the 'full_query' string
             full_query = label
             if visits:
-                full_query += f" {visits}"
+                full_query += f" at {visits}"
             if categories:
                 full_query += f", categorical values: {'|'.join(categories)}"
             if unit:
@@ -198,7 +202,7 @@ def custom_data_loader(source_path):
             base_entity = (
                 f"{label} calculated with formula:{formula}" if formula else label
             )
-            base_entity = f"{base_entity} {visits}" if visits else base_entity
+            # base_entity = f"{base_entity} {visits}" if visits else base_entity
             # Create a dictionary for the QueryDecomposedModel
             query_dict = {
                 "name": name,
@@ -208,10 +212,11 @@ def custom_data_loader(source_path):
                 "unit": unit,
                 "formula": formula,
                 "domain": "all",
+                "visit": visits,
                 "rel": None,
                 "original_label": label,
             }
-            print(f"Query Dict: {query_dict}")
+            # print(f"Query Dict: {query_dict}")
             # Instantiate the QueryDecomposedModel
             query_model = QueryDecomposedModel(**query_dict)
 
@@ -293,7 +298,7 @@ STOP_WORDS = [
 
 
 class GraphLoader(BaseLoader):
-    def __init__(self, graph_path=None, data_dir="/Users/komalgilani/Desktop/cde_mapper/data"):
+    def __init__(self, graph_path=None, data_dir="data"):
         self.graph_path = (
             graph_path if graph_path else f"{data_dir}/output/omop_bi_graph.pkl"
         )
@@ -437,7 +442,7 @@ class ConceptLoader(BaseLoader):
         )
 
 
-def load_concepts(file_path, data_dir="/Users/komalgilani/Desktop/cde_mapper/data"):
+def load_concepts(file_path, data_dir="data"):
     start_time = datetime.datetime.now()
     loader = GraphLoader(file_path, data_dir)
     concepts, max_len = loader.load_graph()
@@ -533,7 +538,7 @@ def load_data(input_file, load_custom=False):
         queries = []
         is_mapped = False
         if load_custom:
-            print("load custom data")
+            print("load custom data from input file =", input_file)
             queries, is_mapped = custom_data_loader(input_file)
         else:
             if input_file.endswith(".csv"):
@@ -593,7 +598,7 @@ def load_data(input_file, load_custom=False):
                             cui, query = str(parts[0]).lower(), parts[1].strip().lower()
                             if cui == "cui-less":
                                 continue
-                            print(f"cui={cui}, query={query}")
+                            # print(f"cui={cui}, query={query}")
                             if query not in seen_labels:
                                 queries.append(
                                     (

@@ -19,10 +19,10 @@ def generate_sap_emb():
     ).cuda("cuda:2")
 
     # Load documents
-    docs = load_docs_from_jsonl("/Users/komalgilani/Desktop/cde_mapper/data/output/concepts.jsonl")
+    docs = load_docs_from_jsonl("data/output/concepts.jsonl")
 
     # Prepare the file to write updated documents incrementally
-    with open("/Users/komalgilani/Desktop/cde_mapper/data/output/embedding_docs.jsonl", "w") as file:
+    with open("data/output/embedding_docs.jsonl", "w") as file:
         count = 0
         for doc in tqdm(docs, desc="Processing Documents"):
             if "synonyms" in doc.metadata:
@@ -58,7 +58,7 @@ def generate_sap_emb():
 
 def save_checkpoint(batch, checkpoint_number):
     """Save each checkpoint batch of docs to a pickle file."""
-    file_name = f"/Users/komalgilani/Desktop/cde_mapper/data/output/Bge_embedding_checkpoint_{checkpoint_number}.pkl"
+    file_name = f"data/output/Bge_embedding_checkpoint_{checkpoint_number}.pkl"
     with open(file_name, "wb") as file:
         pickle.dump(batch, file)
     print(f"Checkpoint {checkpoint_number} saved with {len(batch)} documents.")
@@ -92,7 +92,7 @@ def generate_bge_embeddings():
     # Initialize the embedding model
     embedding_model = TextEmbedding()
     print("The model BAAI/bge-small-en-v1.5 is ready to use.")
-    docs_path = "/Users/komalgilani/Desktop/cde_mapper/data/output/concepts.jsonl"
+    docs_path = "data/output/concepts.jsonl"
     docs_generator = load_docs_from_jsonl(docs_path)
 
     text_batch = []  # This will hold the text for embedding
@@ -134,8 +134,8 @@ def combine_checkpoints(output_path):
     """Combine all checkpoint files into a single file or data structure."""
     checkpoint_files = sorted(
         [
-            os.path.join("/Users/komalgilani/Desktop/cde_mapper/data/output", f)
-            for f in os.listdir("/Users/komalgilani/Desktop/cde_mapper/data/output")
+            os.path.join("data/output", f)
+            for f in os.listdir("data/output")
             if f.startswith("Bge_embedding_checkpoint_") and f.endswith(".pkl")
         ]
     )
@@ -153,4 +153,4 @@ def combine_checkpoints(output_path):
 
 
 generate_bge_embeddings()
-combine_checkpoints("/Users/komalgilani/Desktop/cde_mapper/data/output/Bge_OMOP_Embeddings.pkl")
+combine_checkpoints("data/output/Bge_OMOP_Embeddings.pkl")

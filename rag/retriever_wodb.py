@@ -110,7 +110,7 @@ def full_query_processing(
     datamanager: DataManager = None,
 ):
     try:
-        logger.info(f"Processing query: {query_text}")
+        # logger.info(f"Processing query: {query_text}")
         # normalized_query_text = rule_base_decomposition(query_text)
         # processes_results = []
         # if not is_omop_data:
@@ -332,7 +332,7 @@ def temp_process_query_details_db(
                     else {},
                 )
             )
-            logger.info(f"Mapping result: {mapping_result}")
+            logger.info(f"Mapping result temp process query detail db: {mapping_result}")
             return mapping_result
     except Exception as e:
         logger.error(f"Error full processing query: {e}", exc_info=True)
@@ -353,7 +353,7 @@ def temp_process_query_details(
             original_query_obj.rel = llm_query_obj.rel
             original_query_obj.unit = llm_query_obj.unit
             original_query_obj.categories = llm_query_obj.categories
-            logger.info(f"original query obj={original_query_obj}")
+            # logger.info(f"original query obj={original_query_obj}")
             (
                 variable_label_matches,
                 additional_entities_matches,
@@ -472,7 +472,7 @@ def temp_process_query_details(
                     else {},
                 )
             )
-            logger.info(f"Mapping result: {mapping_result}")
+            logger.info(f"Mapping result temp process query details: {mapping_result}")
             return mapping_result
     except Exception as e:
         logger.error(f"Error full processing query: {e}", exc_info=True)
@@ -588,9 +588,9 @@ def process_values_db(
         elif values_type == "categories":
             all_values[q_value] = [
                 RetrieverResultsModel(
-                    standard_label="na",
-                    standard_code=None,
-                    standard_omop_id=None,
+                    label="na",
+                    code=None,
+                    omop_id=None,
                     vocab=None,
                 )
             ]
@@ -619,7 +619,7 @@ def process_values(
             if categorical_value_results := retriever_docs(
                 q_value, retriever, domain=domain, is_omop_data=is_omop_data, topk=topk
             ):
-                pretty_print_docs(categorical_value_results)
+                # pretty_print_docs(categorical_value_results)
                 if matched_docs := exact_match_found(
                     query_text=q_value,
                     documents=categorical_value_results,
@@ -645,9 +645,9 @@ def process_values(
         elif values_type == "categories":
             all_values[q_value] = [
                 RetrieverResultsModel(
-                    standard_label="na",
-                    standard_code=None,
-                    standard_omop_id=None,
+                    label="na",
+                    code=None,
+                    omop_id=None,
                     vocab=None,
                 )
             ]
@@ -685,9 +685,9 @@ def process_unit_db(
             else:
                 unit_results = [
                     RetrieverResultsModel(
-                        standard_label="na",
-                        standard_code=None,
-                        standard_omop_id=None,
+                        label="na",
+                        code=None,
+                        omop_id=None,
                         vocab=None,
                     )
                 ]
@@ -715,9 +715,9 @@ def process_unit(
             else:
                 unit_results = [
                     RetrieverResultsModel(
-                        standard_label="na",
-                        standard_code=None,
-                        standard_omop_id=None,
+                        label="na",
+                        code=None,
+                        omop_id=None,
                         vocab=None,
                     )
                 ]
@@ -869,6 +869,9 @@ def filter_results(query, results):
 
     # Combine prioritized and non-prioritized lists while preserving their original order
     combined_results = prioritized + non_prioritized
-    print("unique docs")
-    pretty_print_docs(combined_results)
+    # print("unique docs")
+# The above code is calling a function `pretty_print_docs` with the argument `combined_results`. The
+# function `pretty_print_docs` is likely designed to format and display documentation or information
+# in a visually appealing way.
+    # pretty_print_docs(combined_results)
     return combined_results

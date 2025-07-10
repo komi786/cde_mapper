@@ -58,14 +58,14 @@ data = [
         "Domain",
         "var",
         "Variable Concept Code",
-        "Variable Concept OMOP ID",
+        "Variable OMOP ID",
         "Additional Context Concept Label",
         "Additional Context Concept Code",
         "Additional Context OMOP ID",
         "Primary to Secondary Context Relationship",
         "Categorical Values Concept Label",
         "Categorical Values Concept Code",
-        "Categorical Values Concept OMOP ID",
+        "Categorical Values OMOP ID",
         "Unit Concept Label",
         "Unit Concept Code",
         "Unit OMOP ID",
@@ -811,7 +811,7 @@ data = [
 ]
 
 # Write the data to a CSV file
-# csv_filename = "/Users/komalgilani/Desktop/cde_mapper/data/eval_datasets/mapped_cohorts/GISSI-HF/custom_codes.csv"
+# csv_filename = "data/eval_datasets/mapped_cohorts/GISSI-HF/custom_codes.csv"
 # with open(csv_filename, "w", newline="") as csvfile:
 #     csvwriter = csv.writer(csvfile, delimiter=",")
 #     csvwriter.writerows(data)

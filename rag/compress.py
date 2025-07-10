@@ -41,7 +41,7 @@ class CustomCompressionRetriever(ContextualCompressionRetriever):
             print(
                 f"doc labels before compression: {[doc.metadata['label'] for doc in docs]}"
             )
-            print(f"Exact match found: {len(exact_matches)} for {query}")
+            print(f"Exact match found in get relevent document: {len(exact_matches)} for {query}")
             exact_matches += docs
             return exact_matches
 
@@ -87,7 +87,7 @@ class CustomCompressionRetriever(ContextualCompressionRetriever):
 
         # If exact matches are found, return them without compression
         if exact_matches:
-            print(f"Exact match found: {len(exact_matches)} documents")
+            print(f"Exact match found in Async get relevent document: {len(exact_matches)} documents")
             return exact_matches
 
         # Otherwise, proceed with compression
@@ -179,7 +179,7 @@ class CustomMergeRetriever(MergerRetriever):
         merged_documents = []
         max_docs = max(map(len, retriever_docs), default=0)
         seens_documents = set()
-        print(f"max_docs: {max_docs}")
+        # print(f"max_docs: {max_docs}")
         for i in range(max_docs):
             for _, doc in zip(self.retrievers, retriever_docs):
                 if i < len(doc):
