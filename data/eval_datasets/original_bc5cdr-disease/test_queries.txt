@@ -1,0 +1,1247 @@
+c565162|121210||torsade de pointes
+c565162|121210||ventricular tachycardia
+c565162|121210||dilated cardiomyopathy
+c565162|121210||scorpionism
+c565162|121210||scorpionisms
+c565162|121210||scorpion sting
+c565162|121210||sting scorpion
+c565162|121210||stings scorpion
+c565162|121210||congestive heart failure
+c565162|121210||heart failure
+c565162|121210||ventricular arrhythmias
+c565162|121210||qt prolongation
+c565162|121210||arrhythmias
+c565162|121210||hyperammonemic
+c565162|121210||encephalopathy
+c565162|121210||cancer
+c565162|121210||dehydration
+c565162|121210||infection
+c565162|121210||liver disease
+c565162|121210||azotemia
+c565162|121210||bacterial infections
+c565162|121210||hyperammonemia
+c565162|121210||hypoactivity
+c565162|121210||hyperactivity
+c565162|121210||learning impairment
+c565162|121210||memory impairment
+c565162|121210||allodynia
+c565162|121210||hyperalgesia
+c565162|121210||impairment of learning
+c565162|121210||impairment of memory
+c565162|121210||aplastic anemia
+c565162|121210||necrosis
+c565162|121210||liver toxicity
+c565162|121210||rheumatoid arthritis
+c565162|121210||hepatitis
+c565162|121210||hypersensitivity
+c565162|121210||hepatic damage
+c565162|121210||catalepsy
+c565162|121210||left ventricular dysfunction
+c565162|121210||coronary artery disease
+c565162|121210||myocardial ischaemia
+c565162|121210||ischaemia
+c565162|121210||stable angina
+c565162|121210||depression
+c565162|121210||myocardial stunning
+c565162|121210||thrombocytopenia
+c565162|121210||thrombosis
+c565162|121210||thrombotic
+c565162|121210||bleeding
+c565162|121210||osteoporosis
+c565162|121210||eosinophilia
+c565162|121210||skin reactions
+c565162|121210||allergic reactions
+c565162|121210||alopecia
+c565162|121210||hyperkalemia
+c565162|121210||hypoaldosteronism
+c565162|121210||priapism
+c565162|121210||hitt
+c565162|121210||hypercalcemia
+c565162|121210||arrhythmia
+c565162|121210||bipolar
+c565162|121210||bradyarrhythmia
+c565162|121210||hypercalcemias
+c565162|121210||malignancies
+c565162|121210||optic neuropathy
+c565162|121210||ischemic optic neuropathies
+c565162|121210||deterioration of vision
+c565162|121210||optic nerve toxicity
+c565162|121210||acute nephrotoxicity
+c565162|121210||toxoplasmosis
+c565162|121210||oliguria
+c565162|121210||abdominal pain
+c565162|121210||renal failure
+c565162|121210||renal calculi
+c565162|121210||ureteral lithiasis
+c565162|121210||downbeat nystagmus
+c565162|121210||dizziness
+c565162|121210||downbeating nystagmus
+c565162|121210||nephrotoxicity
+c565162|121210||toxicity
+c565162|121210||tubular necrosis
+c565162|121210||ovarian cancers
+c565162|121210||fallopian tube cancers
+c565162|121210||carcinoma of the peritoneum
+c565162|121210||ovarian cancer
+c565162|121210||erythrodysesthesia
+c565162|121210||hand foot syndrome
+c565162|121210||stomatitis
+c565162|121210||peritoneal carcinoma
+c565162|121210||diarrhea
+c565162|121210||myocardial infarction
+c565162|121210||tachycardia
+c565162|121210||dyspnea
+c565162|121210||loss of consciousness
+c565162|121210||maculopapular rash
+c565162|121210||pain
+c565162|121210||allergy
+c565162|121210||bipolar mania
+c565162|121210||bipolar disorder
+c565162|121210||manic
+c565162|121210||mania
+c565162|121210||extrapyramidal symptom
+c565162|121210||epss
+c565162|121210||weight gain
+c565162|121210||somnolence
+c565162|121210||isotretinoin embryopathy
+c565162|121210||taussig bing malformation
+c565162|121210||stress incontinence
+c565162|121210||urinary stress incontinence
+c565162|121210||a significant rise in systolic blood pressure
+c565162|121210||headache
+c565162|121210||chronic heart failure
+c565162|121210||hypotension
+c565162|121210||renal dysfunction
+c565162|121210||diabetes
+c565162|121210||cocaine abuse
+c565162|121210||ethanol abuse
+c565162|121210||abuse of cocaine
+c565162|121210||abuse of ethanol
+c565162|121210||decrease in cardiac output
+c565162|121210||myocardial depression
+c565162|121210||parkinsonism
+c565162|121210||parkinson s disease
+c565162|121210||hyperglycemic
+c565162|121210||hyperglycemia
+c565162|121210||glucosuria
+c565162|121210||irregular heartbeat
+c565162|121210||irregular heart beat
+c565162|121210||bradycardia
+c565162|121210||heart disease
+c565162|121210||abnormal left ventricular filling
+c565162|121210||myocardial disease
+c565162|121210||graves disease
+c565162|121210||vasculitis
+c565162|121210||hyperthyroidism
+c565162|121210||vasculitic disorders
+c565162|121210||fever
+c565162|121210||oral ulcers
+c565162|121210||polyarthralgia
+c565162|121210||chest pain
+c565162|121210||ischemia
+c565162|121210||hypokinesis
+c565162|121210||sinus tachycardia
+c565162|121210||preterm infants disease
+c565162|121210||hemorrhage
+c565162|121210||cysts
+c565162|121210||premature 36 weeks of gestation infants
+c565162|121210||subependymal cyst
+c565162|121210||cyst
+c565162|121210||neuropathy
+c565162|121210||prostate cancer
+c565162|121210||peripheral neuropathy
+c565162|121210||hearing loss
+c565162|121210||ototoxicity
+c565162|121210||fatty liver
+c565162|121210||anxiety
+c565162|121210||pupil dilation
+c565162|121210||pupillary dilation
+c565162|121210||squamous cell carcinoma
+c565162|121210||carcinoma of the cervix
+c565162|121210||cervical carcinoma
+c565162|121210||myelosuppression
+c565162|121210||neutropenia
+c565162|121210||anemia
+c565162|121210||neutropenic
+c565162|121210||nausea
+c565162|121210||emesis
+c565162|121210||fatigue
+c565162|121210||mucositis
+c565162|121210||constipation
+c565162|121210||weight loss
+c565162|121210||antibiomania
+c565162|121210||ocular dyskinesias
+c565162|121210||choreatic dyskinesias
+c565162|121210||dysmenorrhea
+c565162|121210||pelvic pain
+c565162|121210||low back pain
+c565162|121210||pulmonary hypertension
+c565162|121210||hypoxaemia
+c565162|121210||patent ductus arteriosus
+c565162|121210||primary pulmonary hypertension
+c565162|121210||long qt syndrome
+c565162|121210||haemorrhagic
+c565162|121210||cystitis
+c565162|121210||interstitial cystitis
+c565162|121210||gastric cancer
+c565162|121210||advanced gastric cancer
+c565162|121210||toxicities
+c565162|121210||leukopenia
+c565162|121210||vomitus
+c565162|121210||hemolytic uremic syndrome
+c565162|121210||impaired renal function
+c565162|121210||human immunodeficiency virus type 1 infected
+c565162|121210||hematuria
+c565162|121210||impairment of the renal function
+c565162|121210||nephrolithiasis
+c565162|121210||hyponatremia
+c565162|121210||syndrome of inappropriate anti diuretic hormone
+c565162|121210||syndrome of inappropriate secretion of anti diuretic hormone
+c565162|121210||secretion of anti diuretic hormone
+c565162|121210||leukemia
+c565162|121210||lymphoma
+c565162|121210||interstitial nephritis
+c565162|121210||acute interstitial nephritis
+c565162|121210||acute renal failure
+c565162|121210||retinal vein occlusion
+c565162|121210||skin rash
+c565162|121210||arthralgia
+c565162|121210||myocardial necrosis
+c565162|121210||cardiac death
+c565162|121210||coronary disease
+c565162|121210||hypertension
+c565162|121210||seizure
+c565162|121210||decreased the locomotor activity
+c565162|121210||cardiomyopathy
+c565162|121210||mitochondrial dysfunction
+c565162|121210||atrial fibrillation
+c565162|121210||neuroleptic malignant syndrome
+c565162|121210||chronic renal failure
+c565162|121210||central nervous system toxicity
+c565162|121210||grand mal seizures
+c565162|121210||seizures
+c565162|121210||cardiovascular toxicity
+c565162|121210||convulsions
+c565162|121210||hypokalemia
+c565162|121210||hypomagnesemia
+c565162|121210||myotonia congenita
+c565162|121210||myotonic disorders
+c565162|121210||muscle spasm
+c565162|121210||muscle spasms
+c565162|121210||myotonic disease
+c565162|121210||myotonia
+c565162|121210||malignant hyperthermia
+c565162|121210||epilepsy
+c565162|121210||apnea
+c565162|121210||epileptic
+c565162|121210||hyperventilation
+c565162|121210||haematological malignancies
+c565162|121210||drowsiness
+c565162|121210||rash
+c565162|121210||peripheral sensory neuropathy
+c565162|121210||arrhythmic
+c565162|121210||acute liver failure
+c565162|121210||overdose
+c565162|121210||tumor
+c565162|121210||bradykinesia
+c565162|121210||rigidity
+c565162|121210||dyskinesias
+c565162|121210||akinesia
+c565162|121210||tremor
+c565162|121210||drug induced dyskinesias
+c565162|121210||myeloencephalopathy
+c565162|121210||leukaemia
+c565162|121210||sensory and motor dysfunction
+c565162|121210||retinoblastoma
+c565162|121210||abnormal ocular motility
+c565162|121210||rupture
+c565162|121210||fibrosis
+c565162|121210||thalassemia
+c565162|121210||renal insufficiency
+c565162|121210||mastocytosis
+c565162|121210||gustatory hyperhidrosis
+c565162|121210||sweating
+c565162|121210||hyperhidrosis
+c565162|121210||dry mouth
+c565162|121210||sore throat
+c565162|121210||tuberculosis of the lung
+c565162|121210||tuberculosis of lymph node
+c565162|121210||visual impairment
+c565162|121210||diabetes mellitus
+c565162|121210||glaucoma
+c565162|121210||hyperprolactinemia
+c565162|121210||amenorrhea
+c565162|121210||oligomenorrhea
+c565162|121210||psychiatric symptoms
+c565162|121210||galactorrhea
+c565162|121210||convulsive
+c565162|121210||asterixis
+c565162|121210||neurotoxicity
+c565162|121210||glomerular injury
+c565162|121210||nephrosis
+c565162|121210||proteinuria
+c565162|121210||hypertrophy
+c565162|121210||glomerulosclerosis
+c565162|121210||nephrotic
+c565162|121210||neprotic
+c565162|121210||spasm
+c565162|121210||syndrome of inappropriate secretion of antidiuretic hormone
+c565162|121210||multiple myeloma
+c565162|121210||lethargy
+c565162|121210||weakness
+c565162|121210||hypotensive
+c565162|121210||parkinsonian
+c565162|121210||flushing
+c565162|121210||postural hypotension
+c565162|121210||thrombophlebitis
+c565162|121210||pure red cell aplasia
+c565162|121210||toxic dermatitis
+c565162|121210||lymphadenopathy
+c565162|121210||cardiac diseases
+c565162|121210||hemolytic anemia
+c565162|121210||cerebral anoxia
+c565162|121210||visual field defects
+c565162|121210||visual field defect
+c565162|121210||deterioration in visual field
+c565162|121210||hemolysis
+c565162|121210||leprosy
+c565162|121210||dermatitis
+c565162|121210||facial inflammatory dermatoses
+c565162|121210||rosacea
+c565162|121210||perioral dermatitis
+c565162|121210||inflammatory facial dermatoses
+c565162|121210||acne
+c565162|121210||eczema
+c565162|121210||periocular dermatitis
+c565162|121210||atopic dermatitis
+c565162|121210||papular rosacea
+c565162|121210||hypercholesterolemia
+c565162|121210||dyslipidemia
+c565162|121210||myopathy
+c565162|121210||structural deficits in the human brain
+c565162|121210||metabolic abnormalities
+c565162|121210||cognitive impairment
+c565162|121210||abnormalities in the cortex hippocampus white matter and ventricles
+c565162|121210||impaired memory performance
+c565162|121210||gliosis
+c565162|121210||neuronal damage
+c565162|121210||brain injury
+c565162|121210||myocardial injury
+c565162|121210||myocardial damage
+c565162|121210||hepatotoxicity
+c565162|121210||hepatomegaly
+c565162|121210||hepatoma
+c565162|121210||hepatotoxic
+c565162|121210||psychological disturbance
+c565162|121210||chronic hepatitis c
+c565162|121210||aids
+c565162|121210||diabetes insipidus
+c565162|121210||neurogenic diabetes insipidus
+c565162|121210||traumatic brain injury
+c565162|121210||polydipsia
+c565162|121210||nephrogenic diabetes insipidus
+c565162|121210||brain trauma
+c565162|121210||coronary spasm
+c565162|121210||ventricular dysfunction
+c565162|121210||coronary vasospasm
+c565162|121210||mitochondrial injury
+c565162|121210||mitochondrial oxidative damage
+c565162|121210||oral stereotypies
+c565162|121210||tubulointerstitial nephritis
+c565162|121210||schizophrenia
+c565162|121210||schizoaffective disorder
+c565162|121210||insulin sensitivity
+c565162|121210||insulin resistance
+c565162|121210||thoracic hematomyelia
+c565162|121210||depressed
+c565162|121210||hypomania
+c565162|121210||attention deficit hyperactivity disorder
+c565162|121210||psychotic
+c565162|121210||affective disorder
+c565162|121210||swallowing abnormalities
+c565162|121210||dyskinesia
+c565162|121210||gastrointestinal abnormalities
+c565162|121210||dyskinetic
+c565162|121210||dysphagia
+c565162|121210||acute renal insufficiency
+c565162|121210||primary systemic amyloidosis
+c565162|121210||amyloidosis
+c565162|121210||hypoalbuminemia
+c565162|121210||renal injury
+c565162|121210||cerebral ischemia
+c565162|121210||middle cerebral artery occlusion
+c565162|121210||hypertensive
+c565162|121210||ischemic brain injury
+c565162|121210||htn
+c565162|121210||edema
+c565162|121210||ischemic hemisphere
+c565162|121210||vasogenic edema
+c565162|121210||cutaneous reactions
+c565162|121210||erythema
+c565162|121210||urticaria
+c565162|121210||angioedema
+c565162|121210||end stage renal disease
+c565162|121210||nephropathy
+c565162|121210||stroke
+c565162|121210||strokes
+c565162|121210||hemorrhages
+c565162|121210||status epilepticus
+c565162|121210||menopausal symptoms
+c565162|121210||cardiovascular disease
+c565162|121210||dementia
+c565162|121210||venous thromboembolism
+c565162|121210||transient ischaemic attacks
+c565162|121210||breast cancer
+c565162|121210||colorectal cancer
+c565162|121210||endometrial cancer
+c565162|121210||gallbladder disease
+c565162|121210||fractures
+c565162|121210||colon cancer
+c565162|121210||chronic disease
+c565162|121210||drug induced liver injury
+c565162|121210||liver damage
+c565162|121210||cholestatic
+c565162|121210||jaundice
+c565162|121210||fulminant hepatic failure
+c565162|121210||myocardiopathy
+c565162|121210||hyperlipoproteinemias
+c565162|121210||hyperlipidemia
+c565162|121210||atherosclerotic vascular disease
+c565162|121210||myositis
+c565162|121210||rhabdomyolysis
+c565162|121210||myoglobinuria
+c565162|121210||restless legs syndrome
+c565162|121210||postprandial dyspepsia
+c565162|121210||coronary arterial disease
+c565162|121210||coronary heart disease
+c565162|121210||coronary arteriosclerosis
+c565162|121210||hyperglyceridemic effect
+c565162|121210||precordial pain
+c565162|121210||right bundle branch block
+c565162|121210||cardiac symptoms
+c565162|121210||prolonged qt syndrome
+c565162|121210||poisoning
+c565162|121210||hypocalcaemia
+c565162|121210||renal impairment
+c565162|121210||renal tubular injury
+c565162|121210||atrophy
+c565162|121210||kidney damage
+c565162|121210||hepatocellular carcinoma
+c565162|121210||fanconi s anemia
+c565162|121210||septicemia
+c565162|121210||hemorrhagic bronchopneumonia
+c565162|121210||peliosis
+c565162|121210||hepatic tumors
+c565162|121210||hepatic neoplasms
+c565162|121210||cardiac damage
+c565162|121210||cardiomyocyte damage
+c565162|121210||atrial flutter
+c565162|121210||cardiac hypertrophy
+c565162|121210||left ventricular hypertrophy
+c565162|121210||cardiac inotropic
+c565162|121210||extrapyramidal syndrome
+c565162|121210||schizophrenic
+c565162|121210||qt interval prolongation
+c565162|121210||torsades de pointes
+c565162|121210||arterial dysfunction
+c565162|121210||impairs associative learning
+c565162|121210||impaired novel word learning
+c565162|121210||polyarteritis nodosa
+c565162|121210||palmoplantar pustulosis
+c565162|121210||myalgias
+c565162|121210||polyneuropathy
+c565162|121210||testicular pain
+c565162|121210||hepatitis b
+c565162|121210||cirrhotic diseases
+c565162|121210||renal damage
+c565162|121210||schizophreniform disorder
+c565162|121210||akathisia
+c565162|121210||autistic disorder
+c565162|121210||autism
+c565162|121210||irritability
+c565162|121210||headaches
+c565162|121210||aggression
+c565162|121210||behavioral dyscontrol
+c565162|121210||inattention
+c565162|121210||temporal lobe epilepsy
+c565162|121210||visual field loss
+c565162|121210||visual field abnormalities
+c565162|121210||lichenoid dermatitis
+c565162|121210||wilson disease
+c565162|121210||wilson s disease
+c565162|121210||hepatic disorders
+c565162|121210||neurologic disorders
+c565162|121210||psychiatric disorders
+c565162|121210||chronic liver disease
+c565162|121210||skin lesion
+c565162|121210||drop in blood pressure
+c565162|121210||syncopal episode
+c565162|121210||acute myocardial infarction
+c565162|121210||gastrointestinal bleeding
+c565162|121210||severe malaria
+c565162|121210||premature ventricular contraction
+c565162|121210||chill
+c565162|121210||vomiting
+c565162|121210||tinnitus
+c565162|121210||loss of hearing
+c565162|121210||sinoatrial block
+c565162|121210||heart diseases
+c565162|121210||electrolyte disorder
+c565162|121210||malaria
+c565162|121210||atrioventricular block
+c565162|121210||carcinoma of the breast
+c565162|121210||bradycardic
+c565162|121210||panic disorder
+c565162|121210||panic attacks
+c565162|121210||major depression
+c565162|121210||major depression with panic attacks
+c565162|121210||mental disorders
+c565162|121210||md
+c565162|121210||panic attack
+c565162|121210||acute encephalopathy
+c565162|121210||cerebral vasospasm
+c565162|121210||acute lymphoblastic leukemia
+c565162|121210||aphasia
+c565162|121210||incontinence
+c565162|121210||visual hallucinations
+c565162|121210||essential hypertension
+c565162|121210||pb poisoning
+c565162|121210||impairments in learning
+c565162|121210||impairments in attention inhibitory control and arousal regulation
+c565162|121210||cognitive dysfunction
+c565162|121210||affective dysfunction
+c565162|121210||cognitive deficits
+c565162|121210||failing left ventricle
+c565162|121210||mitral regurgitation
+c565162|121210||impaired fear recognition
+c565162|121210||deficit in fear recognition
+c565162|121210||psychopaths
+c565162|121210||confusion
+c565162|121210||tonic clonic seizure
+c565162|121210||generalized tonic clonic seizure
+c565162|121210||bronchiectasis
+c565162|121210||secondary infection
+c565162|121210||leukocytosis
+c565162|121210||dysarthria
+c565162|121210||infarction
+c565162|121210||uremic
+c565162|121210||vocal cord paralysis
+c565162|121210||vocal nerve palsies
+c565162|121210||paralysis
+c565162|121210||cortical dysplasia
+c565162|121210||damage of substantia nigra pars reticulata
+c565162|121210||epileptic seizure
+c565162|121210||prolonged status epilepticus
+c565162|121210||metabolic derangement
+c565162|121210||lesioned substantia nigra
+c565162|121210||damage of substantia nigra
+c565162|121210||neurotransmitter dysfunction
+c565162|121210||post herpetic neuralgia
+c565162|121210||mastitis
+c565162|121210||acute tubulo interstitial nephritis
+c565162|121210||tubulo interstitial injury
+c565162|121210||corneal ulcers
+c565162|121210||drug abuse
+c565162|121210||ulcers
+c565162|121210||substance abuse
+c565162|121210||infections
+c565162|121210||glomerulonephritis
+c565162|121210||staphylococcal
+c565162|121210||endocarditis
+c565162|121210||tuberculosis
+c565162|121210||infective endocarditis
+c565162|121210||staphylococcal infections
+c565162|121210||ie
+c565162|121210||chronic hepatitis b virus infection
+c565162|121210||chronic hepatitis b
+c565162|121210||urinary bladder inflammation
+c565162|121210||bladder inflammation
+c565162|121210||inflammation
+c565162|121210||postoperative pain
+c565162|121210||tissue injury
+c565162|121210||idiopathic epilepsy
+c565162|121210||paranoia
+c565162|121210||paranoid
+c565162|121210||depressive symptoms
+c565162|121210||psychotic symptoms
+c565162|121210||depressive disorders
+c565162|121210||psychosis
+c565162|121210||hiv infected
+c565162|121210||lactic acidosis
+c565162|121210||immune reconstitution syndrome
+c565162|121210||sensory neurotoxicity
+c565162|121210||sensory axonal neuropathy
+c565162|121210||cutaneous lupus erythematosus
+c565162|121210||neurotoxic
+c565162|121210||paresthesias
+c565162|121210||cramps
+c565162|121210||pulmonary mass
+c565162|121210||membranous glomerulonephritis
+c565162|121210||valvular heart disease
+c565162|121210||lung mass
+c565162|121210||lung cancer
+c565162|121210||hemosiderin
+c565162|121210||hemosiderotic
+c565162|121210||autoimmune diseases
+c565162|121210||viral hepatitis
+c565162|121210||neoplasms
+c565162|121210||pulmonary lesion
+c565162|121210||neoplasm
+c565162|121210||encephalitis
+c565162|121210||loiasis
+c565162|121210||filariasis
+c565162|121210||type 2 diabetes
+c565162|121210||type 2 diabetic
+c565162|121210||delirium
+c565162|121210||renal disease
+c565162|121210||interstitial fibrosis
+c565162|121210||uraemia
+c565162|121210||focal segmental glomerulosclerosis
+c565162|121210||cardiac arrhythmias
+c565162|121210||glioblastoma
+c565162|121210||glioblastoma multiforme
+c565162|121210||glioma
+c565162|121210||lymphopenia
+c565162|121210||hyperparathyroidism
+c565162|121210||primary hyperparathyroidism
+c565162|121210||hypercalcemic
+c565162|121210||myocardial infarctions
+c565162|121210||antineutrophil cytoplasmic antibody positive vasculitis
+c565162|121210||antineutrophil cytoplasmic antibody anca associated vasculitis
+c565162|121210||vasculitic
+c565162|121210||arthritis
+c565162|121210||pyrexia
+c565162|121210||parotiditis
+c565162|121210||cerebrovascular disease
+c565162|121210||hemorrhagic
+c565162|121210||heparin induced thrombocytopenia
+c565162|121210||hepatic impairment
+c565162|121210||obesity
+c565162|121210||ischemic stroke
+c565162|121210||heroin abuse
+c565162|121210||unconsciousness
+c565162|121210||respiratory failure
+c565162|121210||cerebral ischemic infarction
+c565162|121210||reperfusion injury
+c565162|121210||ischemic
+c565162|121210||liver dysfunction
+c565162|121210||hepatic injury
+c565162|121210||hyperlocomotion
+c565162|121210||fulminant liver failure
+c565162|121210||acute kidney injury
+c565162|121210||hyperinsulinemia
+c565162|121210||acute coronary syndrome
+c565162|121210||stenosis
+c565162|121210||coronary stenosis
+c565162|121210||myocardial ischemia
+c565162|121210||non small cell lung cancer
+c565162|121210||pneumonitis
+c565162|121210||posterior reversible encephalopathy syndrome
+c565162|121210||posterior leukoencephalopathy
+c565162|121210||alcoholic cirrhosis
+c565162|121210||infarction of the globus pallidus
+c565162|121210||haemorrhagic stroke
+c565162|121210||ischemia of the globus pallidus
+c565162|121210||globus pallidus infarctions
+c565162|121210||basal ganglia infarcts
+c565162|121210||cardiac arrhythmia
+c565162|121210||respiratory dysfunction
+c565162|121210||hypothermia
+c565162|121210||cerebral edema
+c565162|121210||intracranial hypertension
+c565162|121210||hiv infection
+c565162|121210||hiv seroconversion
+c565162|121210||memory deficits
+c565162|121210||burkitt lymphoma
+c565162|121210||hepatic toxicity
+c565162|121210||renal toxicity
+c565162|121210||biliary atresia
+c565162|121210||post transplantation lymphoproliferative disorder
+c565162|121210||burkitt type malignant lymphoma
+c565162|121210||hypovolemia
+c565162|121210||hiv disease
+c565162|121210||neuroinflammation
+c565162|121210||neuroinflammatory
+c565162|121210||hypertrophied
+c565162|121210||deterioration of learning
+c565162|121210||deterioration of short term memory
+c565162|121210||fulminant eosinophilic
+c565162|121210||myocarditis
+c565162|121210||drug hypersensitivity
+c565162|121210||cardiogenic shock
+c565162|121210||neuropsychiatric symptoms
+c565162|121210||neuropsychiatric like behaviors
+c565162|121210||parkinsonian disability
+c565162|121210||neuropsychiatric like behavior
+c565162|121210||neuropsychiatric disorders
+c565162|121210||nephrotoxic
+c565162|121210||intracerebral hemorrhage
+c565162|121210||transient ischemic attack
+c565162|121210||neuropathic pain
+c565162|121210||diabetic neuropathy
+c565162|121210||neuropathic
+c565162|121210||adductor spasmodic dysphonia
+c565162|121210||throat pain
+c565162|121210||spasmodic dysphonia
+c565162|121210||acute leukemia
+c565162|121210||hemoglobinuria
+c565162|121210||macroprolactinemia
+c565162|121210||macroprolactinoma
+c565162|121210||microprolactinoma
+c565162|121210||diabetic nephropathy
+c565162|121210||type 1 diabetes
+c565162|121210||diabetes complications
+c565162|121210||mantle cell lymphoma
+c565162|121210||b cell non hodgkin s lymphoma
+c565162|121210||necrotic
+c565162|121210||pulmonary tuberculosis
+c565162|121210||syncope
+c565162|121210||renal disturbance
+c565162|121210||musculoskeletal pain
+c565162|121210||meningitis
+c565162|121210||bacteremia
+c565162|121210||pneumonia
+c565162|121210||cardiac arrest
+c565162|121210||convulsion
+c565162|121210||neurologic toxicity
+c565162|121210||axonal neuropathy
+c565162|121210||neurologic toxicities
+c565162|121210||mitochondrial impairment
+c565162|121210||cardiac dysfunction
+c565162|121210||mitochondrial abnormalities
+c565162|121210||mitochondrial defect
+c565162|121210||binasal visual field defects
+c565162|121210||visual defects
+c565162|121210||bilateral visual field abnormalities
+c565162|121210||retinal toxicity
+c565162|121210||autoimmune hemolytic anemia
+c565162|121210||emergency department
+c565162|121210||trauma
+c565162|121210||hemolytic anemias
+c565162|121210||depressive disorder
+c565162|121210||antisocial personality disorder
+c565162|121210||major depressive disorder
+c565162|121210||antisocial personality
+c565162|121210||hereditary angioedema
+c565162|121210||menstrual abnormalities
+c565162|121210||muscle cramps
+c565162|121210||hypothyroidism
+c565162|121210||hypothyroid
+c565162|121210||scleroderma renal crisis
+c565162|121210||systemic sclerosis
+c565162|121210||thrombotic microangiopathy
+c565162|121210||levodopa induced dyskinesias
+c565162|121210||abnormal involuntary movements
+c565162|121210||burns
+c565162|121210||burn
+c565162|121210||hemorrhagic|cystitis
+c565162|121210||genotoxicity
+c565162|121210||tumors
+c565162|121210||brain tumors
+c565162|121210||neurological symptoms
+c565162|121210||central nervous system disease
+c565162|121210||myeloma
+c565162|121210||relapsed refractory multiple myeloma
+c565162|121210||deep vein thrombosis
+c565162|121210||cardiovascular diseases
+c565162|121210||alzheimer s disease
+c565162|121210||memory deterioration
+c565162|121210||glucose hypometabolism
+c565162|121210||ad
+c565162|121210||kidney injury
+c565162|121210||kidney tubular dysfunction
+c565162|121210||fanconi syndrome
+c565162|121210||kidney disease
+c565162|121210||glomerular dysfunction
+c565162|121210||postoperative delirium
+c565162|121210||neurological dysfunctions
+c565162|121210||al
+c565162|121210||glomerulopathy
+c565162|121210||depressive
+c565162|121210||loss of vision
+c565162|121210||extensively drug resistant tuberculosis
+c565162|121210||xdr tb
+c565162|121210||optic disc edema
+c565162|121210||toxic optic neuropathy
+c565162|121210||cardiovascular collapse
+c565162|121210||fibrillation
+c565162|121210||idiopathic parkinson s disease
+c565162|121210||thrombocytopenia type ii
+c565162|121210||end stage liver disease
+c565162|121210||portal hypertension
+c565162|121210||endotoxemia
+c565162|121210||hit type ii
+c565162|121210||malignant liver disease
+c565162|121210||liver cirrhosis
+c565162|121210||hit ii
+c565162|121210||hit
+c565162|121210||end stage hepatic failure
+c565162|121210||hyperlipemia
+c565162|121210||takotsubo syndrome
+c565162|121210||apical ballooning syndrome
+c565162|121210||broken heart syndrome
+c565162|121210||mitral valve prolapse
+c565162|121210||migraines
+c565162|121210||migraine headache
+c565162|121210||status migrainosus
+c565162|121210||coronary artery vasospasm
+c565162|121210||impulsiveness
+c565162|121210||impaired memory
+c565162|121210||sleep disturbance
+c565162|121210||psychobiological dysfunction
+c565162|121210||hodgkin lymphoma
+c565162|121210||malignancy
+c565162|121210||cancers
+c565162|121210||sarcomas
+c565162|121210||gynecologic and testicular cancers
+c565162|121210||non convulsive status epilepticus
+c565162|121210||syndrome of inappropriate antidiuretic hormone
+c565162|121210||hyponatraemia
+c565162|121210||cardiac disarrangement
+c565162|121210||tonic clonic seizures
+c565162|121210||amnesia
+c565162|121210||memory loss
+c565162|121210||memory impaired
+c565162|121210||memory deficit
+c565162|121210||excitotoxicity
+c565162|121210||leukoencephalopathy
+c565162|121210||attention problems
+c565162|121210||chronic kidney disease
+c565162|121210||tubulointerstial disease
+c565162|121210||menorrhagia
+c565162|121210||deterioration of renal function
+c565162|121210||tonic clonic convulsions
+c565162|121210||nervous system abnormalities
+c565162|121210||drug induced acute liver injury
+c565162|121210||anorexia
+c565162|121210||agranulocytosis
+c565162|121210||blood dyscrasias
+c565162|121210||bone marrow suppression
+c565162|121210||cardiovascular depression
+c565162|121210||dysrhythmia
+c565162|121210||asystole
+c565162|121210||myoclonus
+c565162|121210||myoclonic movements
+c565162|121210||myocardial strain
+c565162|121210||non hodgkin lymphoma
+c565162|121210||acute hepatitis
+c565162|121210||cholestasis
+c565162|121210||vasovagal syncope
+c565162|121210||agitation
+c565162|121210||schizo affective disorder
+c565162|121210||personality disorder
+c565162|121210||antisocial disorder
+c565162|121210||substance abuse disorder
+c565162|121210||aggressiveness
+c565162|121210||auditory hallucinations
+c565162|121210||delusions
+c565162|121210||hemiparesis
+c565162|121210||hemiplegic migraine
+c565162|121210||dysfunctional overnight memory
+c565162|121210||sleep related impairments
+c565162|121210||impaired overnight memory
+c565162|121210||memory impairments
+c565162|121210||abnormal involuntary motor movements
+c565162|121210||generalised and focal seizures
+c565162|121210||hypothermic
+c565162|121210||postoperative complication
+c565162|121210||cerebellar dysfunction
+c565162|121210||oculomotor dysfunction
+c565162|121210||impaired liver function
+c565162|121210||dysmetria
+c565162|121210||acute promyelocytic leukemia
+c565162|121210||maculopapular eruption
+c565162|121210||sudden cardiac death
+c565162|121210||t cell lymphoblastic lymphoma
+c565162|121210||leukemic
+c565162|121210||tumor lysis syndrome
+c565162|121210||necrotising fasciitis
+c565162|121210||waldenstrom macroglobulinaemia
+c565162|121210||neurological complications
+c565162|121210||impaired consciousness
+c565162|121210||pain disorders
+c565162|121210||secondary hyperalgesia
+c565162|121210||hyperalgesic
+c565162|121210||allodynic
+c565162|121210||opioid induced hyperalgesia
+c565162|121210||opioid addiction
+c565162|121210||subcellular degeneration
+c565162|121210||cardiomyocyte degeneration
+c565162|121210||lv dysfunction
+c565162|121210||diastolic dysfunction
+c565162|121210||ocular hypertension
+c565162|121210||primary open angle glaucoma
+c565162|121210||retinal ganglion
+c565162|121210||axonal degeneration
+c565162|121210||breast tumors
+c565162|121210||cardiac disturbances
+c565162|121210||heart damage
+c565162|121210||thrombolysis
+c565162|121210||heparin induced thrombocytopenia with thrombosis
+c565162|121210||upper extremity deep venous thrombosis
+c565162|121210||deep venous thrombosis
+c565162|121210||pulmonary embolism
+c565162|121210||superior vena cava svc syndrome
+c565162|121210||epistaxis
+c565162|121210||vision loss
+c565162|121210||superior vena cava syndrome
+c565162|121210||myxoedema
+c565162|121210||coma
+c565162|121210||thyroid disease
+c565162|121210||hyper
+c565162|121210||learning impairments
+c565162|121210||cognition deficits
+c565162|121210||head and neck cancer
+c565162|121210||embryolethality
+c565162|121210||teratogenicity
+c565162|121210||ventricular septal defects
+c565162|121210||growth retardation
+c565162|121210||embryonic death
+c565162|121210||ventricular septal defect
+c565162|121210||teratogenic
+c565162|121210||cytotoxicity
+c565162|121210||hepatocellular necrosis
+c565162|121210||lupus like syndrome
+c565162|121210||huntington s disease
+c565162|121210||sinus bradycardia
+c565162|121210||onychomycosis
+c565162|121210||adverse drug reaction
+c565162|121210||visual loss
+c565162|121210||skin diseases
+c565162|121210||diarrheas
+c565162|121210||inflammatory diseases
+c565162|121210||hepatitis c virus infected
+c565162|121210||hepatitis c virus infection
+c565162|121210||muscle toxicity
+c565162|121210||impaired the memory
+c565162|121210||renal lesions
+c565162|121210||kidney lesions
+c565162|121210||cytopenia
+c565162|121210||birdshot retinochoroidopathy
+c565162|121210||retinal vasculitis
+c565162|121210||cataract
+c565162|121210||raised intraocular pressure
+c565162|121210||cystoid macular edema
+c565162|121210||increased intraocular pressure
+c565162|121210||acute renal injury
+c565162|121210||acute tubular necrosis
+c565162|121210||polyuria
+c565162|121210||dysguesia
+c565162|121210||loss of taste sensation
+c565162|121210||fasciculation
+c565162|121210||myalgia
+c565162|121210||muscle fasciculation
+c565162|121210||fasciculations
+c565162|121210||butyrylcholinesterase deficiency
+c565162|121210||myocardial ischemic injury
+c565162|121210||ventricular remodeling
+c565162|121210||lateral epicondylitis
+c565162|121210||paresthesia
+c565162|121210||leucopenia
+c565162|121210||hepatic dysfunction
+c565162|121210||tumours
+c565162|121210||tumour
+c565162|121210||kidney cancer
+c565162|121210||pneumoniae
+c565162|121210||gram negative bacillary infections
+c565162|121210||brain damage
+c565162|121210||intrauterine growth retardation
+c565162|121210||dysplasia of fetal kidneys
+c565162|121210||liver neoplasms
+c565162|121210||liver cancer
+c565162|121210||follicular cell lymphoma
+c565162|121210||chronic myeloid leukemia
+c565162|121210||philadelphia chromosome
+c565162|121210||autonomic neuropathy
+c565162|121210||diabetic
+c565162|121210||renal carcinomas
+c565162|121210||postzosteric
+c565162|121210||trigeminal neuralgia
+c565162|121210||tachy or bradycardia
+c565162|121210||asthmatics
+c565162|121210||asthma
+c565162|121210||asthmatic
+c565162|121210||hepatic failure
+c565162|121210||hepatocellular damage
+c565162|121210||pertussis
+c565162|121210||ischaemic
+c565162|121210||blepharoconjunctivitis
+c565162|121210||dry eyes
+c565162|121210||blurred vision
+c565162|121210||photodermatitis
+c565162|121210||papilledema
+c565162|121210||pseudotumor cerebri
+c565162|121210||corneal opacities
+c565162|121210||congenital abnormalities
+c565162|121210||microphthalmos
+c565162|121210||hypertelorism
+c565162|121210||optic nerve hypoplasia
+c565162|121210||bronchial asthma
+c565162|121210||tremorgenic
+c565162|121210||heart hypertrophy
+c565162|121210||hypertrophied hearts
+c565162|121210||panic disorders
+c565162|121210||agoraphobia
+c565162|121210||restlessness
+c565162|121210||tremors
+c565162|121210||abnormalities in neuronal systems
+c565162|121210||anxiety disorders
+c565162|121210||anaphylaxis
+c565162|121210||retention deficit
+c565162|121210||lesions of the urinary bladder
+c565162|121210||necroses
+c565162|121210||muscle fasciculations
+c565162|121210||acute neurologic dysfunction
+c565162|121210||malignant glioma
+c565162|121210||hematologic malignancies
+c565162|121210||neurologic deterioration
+c565162|121210||bile duct injury
+c565162|121210||drug induced liver damage
+c565162|121210||bile duct destruction
+c565162|121210||angina
+c565162|121210||subarachnoid hemorrhage
+c565162|121210||type iv renal tubular acidosis
+c565162|121210||focal segmental glomerular sclerosis
+c565162|121210||nephrotic syndrome
+c565162|121210||colorectal carcinoma
+c565162|121210||bone marrow toxicity
+c565162|121210||bradycardiac
+c565162|121210||neuroblastoma
+c565162|121210||behavior disorder
+c565162|121210||oral candidiasis
+c565162|121210||hoarseness
+c565162|121210||thrush
+c565162|121210||candidiasis
+c565162|121210||wiskott aldrich syndrome
+c565162|121210||severe combined immunodeficiency syndrome
+c565162|121210||immunodeficiencies
+c565162|121210||glomerular or tubular dysfunction
+c565162|121210||shock
+c565162|121210||cataleptic
+c565162|121210||rheumatic disease
+c565162|121210||mi
+c565162|121210||anterior infarction
+c565162|121210||ant mi
+c565162|121210||inferior infarction
+c565162|121210||inf mi
+c565162|121210||oscillopsia
+c565162|121210||nystagmus
+c565162|121210||cardiac failure
+c565162|121210||hyperbilirubinemia
+c565162|121210||papillary necrosis
+c565162|121210||pathological renal medullary lesions
+c565162|121210||ventricular fibrillation
+c565162|121210||glomerular sclerosis
+c565162|121210||mesangial dysfunction
+c565162|121210||proteinuric
+c565162|121210||sclerosis
+c565162|121210||renal tubular necrosis
+c565162|121210||acute renal artery thrombosis
+c565162|121210||intracranial vascular thrombosis
+c565162|121210||thrombi
+c565162|121210||thromboembolic phenomena
+c565162|121210||disseminated intravascular coagulation
+c565162|121210||consumption coagulopathies
+c565162|121210||thrombosis of a normal renal artery
+c565162|121210||hypoglycaemia
+c565162|121210||diabetics
+c565162|121210||pseudomonas infections
+c565162|121210||sepsis
+c565162|121210||infantile spasms
+c565162|121210||ataxia
+c565162|121210||cardiovascular dysfunction
+c565162|121210||disturbances within the cardiovascular system
+c565162|121210||metabolic disturbances
+c565162|121210||cardiomyopathic disorder
+c565162|121210||hypoglycemia
+c565162|121210||polycythemia
+c565162|121210||neonatal apnea
+c565162|121210||toxocity
+c565162|121210||salivation
+c565162|121210||muscle tremors
+c565162|121210||idiopathic orthostatic hypotension
+c565162|121210||myoclonia
+c565162|121210||mastodynia
+c565162|121210||bacteremias
+c565162|121210||abdominal infections
+c565162|121210||urinary tract infections
+c565162|121210||fungal infections
+c565162|121210||cytomegalovirus infection
+c565162|121210||epstein barr virus infection
+c565162|121210||toxic hepatitis
+c565162|121210||toxic liver damage
+c565162|121210||atrial thrombosis
+c565162|121210||myocardial degeneration
+c565162|121210||alternating sinus rhythm
+c565162|121210||sinoatrial s a block
+c565162|121210||alternating rhythm
+c565162|121210||conduction disorder
+c565162|121210||albuminuria
+c565162|121210||ascites
+c565162|121210||hydrothorax
+c565162|121210||apnoea
+c565162|121210||neuromuscular blockade
+c565162|121210||stereotypies
+c565162|121210||accelerated junctional rhythms
+c565162|121210||supraventricular tachyarrhythmias
+c565162|121210||clonic seizure
+c565162|121210||clonic seizures
+c565162|121210||tonic seizures
+c565162|121210||hematologic toxicity
+c565162|121210||gastrointestinal toxicity
+c565162|121210||dissecting aneurysm
+c565162|121210||locked in syndrome
+c565162|121210||chronic active hepatitis
+c565162|121210||renal tubular acidosis
+c565162|121210||acute cholecystitis
+c565162|121210||hepatic insufficiency syndrome
+c565162|121210||thrombopenia
+c565162|121210||hematological disorders
+c565162|121210||anginal attacks
+c565162|121210||tachycardial
+c565162|121210||pains
+c565162|121210||carcinoma of the renal pelvis
+c565162|121210||hydroureteronephrosis
+c565162|121210||cerebral vasculitis
+c565162|121210||carcinoma
+c565162|121210||carcinoma of the urinary tract
+c565162|121210||carcinomas of the urinary bladder
+c565162|121210||carcinoma of the prostate
+c565162|121210||urinary tract cancer
+c565162|121210||retinal artery and choriocapillaris occlusion
+c565162|121210||retinal artery and choriocapillaris occlusions
+c565162|121210||blindness
+c565162|121210||palsy
+c565162|121210||pupillary abnormalities
+c565162|121210||chorioretinal atrophy
+c565162|121210||hernias
+c565162|121210||amblyopia
+c565162|121210||tonic pupillary
+c565162|121210||leg cramps
+c565162|121210||jaw stiffness
+c565162|121210||prolonged jaw rigidity
+c565162|121210||swelling
+c565162|121210||respiratory upset
+c565162|121210||psychoses
+c565162|121210||gouty arthritis
+c565162|121210||hyporeninemic hypoaidosteronism
+c565162|121210||dystonic
+c565162|121210||choreic movements
+c565162|121210||mid dose dyskinesias
+c565162|121210||drug toxicity
+c565162|121210||liver disorders
+c565162|121210||erythema multiforme
+c565162|121210||stevens johnson syndrome
+c565162|121210||toxic epidermal necrolysis
+c565162|121210||bradydysrhythmias
+c565162|121210||muscular dystrophy
+c565162|121210||myodystrophy
+c565162|121210||myopathic
+c565162|121210||myopathic disease
+c565162|121210||sensory neuropathy
+c565162|121210||hematologic toxicities
+c565162|121210||cirrhosis liver
+c565162|121210||cirrhotic liver
+c565162|121210||angio oedema
+c565162|121210||circulatory failure
+c565162|121210||myocardial dysfunction
+c565162|121210||eosinophilic
+c565162|121210||dysrhythmias
+c565162|121210||atrioventricular av block
+c565162|121210||hyperaldosteronism
+c565162|121210||audiogenic tonic convulsions
+c565162|121210||cluster headache
+c565162|121210||ischaemic heart disease
+c565162|121210||prinzmetal s angina
+c565162|121210||tubular damage
+c565162|121210||hypertrophic hearts
+c565162|121210||hematoma
+c565162|121210||coagulopathy
+c565162|121210||idiopathic cardiomyopathy
+c565162|121210||congenital heart disease
+c565162|121210||hypertrophic cardiomyopathy
+c565162|121210||cytomegalovirus infections
+c565162|121210||atherosclerosis
+c565162|121210||lymphoproliferative disorder
+c565162|121210||movement difficulties
+c565162|121210||cognitive disorders
+c565162|121210||hyperkinetic
+c565162|121210||pulmonary edema
+c565162|121210||lymphomas
+c565162|121210||metabolic acidosis
+c565162|121210||adult respiratory distress syndrome
+c565162|121210||cardiac injury
+c565162|121210||ischemic lesions
+c565162|121210||coronary artery spasm
+c565162|121210||hypertrophic
+c565162|121210||milk alkali syndrome
+c565162|121210||hypoparathyroidism
+c565162|121210||peptic ulcer disease
+c565162|121210||ulcer
+c565162|121210||alkalosis
+c565162|121210||hypercalcemic emergency
+c565162|121210||serotonin syndrome
+c565162|121210||unipolar depression
+c565162|121210||pituitary tumors
+c565162|121210||bladder irritation
+c565162|121210||irritation of the urinary tract
+c565162|121210||coronary artery stenosis
+c565162|121210||glomerular disease
+c565162|121210||growth failure
+c565162|121210||glomerular hypertrophy
+c565162|121210||tubulointerstitial damage
+c565162|121210||learning and post training consolidation deficits
+c565162|121210||endometrial disease
+c565162|121210||hyperplasia
+c565162|121210||endometrial carcinoma
+c565162|121210||endometrial hyperplasia
+c565162|121210||hypercapnic
+c565162|121210||tonic and clonic seizure
+c565162|121210||neuronal death
+c565162|121210||venous thrombosis
+c565162|121210||ventricular tachyarrhythmias
+c565162|121210||ventricular tachyarrhythmia
+c565162|121210||cardiac disease
+c565162|121210||loss of myelination
+c565162|121210||thromboembolic
+c565162|121210||pupillary oscillation
+c565162|121210||cerebral hemorrhage
+c565162|121210||pulmonary hemorrhage
+c565162|121210||embryopathy
+c565162|121210||stippled epiphyses
+c565162|121210||chondrodysplasia punctata
+c565162|121210||dehydrated
+c565162|121210||renal damages
+c565162|121210||postoperative nausea and vomiting
+c565162|121210||major depression disorder
+c565162|121210||depressive episode
+c565162|121210||depression disorder
+c565162|121210||cardiac dysrhythmias
+c565162|121210||paraplegia
+c565162|121210||central nervous system leukemia
+c565162|121210||central nervous system cancer
+c565162|121210||folate deficiency
+c565162|121210||hyperosmolar nonketotic coma
+c565162|121210||manic depression
+c565162|121210||polyuric
+c565162|121210||deterioration of left ventricular
+c565162|121210||lv systolic function
+c565162|121210||deterioration of left ventricular systolic and diastolic performance
+c565162|121210||hyper or hypotension
+c565162|121210||retained placenta
+c565162|121210||blood loss
+c565162|121210||thromboembolism
+c565162|121210||ischemic colitis
+c565162|121210||migraine
+c565162|121210||ureteric obstruction
+c565162|121210||ureteric calculi
+c565162|121210||urolithiasis
+c565162|121210||ureteric stones
+c565162|121210||homonymous hemianopsia
+c565162|121210||enlargement of pulse pressure
+c565162|121210||multicystic encephalomalacia
+c565162|121210||hypoxic ischemic encephalopathy
+c565162|121210||intrahepatic cholestasis
+c565162|121210||psoriasis
+c565162|121210||psoriatic
+c565162|121210||gingival hyperplasia
