@@ -10,8 +10,8 @@ import argparse
 from collections import defaultdict
 
 DetectorFactory.seed = 0  # Ensures reproducibility
-DATA_DIR = "/workspace/snomed_vocab"
-DATA_DIR = "data"
+DATA_DIR = "/Users/komalgilani/Downloads/omop_v5"
+# DATA_DIR = "data"
 
 STOP_WORDS = [
     "stop",
@@ -197,14 +197,7 @@ def process_chunk(chunk):
 def fetch_concept(
     data_directory,
     only_standard=True,
-    vocabulary_list=[
-        "Korean Revenue Code",
-        "Concept Class",
-        "Domain",
-        "Metadata",
-        "Vocabulary",
-        "Notes",
-    ],
+    vocabulary_list=['SNOMED', 'ATC', 'CDM', 'Cancer Modifier', 'UCUM', 'RxNorm', 'ICD9Proc', 'LOINC', 'OMOP Extension', 'OMOP Genomic'],
     sep="\t",
     output_dir=DATA_DIR,
 ):
@@ -217,11 +210,25 @@ def fetch_concept(
     # generate_group_data_plot(class_counts,grouped_data)
     # concept_df = check_concept_name_duplicates(concept_df)
     print(f"after check_concept_name_duplicates ={concept_df.shape}")
-    if only_standard:
-        concept_df = concept_df[concept_df["standard_concept"].isin(["S", "C"])]
-    print(f"Total Standard concept = {concept_df.shape}")
+    # if only_standard:
+    #     concept_df = concept_df[concept_df["standard_concept"].isin(["S", "C"]) 
+    #                             | (concept_df["vocabulary_id"] == "SNOMED")]
     if vocabulary_list:
-        concept_df = concept_df[~concept_df["vocabulary_id"].isin(vocabulary_list)]
+        concept_df = concept_df[concept_df["vocabulary_id"].isin(vocabulary_list)]
+    
+    # Ensure standard concepts come before non-standard
+    concept_df['standard_priority'] = concept_df['standard_concept'].apply(lambda x: 1 if x in ['S', 'C'] else 0)
+    concept_df = concept_df.sort_values(by='standard_priority', ascending=False)
+
+    # Drop duplicates by concept_name, keeping the standard one if exists
+    concept_df = concept_df.drop_duplicates(subset=['concept_name'], keep='first')
+
+    # Drop the helper column
+    concept_df = concept_df.drop(columns=['standard_priority'])
+
+    print(f"After keeping only standard if exists for the same name: {concept_df.shape}")
+
+
     print(concept_df["vocabulary_id"].unique().tolist())
     print(f"unique standard_concept={concept_df['standard_concept'].unique().tolist()}")
     # concept_df = concept_df[concept_df['vocabulary_id'].isin(vocabulary_list)]
@@ -235,7 +242,7 @@ def fetch_concept(
     )
     print(f"Removed un_ncesssary columns ={concept_df.shape}")
     print(f"after remove some domains:{concept_df.shape}")
-    output_file = os.path.join(output_dir, "output/concepts_0.csv")
+    output_file = os.path.join(output_dir, "output/concepts.csv")
     concept_df.to_csv(output_file, index=False)
     print(f"Synonyms appended and saved to {output_file}")
     return concept_df
@@ -263,11 +270,15 @@ def fetch_chvsynonyms(file, concept_df, output_dir):
 
     # Convert the synonyms list into a DataFrame
     synonyms_df = pd.DataFrame(synonyms_list, columns=["standard_term", "synonym"])
-    synonyms_df = (
-        synonyms_df.groupby("standard_term")["synonym"]
-        .apply(lambda x: ";;".join(set(x)))
-        .reset_index()
-    )
+    # synonyms_df = (
+    #     synonyms_df.groupby("standard_term")["synonym"]
+    #     .apply(lambda x: ";;".join(set(x)))
+    #     .reset_index()
+    # )
+    
+    # If possible, use pandas' faster groupby methods:
+    synonyms_df = synonyms_df.drop_duplicates().groupby("standard_term")["synonym"].agg(";;".join).reset_index()
+
 
     # Convert concept_df to lowercase and merge with the synonyms dataframe
     concept_df["concept_name"] = concept_df["concept_name"].str.lower()
@@ -647,7 +658,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--data_dir",
         type=str,
-        default="data/input/omop_v5.4/ALL_VOCAB_29_07_2024",
+        default="/Users/komalgilani/Downloads/omop_v5",
         help="Directory containing the vocabulary data files",
     )
     parser.add_argument(

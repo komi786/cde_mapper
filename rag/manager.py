@@ -130,6 +130,18 @@ class LLMManager:
                 #     temperature=0,
                 #     max_retries=3,
                 # )
+            elif model == "deepseek_r1":
+                active_model = ChatOllama(
+                    base_url="http://ollama:11434",  # Ollama server endpoint
+                    model="deepseek-r1:70b",
+                    temperature=0,
+                )
+                # active_model = ChatTogether(
+                #     api_key=togather_api,
+                #     model="meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
+                #     temperature=0,
+                #     max_retries=3,
+                # )
             elif model == "llama3.2":
                 active_model = ChatTogether(
                     api_key=togather_api,
@@ -336,7 +348,7 @@ class ExampleSelectorManager:
                 try:
                     if selector_path is None:
                         selector_path = (
-                            f"data/db/faiss_index_{context_key}"
+                            f"example_selector/faiss_index_{context_key}"
                         )
                         os.makedirs(
                             os.path.dirname(selector_path), exist_ok=True
@@ -350,7 +362,7 @@ class ExampleSelectorManager:
                         embeddings=embedding,
                         vectorstore_cls=FAISS,
                         k=k,
-                        vectorstore_kwargs={"fetch_k": 40, "lambda_mult": 0.5},
+                        vectorstore_kwargs={"fetch_k": 40, "lambda_mult": 0.2},
                         input_keys=[
                             "input"
                         ],  # Assuming 'input' is the key in your examples dict,

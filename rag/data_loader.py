@@ -92,9 +92,7 @@ def custom_data_loader(source_path):
             # Extract and process the 'VARIABLE LABEL' field
             # print(f"Row: {row}")
             label = (
-                str(row.get("variablelabel", "")).lower().strip()
-                if pd.notna(row.get("variablelabel"))
-                else None
+                str(row.get("variablelabel", "")).lower().strip() if pd.notna(row.get("variablelabel")) else None
             )
             name = (
                 str(row.get("variablename", "")).lower().strip()
@@ -107,18 +105,18 @@ def custom_data_loader(source_path):
                     continue
                 else:
                     label = "na"
-            defintion_raw = row.get("definition", None)
-            definition = (
-                str(defintion_raw).lower().strip() if pd.notna(defintion_raw) else None
-            )
-            if definition:
-                label = f"{label}, definition is '{definition}'"
+            # defintion_raw = row.get("definition", None)
+            # definition = (
+            #     str(defintion_raw).lower().strip() if pd.notna(defintion_raw) else None
+            # )
+            # if definition:
+            #     label = f"{label}, definition is '{definition}'"
 
             # Handle 'CATEGORICAL' field
             categorical_raw = row.get("categorical", None)
             if pd.notna(categorical_raw) and str(categorical_raw).strip():
                 categories = (
-                    str(categorical_raw).lower().strip().replace(",", "|").split("|")
+                    str(categorical_raw).lower().strip().split("|")
                 )
             else:
                 categories = None
@@ -189,26 +187,31 @@ def custom_data_loader(source_path):
             # visits = f"at {visits}" if visits else None
 
             # Construct the 'full_query' string
-            full_query = label
-            if visits:
-                full_query += f" at {visits}"
+            # remove string starting from at visit and remaining string from there from label
+            label = re.split(r"\bat\s+(visit|baseline|month)[^\w]*", label)[0].strip()
+            
+
+            # Construct the 'full_query' string
+            full_query = f"{name}: {label}"
+            if formula:
+                full_query += f", formula: {formula}"
             if categories:
                 full_query += f", categorical values: {'|'.join(categories)}"
             if unit:
                 full_query += f", unit: {unit}"
-            if formula:
-                full_query += f", formula: {formula}"
+            if visits:
+                full_query += f", visit: {visits}"
             full_query = remove_repeated_phrases(full_query)
             base_entity = (
-                f"{label} calculated with formula:{formula}" if formula else label
+                f"{label} calculated with formula:{formula}" if formula else f"{label}"
             )
             # base_entity = f"{base_entity} {visits}" if visits else base_entity
             # Create a dictionary for the QueryDecomposedModel
             query_dict = {
                 "name": name,
-                "full_query": full_query,
-                "base_entity": base_entity,
-                "categories": categories,
+                "full_query": full_query.strip().lower(),
+                "base_entity": base_entity.strip().lower(),
+                "categories": [cat.split("=")[-1].strip() for cat in categories] if categories else [],
                 "unit": unit,
                 "formula": formula,
                 "domain": "all",

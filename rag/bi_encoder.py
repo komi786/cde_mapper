@@ -17,7 +17,7 @@ os.environ["TOKENIZERS_PARALLELISM"] = "True"
 def get_device():
     torch.cuda.empty_cache()
     if torch.cuda.is_available() and torch.cuda.device_count() > 2:
-        return torch.device("cuda:0")
+        return torch.device("cuda:1")
     elif torch.cuda.is_available():
         return torch.device("cuda:1")
     else:
@@ -217,7 +217,7 @@ class MedCPT_Embeddings(Embeddings):
                                     Defaults to automatically choosing CUDA if available.
         """
         self.device = torch.device(
-            device if device else "cuda:2" if torch.cuda.is_available() else "cpu"
+            device if device else "cuda:1" if torch.cuda.is_available() else "cpu"
         )
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_id, clean_up_tokenization_spaces=True
@@ -642,7 +642,7 @@ tokenizer = AutoTokenizer.from_pretrained(
     model_name, cache_dir=CACHE_DIR, use_fast=True, max_length=25, truncation=True
 )
 model = AutoModelForMaskedLM.from_pretrained(model_name, cache_dir=CACHE_DIR)
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 model.to(device)
 
 

@@ -161,306 +161,50 @@ def extract_ir(base_entity, associated_entities, active_model):
     ):
         return None
     relations = [
-        "Is attribute of",
-        "Has specimen procedure",
-        "Has specimen source identity",
-        "Has specimen source morphology",
-        "Has specimen source topography",
-        "Has specimen substance",
-        "Has due to",
-        "Has subject relationship context",
-        "Has dose form",
-        "Occurs after",
-        "Has associated procedure",
-        "Has direct procedure site",
-        "Has indirect procedure site",
-        "Has procedure device",
-        "Has procedure morphology",
-        "Has finding context",
-        "Has procedure context",
-        "Has temporal context",
-        "Associated with finding",
-        "Has surgical approach",
-        "Using device",
-        "Using energy",
-        "Using substance",
-        "Using access device",
-        "Has clinical course",
-        "Has route of administration",
-        "Using finding method",
-        "Using finding informer",
-        "Has off-label drug indication",
-        "Has drug contra-indication",
-        "Precise ingredient of",
-        "Tradename of",
-        "Dose form of",
-        "Form of",
-        "Ingredient of",
-        "Consists of",
-        "Is contained in",
-        "Reformulated in",
-        "Recipient category of",
-        "Procedure site of",
-        "Priority of",
-        "Pathological process of",
-        "Part of",
-        "Severity of",
-        "Revision status of",
-        "Access of",
-        "Occurrence of",
-        "Laterality of",
-        "Interprets of",
-        "Indirect morphology of",
-        "Is a",
-        "Indirect device of",
-        "Specimen of",
-        "Interpretation of",
-        "Intent of",
-        "Focus of",
-        "Definitional manifestation of",
-        "Active ingredient of",
-        "Finding site of",
-        "Episodicity of",
-        "Direct substance of",
-        "Direct morphology of",
-        "Direct device of",
-        "Causative agent of",
-        "Associated morphology of",
-        "Associated finding of",
-        "Measurement method of",
-        "Specimen procedure of",
-        "Specimen source identity of",
-        "Specimen source morphology of",
-        "Specimen source topography of",
-        "Specimen substance of",
-        "Due to of",
-        "Subject relationship context of",
-        "Dose form of",
-        "Occurs before",
-        "Associated procedure of",
-        "Direct procedure site of",
-        "Indirect procedure site of",
-        "Procedure device of",
-        "Procedure morphology of",
-        "Finding context of",
-        "Procedure context of",
-        "Temporal context of",
-        "Finding associated with",
-        "Surgical approach of",
-        "Device used by",
-        "Energy used by",
-        "Substance used by",
-        "Access device used by",
-        "Has clinical course of",
-        "Route of administration of",
-        "Finding method of",
-        "Finding informer of",
-        "Is off-label indication of",
-        "Is contra-indication of",
-        "Has ingredient",
-        "Ingredient of",
-        "Module of",
-        "Has Extent",
-        "Extent of",
-        "Has Approach",
-        "Has therapeutic class",
-        "Therapeutic class of",
-        "Drug-drug interaction for",
-        "Is involved in drug-drug interaction",
-        "Has pharmaceutical preparation",
-        "Pharmaceutical preparation contained in",
-        "Approach of",
-        "Has quantified form",
-        "Has dispensed dose form",
-        "Dispensed dose form of",
-        "Has specific active ingredient",
-        "Specific active ingredient of",
-        "Has basis of strength substance",
-        "Basis of strength substance of",
-        "Has Virtual Medicinal Product",
-        "Virtual Medicinal Product of",
-        "Has Answer",
-        "Answer of",
-        "Has Actual Medicinal Product",
-        "Actual Medicinal Product of",
-        "Is pack of",
-        "Has pack",
-        "Has trade family group",
-        "Trade family group of",
-        "Has excipient",
-        "Excipient of",
-        "Follows",
-        "Followed by",
-        "Has discontinued indicator",
-        "Discontinued indicator of",
-        "Has legal category",
-        "Legal category of",
-        "Dose form group of",
-        "Has dose form group",
-        "Has precondition",
-        "Precondition of",
-        "Has inherent location",
-        "Inherent location of",
-        "Has technique",
-        "Technique of",
-        "Has relative part",
-        "Relative part of",
-        "Has process output",
-        "Process output of",
-        "Inheres in",
-        "Has inherent",
-        "Has direct site",
-        "Direct site of",
-        "Characterizes",
-        "Has property type",
-        "Property type of",
-        "Panel contains",
-        "Contained in panel",
-        "Is characterized by",
-        "Has Module",
-        "Topic of",
-        "Has Topic",
-        "Has presentation strength numerator unit",
-        "Presentation strength numerator unit of",
-        "During",
-        "Has complication",
-        "Has basic dose form",
-        "Basic dose form of",
-        "Has disposition",
-        "Disposition of",
-        "Has dose form administration method",
-        "Dose form administration method of",
-        "Has dose form intended site",
-        "Dose form intended site of",
-        "Has dose form release characteristic",
-        "Dose form release characteristic of",
-        "Has dose form transformation",
-        "Dose form transformation of",
-        "Has state of matter",
-        "State of matter of",
-        "Temporally related to",
-        "Has temporal finding",
-        "Has Morphology",
-        "Morphology of",
-        "Has Measured Component",
-        "Measured Component of",
-        "Caused by",
-        "Causes",
-        "Has Etiology",
-        "Etiology of",
-        "Has Stage",
-        "Stage of",
-        "Quantified form of",
-        "Is a",
-        "Inverse is a",
-        "Has precise ingredient",
-        "Has tradename",
-        "Has dose form",
-        "Has form",
-        "Has ingredient",
-        "Constitutes",
-        "Contains",
-        "Reformulation of",
-        "Subsumes",
-        "Has recipient category",
-        "Has procedure site",
-        "Has priority",
-        "Has pathological process",
-        "Has part of",
-        "Has severity",
-        "Has revision status",
-        "Has access",
-        "Has occurrence",
-        "Has laterality",
-        "Has interprets",
-        "Has indirect morphology",
-        "Has indirect device",
-        "Has specimen",
-        "Has interpretation",
-        "Has intent",
-        "Has focus",
-        "Has definitional manifestation",
-        "Has active ingredient",
-        "Has finding site",
-        "Has episodicity",
-        "Has direct substance",
-        "Has direct morphology",
-        "Has direct device",
-        "Has causative agent",
-        "Has associated morphology",
-        "Has associated finding",
-        "Has measurement method",
-        "Has precise active ingredient",
-        "Precise active ingredient of",
-        "Has scale type",
-        "Has property",
-        "Concentration strength numerator unit of",
-        "Is modification of",
-        "Has modification of",
-        "Has unit",
-        "Unit of",
-        "Has method",
-        "Method of",
-        "Has time aspect",
-        "Time aspect of",
-        "Has component",
-        "Has end date",
-        "End date of",
-        "Has start date",
-        "Start date of",
-        "Has system",
-        "System of",
-        "Process duration",
-        "Process duration of",
-        "Has precoordinated (Question-Answer/Variable-Value) pair",
-        "Precoordinated (Question-Answer/Variable-Value) pair of",
-        "Has Category",
-        "Category of",
-        "Has biosimilar",
-        "Biosimilar of",
-        "Relative to",
-        "Relative to of",
-        "Count of active ingredients",
-        "Is count of active ingredients in",
-        "Has product characteristic",
-        "Product characteristic of",
-        "Has surface characteristic",
-        "Surface characteristic of",
-        "Has device intended site",
-        "Device intended site of",
-        "Has compositional material",
-        "Compositional material of",
-        "Has filling",
-        "Filling material of",
-        "Reference to variant",
-        "Variant refer to concept",
-        "Genomic DNA transcribes to mRNA",
-        "mRNA Translates to protein",
-        "mRNA is transcribed from genomic DNA",
-        "Protein is translated from mRNA",
-        "Has coating material",
-        "Coating material of",
-        "Has absorbability",
-        "Absorbability of",
-        "Process extends to",
-        "Process extends from",
-        "Has ingredient qualitative strength",
-        "Ingredient qualitative strength of",
-        "Has surface texture",
-        "Surface texture of",
-        "Is sterile",
-        "Is sterile of",
-        "Has target population",
-        "Target population of",
-        "Has status",
-        "Status of",
-        "Process acts on",
-        "Affected by process",
-        "Before",
-        "After",
-        "Towards",
-        "Subject of",
-    ]
+    # Measurement/Observation
+    "has unit", "unit of",
+    "has measured component", "measured component of",
+    "has scale type",
+
+    # Attribute/Modifier
+    "is attribute of", "has modifier",
+    "has type", "type of",
+    "has severity", "severity of",
+    "has category", "is category of",
+
+    # Categorical/Context
+    "has finding context", "finding context of",
+    "has procedure context", "procedure context of",
+    "has temporal context", "temporal context of",
+
+    # Drug/Procedure
+    "has dosage", "dosage of",
+    "has frequency", "frequency of",
+    "has route of administration", "route of administration of",
+    "has procedure device", "procedure device of",
+
+    # Reason/Cause/Etiology
+    "has reason", "is reason for",
+    "has cause", "is cause of",
+    "has etiology", "etiology of",
+
+    # Associated/Linked
+    "has associated finding", "finding associated with",
+    "has associated morphology", "associated morphology of",
+
+    # Outcome/Event
+    "has complication", "complication of",
+    "has outcome", "outcome of",
+
+    # Temporal
+    "has time aspect", "time aspect of",
+    "has onset time", "onset time of",
+    "has duration", "duration of",
+    "has time to event", "time to event of",
+
+    # Hierarchy
+    "has occurrence", "occurrence of"
+]
     # print(
     #     f"extract_ir base_entity={base_entity}, associated_entities={associated_entities}"
     # )
@@ -673,6 +417,7 @@ def extract_information(query: QueryDecomposedModel, model_name=LLM_ID, prompt=N
     if query:
         # global chat_history
         try:
+            # logger.info(f"Extracting information for query: {query.full_query}")
             active_model = LLMManager.get_instance(model=model_name)
             mapping_for_domain, _, _ = load_mapping(MAPPING_FILE, "all")
             if mapping_for_domain is None:
@@ -681,7 +426,7 @@ def extract_information(query: QueryDecomposedModel, model_name=LLM_ID, prompt=N
             examples = mapping_for_domain["examples"]
             logger.info(f"examples length={len(examples)}")
             select_examples = get_relevant_examples(
-                query.full_query, "extract_information", examples, topk=3, min_score=0.6
+                query.full_query, "extract_information", examples, topk=5, min_score=0.6
             )
             if select_examples is None:
                 logger.error("No relevant examples found", exc_info=True)
@@ -760,45 +505,52 @@ def extract_information(query: QueryDecomposedModel, model_name=LLM_ID, prompt=N
                 # Output:
                 # """
                 
-                base_prompt = """ You are a clinical data reasoning agent trained in biomedical informatics. Your task is to transform a free-text clinical query into a structured semantic representation, ensuring alignment with standardized terminology mappings used in the provided examples.
-                            ---
-                            ### TASK OBJECTIVE:
-                            Break down the clinical query into:
-                                - `domain`: OMOP domain (must match one of the given options)
-                                - `base_entity`: main concept of interest
-                                - `additional_entities`: contextual elements (e.g., time, location, reason, cause, qualifiers )
-                                - 'visit': visit information (if present)
-                                - `categories`: categorical values or qualifiers (if present)
-                                - `unit`: only if explicitly stated
+                base_prompt = """You are a clinical data reasoning agent trained in biomedical informatics.  
+                                 Your task is to convert a free-text clinical query into a precise structured JSON format, matching the pattern and logic in the given examples.
+                                ##Task:  
+                                Extract the following elements from each clinical query:
 
-                            ---
+                                - **domain**: OMOP domain. Must be exactly one of:  
+                                [person, condition_occurrence, drug_exposure, measurement, observation, procedure_occurrence, device_exposure, visit_occurrence, observation_period]
 
-                            ### STEP-BY-STEP INSTRUCTIONS:
-                                    1. **Translate** all non-English words to English.
-                                    2. **Expand** all acronyms to their full form.
-                                    3. **Determine Domain** from:  
-                                    [ `person`, `condition_occurrence`, `drug_exposure`, `measurement`, `procedure_occurrence`, `device_exposure`, `visit_occurrence`]
-                                    4. **Extract Entities**:
-                                    - Base entity (main clinical concept)
-                                    - Additional entities (e.g., visit, anatomical site, related procedure)
-                                    5. **Only extract unit if present. Do NOT infer.**
-                                    6. **If the visit contains numeric code ≥1**, treat it as follow-up.
+                                - **base_entity**: The main clinical concept (e.g., drug, condition, measurement).  
+                                *IMPORTANT:* Only include the standardized term for the entity (never include context, qualifiers, or descriptors like dosage, time, or “other”).  
 
-                            ---
+                                - **additional_entities**: Contextual elements related to the base entity  
+                                (e.g., associated context, reason, cause, qualifiers such as route of administration, dosage, frequency, specific daytime, etc.).  
+                                *IMPORTANT:* All words describing context, time, type, or qualifiers must be listed here and never in `base_entity`.
 
-                           
-                            **Expected JSON output**:
-                         
+                                - **visit**: Visit information if present (convert visit codes like “Visit3/1month” to “follow-up 1 month”, and “Visit1/baseline” to “Baseline time”).
+
+                                - **categories**: List of categorical values or qualifiers, in order as found in the query, if any. If none, use null.
+
+                                - **unit**: Unit if explicitly stated (do NOT infer or add if missing).
+
+                                ---
+
+                                ## Step-by-step instructions:
+                                1. Translate non-English words to English.
+                                2. Expand all acronyms to their full form.
+                                3. Select the correct domain for main entity and additional entities from the domain list above.
+                                4. Extract the **main entity** as `base_entity` (exclude all context/qualifiers).
+                                5. Extract all other context, qualifiers, times, or descriptors as `additional_entities`.
+                                6. Extract `categories` and `unit` only if stated.
+                                7. For visits with numeric code ≥1, treat as “follow-up” and state number of months or years (e.g., “Visit4/3months” → “follow-up 3 months”).
+                                8. Output JSON with **keys in the order** shown below.
+
+                                ---
+
+                                ## Output format (strict JSON):
+
                                 ```json
                                 {{
-                                "domain": "Person",
-                                "base_entity": "Patient hospital number",
-                                "additional_entities": [],
-                                "categories": [],
-                                "unit": null,
-                                "visit": "baseline time"
+                                    "domain": [],
+                                    "base_entity": "",
+                                    "additional_entities": [],
+                                    "categories": null,
+                                    "unit": "",
+                                    "visit": ""
                                 }}
-                            ## FOLLOW THE EXAMPLES BELOW STRICTLY
                             """
             final_prompt = (
                 SystemMessagePromptTemplate.from_template(base_prompt)
@@ -971,31 +723,37 @@ def generate_link_prediction_prompt(query, documents, domain=None, in_context=Tr
     logger.info("generate link prediction prompt")
     if in_context:
         _, _, link_prediction_examples = load_mapping(MAPPING_FILE, "all")
+        if link_prediction_examples is None:
+            logger.error("No link prediction examples found")
         logger.info(
             f"{len(link_prediction_examples)}:link prediction examples loaded"
         )
         examples = get_relevant_examples(
-            query, "link_prediction", link_prediction_examples, topk=1, min_score=0.6
+            query, "link_prediction", link_prediction_examples, topk=2, min_score=0.6
         )
+        # examples = [] 
         human_template = """
-        Task: Determine the relationship between a given medical query and candidate terms from standard medical terminologies (e.g., SNOMED, LOINC, MeSH, UCUM, ATC, RxNorm, OMOP Extension).  Your goal is to reassess and potentially adjust the existing rankings by categorizing each candidate term based on its relationship to the medical query within a clinical/medical context.
-        **Categorization Criteria:
-            * Exact Match: The term has the same meaning and context as the query.
-            * Synonym: The term conveys the same concept as the query but may be phrased differently.
-            * Highly Relevant: The term is closely related to the query but not an exact match or synonym.
-            * Partially Relevant: The term is related to the query but includes significant differences in meaning or scope.
-            * Not Relevant: The term is unrelated to the query.
-       **Task Requirements:
-            * Assess Accuracy: Does the candidate term accurately represent the concept described in the query, considering its clinical context?
-            * Identify Exact Matches: Determine if any candidate term is an exact match to the query in meaning and context.
-            * Assess Specificity: If the candidate terms are more specific than the query, determine which one most closely aligns with the intended meaning.
-            * Evaluate Broad Terms: If the candidate terms are broad, determine which term is still most relevant to the core concept of the query.
-        Provide a brief justification for your categorization, focusing on the term's relevance, closeness in meaning, and specificity. Avoid assigning higher scores simply because no perfect match exists.
-       **Examples:
-            * If provided and relevant, use examples to guide your categorization.
-            * If examples are irrelevant or missing, create new relevant examples using the same format.
-        **Desired Format: Provide your response as a list of dictionaries, each containing the keys "answer", "relationship", and "explanation". Do not include any additional comments or preamble.
+         Objective:
+            Determine the relationship between a given medical query and each candidate term. Your goal is to reassess and potentially adjust the existing rankings by categorizing each candidate term based on its relationship to the query.
+         
+        Instructions:
+            - Focus on the main query. 
+            - Given Context should ONLY increase a candidate’s score if the original query meaning is ambiguous or can be influenced by context.
+            -- Categorization Criteria:
+                * Exact Match: The term has the same meaning and context as the query.
+                * Synonym: The term conveys the same concept as the query but may be phrased differently.
+                * Highly Relevant: The term is closely related to the query but not an exact match or synonym.
+                * Partially Relevant: The term is related to the query but includes significant differences in meaning or scope.
+                * Not Relevant: The term is unrelated to the query.
+            -- Provide a brief justification for your categorization, focusing on the term's relevance, closeness in meaning, and specificity.Don't classify a term higher than it deserves simply because no perfect match exists.
+            
+        Examples:
+            If provided and relevant, use examples to guide your categorization.
+        Output Format:
+            Provide your response as a list of dictionaries, each containing the keys "answer", "relationship", and "explanation". Do not include any additional comments or preamble.
+            
         Candidate Terms: {documents}
+            
         Medical Query: {query}
         """
         system = "You are a helpful assistant with expertise in clinical/medical domain and designed to respond in JSON"
@@ -1015,17 +773,25 @@ def generate_link_prediction_prompt(query, documents, domain=None, in_context=Tr
 
     else:
         human_template = """
-        Task: Determine the relationship between a given medical query and each candidate term. Your goal is to reassess and potentially adjust the existing rankings by categorizing each candidate term based on its relationship to the query.
-        **Categorization Criteria:
-            * Exact Match: The term has the same meaning and context as the query.
-            * Synonym: The term conveys the same concept as the query but may be phrased differently.
-            * Highly Relevant: The term is closely related to the query but not an exact match or synonym.
-            * Partially Relevant: The term is related to the query but includes significant differences in meaning or scope.
-            * Not Relevant: The term is unrelated to the query.
+        Objective:
+            Determine the relationship between a given medical query and each candidate term. Your goal is to reassess and potentially adjust the existing rankings by categorizing each candidate term based on its relationship to the query.
+         
+        Instructions:
+            - Focus on the main query. 
+            - Given Context should ONLY increase a candidate’s score if the original query meaning is ambiguous or can be influenced by context.
+            -- Categorization Criteria:
+                * Exact Match: The term has the same meaning and context as the query.
+                * Synonym: The term conveys the same concept as the query but may be phrased differently.
+                * Highly Relevant: The term is closely related to the query but not an exact match or synonym.
+                * Partially Relevant: The term is related to the query but includes significant differences in meaning or scope.
+                * Not Relevant: The term is unrelated to the query.
+            -- Provide a brief justification for your categorization, focusing on the term's relevance, closeness in meaning, and specificity.Don't classify a term higher than it deserves simply because no perfect match exists.
         
-        Provide a brief justification for your categorization, focusing on the term's relevance, closeness in meaning, and specificity.Don't classify a term higher than it deserves simply because no perfect match exists.
-        **Desired Format: Provide your response as a list of dictionaries, each containing the keys "answer", "relationship", and "explanation". Do not include any additional comments or preamble.
+        Output Format:
+            Provide your response as a list of dictionaries, each containing the keys "answer", "relationship", and "explanation". Do not include any additional comments or preamble.
+            
         Candidate Terms: {documents}
+            
         Medical Query: {query}
         """
         system = "You are a helpful assistant with expertise in medical domain and designed to output JSON"
@@ -1054,28 +820,54 @@ def generate_link_prediction_prompt(query, documents, domain=None, in_context=Tr
 def generate_ranking_prompt(query, domain=None, in_context=True, documents=None):
     logger.info("generate ranking prompt")
     if in_context:
-        _, ranking_examples, _ = load_mapping(MAPPING_FILE, domain=domain)
+        _, ranking_examples, _ = load_mapping(MAPPING_FILE, domain="all")
         print(f"{len(ranking_examples)}:ranking examples loaded")
         examples = get_relevant_examples(
-            query, "ranking", ranking_examples, topk=1, min_score=0.6
+            query, "ranking", ranking_examples, topk=2, min_score=0.6
         )
+        # examples= []
         # logger.info(f"selected_examples for Ranking Prediction={examples}")
-        human_template = """Objective: Rank candidate terms from the Standard Medical Terminologies/Vocabularies (SNOMED, LOINC, MeSH, ATC, UCUM, RxNorm, OMOP Extension) based on their relevance and closeness in meaning to a given medical query.
-            **Instructions: Reassess and rank a list of candidate terms based on their relevance and closeness in meaning to a given medical query in a clinical context. Update the existing rankings if they are incorrect where:
-                *10: The candidate term is an accurate and an exact match/synonym to the input.
-                *0: The candidate term is completely irrelevant to the query.
-            **Scoring Guidance: Focus on the following aspects to determine the relevance of the candidate terms:
-                *Exact Match: Does the term precisely match or act as a synonym for the intended concept in the query? If yes, score closer to 10.
-                *Specificity: If the candidate terms are more specific than the query, determine which term adds relevant detail without deviating from the concept. Prioritize relevance to the core meaning of the query.
-                *General Relevance: If the candidate terms are broad or generic, identify which term still captures the main idea or essence of the query. Consider how well it fits in a clinical context, without being overly broad or irrelevant.
-            **Examples: if provided Follow the examples to understand how to rank candidate terms based on their relevance to the query.
-            **Desired format: Your response should be a list of dictionaries, each containing the keys "answer", "score", and "explanation". I repeat, provide the output in list of dictionaries format with the following fields: 'answer', 'score', and 'explanation'.
-            Begin your response with the '[' and include no extra comments or information. 
-            Candidate Terms: {documents}
-            Input: {query}
-            Ranked answers:
-            """
-        system = "You are a helpful assistant with expertise in medical domain and designed to output JSON"
+        # human_template = """Objective: Rank candidate terms from the Standard Medical Terminologies/Vocabularies (SNOMED, LOINC, MeSH, ATC, UCUM, RxNorm, OMOP Extension) based on their relevance and closeness in meaning to a given medical query.
+        #     **Instructions: Reassess and rank a list of candidate terms based on their relevance and closeness in meaning to a given medical query in a clinical context. Update the existing rankings if they are incorrect where:
+        #         *10: The candidate term is an accurate and an exact match/synonym to the input.
+        #         *0: The candidate term is completely irrelevant to the query.
+        #     **Scoring Guidance: Focus on the following aspects to determine the relevance of the candidate terms:
+        #         *Exact Match: Does the term precisely match or act as a synonym for the intended concept in the query? If yes, score closer to 10.
+        #         *Specificity: If the candidate terms are more specific than the query, determine which term adds relevant detail without deviating from the concept. Prioritize relevance to the core meaning of the query.
+        #         *General Relevance: If the candidate terms are broad or generic, identify which term still captures the main idea or essence of the query. Consider how well it fits in a clinical context, without being overly broad or irrelevant.
+        #     **Examples: if provided Follow the examples to understand how to rank candidate terms based on their relevance to the query.
+        #     **Desired format: Your response should be a list of dictionaries, each containing the keys "answer", "score", and "explanation". I repeat, provide the output in list of dictionaries format with the following fields: 'answer', 'score', and 'explanation'.
+        #     Begin your response with the '[' and include no extra comments or information. 
+        #     Candidate Terms: {documents}
+        #     Input: {query}
+        #     Ranked answers:
+        #     """
+        human_template = """
+                Objective: 
+                You are a helpful assistant for medical terminology harmonization. Your job is to rank candidate terms for how well they match the MAIN QUERY. Context is provided only to clarify ambiguous queries.
+
+                Instructions:
+                - Focus on the main query.
+                - Context should ONLY increase a candidate’s score if the original query meaning is ambiguous or can be influenced by context.
+                - Assign each candidate a score from 0 (irrelevant) to 10 (exact match/synonym).
+                - Penalize candidates that match only context, unless context is essential for meaning.
+                - Give a short, specific explanation for each score.
+
+                Output Format:
+                Provide a list of dictionaries in JSON Format, each with 'answer', 'score', and 'explanation'. Start your response with '[' and do not include any extra commentary.
+
+                Example: 
+                If provided, utilize the examples to understand how to rank candidate terms based on their relevance to the query.
+
+
+                Input: query
+                Candidate terms: {documents}
+
+                Rank the candidates:
+
+
+        """
+        system = ""
         example_prompt = ChatPromptTemplate.from_messages(
             [("system", system), ("human", human_template)], template_format="mustache"
         )
@@ -1093,18 +885,41 @@ def generate_ranking_prompt(query, domain=None, in_context=True, documents=None)
         # logger.info(f"final_prompt={final_prompt}")
 
     else:
-        human_template = """Objective: Rank candidate terms based on their relevance and closeness in meaning to a given query.
-            Instructions: For each given candidate term, please evaluate its relevance and closeness in contextual meaning to the given query on a scale from 0 to 10 where,
-                -10 indicates that system answer is an accurate and an exact match(synonym) to the input.
-                -0: The term is completely irrelevant to the query.
-            Provide a brief justification for each score, explaining why the assigned score was chosen. Avoid assigning higher scores simply because no perfect match exists.
-            Your response should strictly adhere to a valid JSON schema as a list of dictionaries, each containing the keys "answer", "score", and "explanation". 
-            Begin your response with the word '[' and include no extra comments or information.
-            Input: {query}
-            Candidate Terms: {documents}
-            Ranked answers:
-            """
-        system = "You are a helpful assistant expert in medical domain and designed to output JSON"
+        # human_template = """Objective: Rank candidate terms based on their relevance and closeness in meaning to a given query.
+        #     Instructions: For each given candidate term, please evaluate its relevance and closeness in contextual meaning to the given query on a scale from 0 to 10 where,
+        #         -10 indicates that system answer is an accurate and an exact match(synonym) to the input.
+        #         -0: The term is completely irrelevant to the query.
+        #     Provide a brief justification for each score, explaining why the assigned score was chosen. Avoid assigning higher scores simply because no perfect match exists.
+        #     Your response should strictly adhere to a valid JSON schema as a list of dictionaries, each containing the keys "answer", "score", and "explanation". 
+        #     Begin your response with the word '[' and include no extra comments or information.
+        #     Input: {query}
+        #     Candidate Terms: {documents}
+        #     Ranked answers:
+        #     """
+        # system = "You are a helpful assistant expert in medical domain and designed to output JSON"
+        
+        human_template = """
+                Objective: 
+                You are a helpful assistant for medical terminology harmonization. Your job is to rank candidate terms for how well they match the MAIN QUERY. Context is provided only to clarify ambiguous queries.
+
+                Instructions:
+                - Focus on the main query.
+                - Context should ONLY increase a candidate’s score if the original query meaning is ambiguous or can be influenced by context.
+                - Assign each candidate a score from 0 (irrelevant) to 10 (exact match/synonym).
+                - Penalize candidates that match only context, unless context is essential for meaning.
+                - Give a short, specific explanation for each score.
+
+                Output Format:
+                Provide a list of dictionaries in JSON, each with 'answer', 'score', and 'explanation'. Start your response with '[' and do not include any extra commentary.
+
+                Input: query
+                Candidate terms: {documents}
+
+                Rank the candidates:
+
+
+        """
+        system = ""
 
         final_prompt = ChatPromptTemplate.from_messages(
             [("system", system), ("human", human_template)], template_format="mustache"
@@ -1380,7 +1195,7 @@ def pass_to_chat_llm_chain(
     #         logger.info(f"Error in calculate_final_score: {e}")
     #         return 0
     logger.info(
-        f"pass_to_chat_llm_chain for query={query} with top_candidates={len(top_candidates)}"
+        f"pass_to_chat_llm_chain for query={query} with top_candidates={top_candidates}"
     )
     try:
         try:
@@ -1419,7 +1234,7 @@ def pass_to_chat_llm_chain(
                             True if result["answer"] in documents else False
                         )
                         logger.info(
-                            f"Exact match found in Ranking: {result['answer']} = {exact_match_found_rank}. Does it exist in original documents={result['answer'] in documents}"
+                            f"Exact match by score in Ranking: {result['answer']} = {exact_match_found_rank}. Does it exist in original documents={result['answer'] in documents}"
                         )
             link_predictions_results = []
             if prompt_stage == 2:
@@ -1455,7 +1270,7 @@ def pass_to_chat_llm_chain(
         if isinstance(combined_scores, str):
             print(f"combined_scores={combined_scores}")
         exact_match_found = exact_match_found_rank and exact_match_found_classification
-        print(f"exact_match_found={exact_match_found}")
+        print(f"exact_match_found={exact_match_found} in ranking={exact_match_found_rank} in classification={exact_match_found_classification}")
         avg_belief_scores = calculate_belief_scores(
             combined_scores, threshold, exact_match_found=exact_match_found
         )
@@ -1465,7 +1280,8 @@ def pass_to_chat_llm_chain(
             avg_belief_scores.items(), key=lambda item: item[1], reverse=True
         )
         sorted_belief_scores = dict(sorted_belief_scores)
-        logger.info(f"belief_threshold={threshold}")
+        logger.info(f"belief_threshold={threshold}" 
+                    f" belief_scores={sorted_belief_scores}")
         for doc in top_candidates:
             doc_string = create_document_string(doc)
             doc.metadata["belief_score"] = sorted_belief_scores.get(doc_string, 0)
@@ -1474,14 +1290,21 @@ def pass_to_chat_llm_chain(
             for doc in top_candidates
             if sorted_belief_scores.get(create_document_string(doc), 0) >= threshold
         ]
-        sorted_filtered_candidates = sorted(
-            filtered_candidates,
-            key=lambda doc: doc.metadata["belief_score"],
-            reverse=True,
-        )
-        print(
-            f"filtered_candidates={[doc.metadata['label'] for doc in sorted_filtered_candidates]}"
-        )
+        doc_string_to_doc = {create_document_string(doc): doc for doc in filtered_candidates}
+        sorted_filtered_candidates = [
+                doc_string_to_doc[doc_str]
+                for doc_str, score in sorted_belief_scores.items()
+                if score >= threshold and doc_str in doc_string_to_doc
+            ]
+        # sorted_filtered_candidates = sorted(
+        #     filtered_candidates,
+        #     key=lambda doc: doc.metadata["belief_score"],
+        #     reverse=True,
+        # )
+        # print(
+        #     f"filtered_candidates={[doc.metadata['label'] for doc in sorted_filtered_candidates]}"
+        # )
+        print(f"sorted_filtered_candidates={sorted_filtered_candidates}")
         return sorted_filtered_candidates, exact_match_found
 
     except Exception as e:
@@ -1528,30 +1351,30 @@ def get_json_output(input_text: str):
 # Candidate Terms: {documents}
 
 
-def count_tokens(prompt_text: str, model_name: str = "gpt-3.5-turbo") -> int:
-    """
-    Count the number of tokens in the given prompt text for the specified model.
+# def count_tokens(prompt_text: str, model_name: str = "gpt-3.5-turbo") -> int:
+#     """
+#     Count the number of tokens in the given prompt text for the specified model.
 
-    :param prompt_text: The text prompt for which to count tokens.
-    :param model_name: The name of the model (e.g., "gpt-3.5-turbo", "llama3.1").
-    :return: The total number of tokens in the prompt.
-    """
-    try:
-        # For models that work with tiktoken (like GPT)
-        encoding = tiktoken.encoding_for_model(model_name)
-        return len(encoding.encode(prompt_text))
-    except Exception as e:
-        print(f"tiktoken failed for model {model_name}: {e}")
+#     :param prompt_text: The text prompt for which to count tokens.
+#     :param model_name: The name of the model (e.g., "gpt-3.5-turbo", "llama3.1").
+#     :return: The total number of tokens in the prompt.
+#     """
+#     try:
+#         # For models that work with tiktoken (like GPT)
+#         encoding = tiktoken.encoding_for_model(model_name)
+#         return len(encoding.encode(prompt_text))
+#     except Exception as e:
+#         print(f"tiktoken failed for model {model_name}: {e}")
 
-    try:
-        # For models like LLaMA that may use a different tokenizer
-        from transformers import LlamaTokenizer
+#     try:
+#         # For models like LLaMA that may use a different tokenizer
+#         from transformers import LlamaTokenizer
 
-        tokenizer = LlamaTokenizer.from_pretrained(model_name)
-        return len(tokenizer.encode(prompt_text))
-    except Exception as e:
-        print(f"Hugging Face tokenizer failed for model {model_name}: {e}")
+#         tokenizer = LlamaTokenizer.from_pretrained(model_name)
+#         return len(tokenizer.encode(prompt_text))
+#     except Exception as e:
+#         print(f"Hugging Face tokenizer failed for model {model_name}: {e}")
 
-    # Fallback if no tokenizer is available
-    print("Warning: Using a simple word count as a fallback method.")
-    return len(prompt_text.split())
+#     # Fallback if no tokenizer is available
+#     print("Warning: Using a simple word count as a fallback method.")
+#     return len(prompt_text.split())

@@ -12,7 +12,7 @@ import pandas as pd
 # from simstring.database.dict import DictDatabase
 # from simstring.searcher import Searcher
 from rapidfuzz import process, fuzz
-from .py_model import RetrieverResultsModel, ProcessedResultsModel
+from .py_model import RetrieverResultsModel, ProcessedResultsModel, QueryDecomposedModel
 from itertools import chain
 import csv
 # import tiktoken
@@ -398,7 +398,12 @@ def post_process_candidates(candidates: List[Document], max=1):
     # print(f"Total Candidates={len(candidates)}")
     if not candidates or len(candidates) == 0:
         print("No candidates found.")
-        return []
+        return [RetrieverResultsModel(
+            label="na",
+            code="na",
+            omop_id="na",
+            vocab=None,
+        )]
 
     for _, doc in enumerate(candidates[:max]):
         label = doc.metadata.get("label", "none")
@@ -408,7 +413,7 @@ def post_process_candidates(candidates: List[Document], max=1):
             "domain": f"{doc.metadata['domain']}",
             # "concept_class": f"{doc.metadata['concept_class']}",
             "code": f"{doc.metadata['vocab']}:{doc.metadata['scode']}",
-            "omop_id": str(doc.metadata["sid"]),
+            "omop_id": int(doc.metadata["sid"]),
             "vocab": doc.metadata["vocab"],
         }
         doc_obj = RetrieverResultsModel(**current_doc_dict)
@@ -504,17 +509,20 @@ def load_mapping(filename, domain):
     try:
         with open(filename, "r") as file:
             data = json.load(file)
-
+        print(f"Loaded mapping data from {filename}")
         domain = domain if domain else "all"
         # print(f"domain={domain}")
         mapping = data["mapping_rules"].get(domain, {})
-
+        print(f"mapping len={len(mapping)} for domain={domain}")
         # Get examples or default to empty list if not present
         relevance_examples = data.get("rel_relevance_examples", {}).get(domain, [])
         ranking_examples = data.get("ranking_examples", {}).get(domain, [])
         # print(f"ranking_examples={ranking_examples[:2]} for domain={domain}")
         # print(f"relevance_examples={relevance_examples[:2]} for domain={domain}")
         # Format examples as string representations of dictionaries
+        
+        print(f"len of relevance_examples_string={len(relevance_examples)}")
+        print(f"len of ranking_examples_string={len(ranking_examples)}")
         relevance_examples_string = [
             {
                 "input": ex["input"],
@@ -540,7 +548,6 @@ def load_mapping(filename, domain):
             }
             for ex in ranking_examples
         ]
-        # print(f"ranking_examples_string={ranking_examples_string[:2]}")
 
         if not mapping:
             return None, ranking_examples_string, relevance_examples_string
@@ -653,7 +660,7 @@ def convert_db_result(result) -> RetrieverResultsModel:
     result_dict = {
             "label": str(result[2]), # Baseline time
             "code": str(result[3]),  # loinc:64103-5
-            "omop_id": str(result[4]),  # 40766819
+            "omop_id": int(result[4]),  # 40766819
             "score": 10.0,
             "domain": "",
             "vocab": str(result[3]).split(":")[0] if ":" in str(result[3]) else "",
@@ -723,6 +730,74 @@ def convert_db_result(result) -> RetrieverResultsModel:
 
 
 # def sim_string_search(query, candidates):
+
+# def best_string_match(query: str, candidates: list, threshold: float = 90.0):
+#     """
+#     Compare `query` to each string in `candidates`.
+#     Returns (best_match, best_score) if score >= threshold, else (None, 0).
+#     """
+#     if not query or not candidates:
+#         return None, 0
+#     # Normalize candidates (optional, but can improve matching for your use case)
+#     candidate_strings = [c[2].strip().lower() for c in candidates]
+#     print(f"candidate_strings={candidate_strings}")
+#     query = query.strip().lower()
+
+#     # Get the best match and its score
+#     result = process.extractOne(query, candidate_strings, scorer=fuzz.WRatio)
+#     if result and result[1] >= threshold:
+#         # Return the whole tuple from the list
+#         print(f"Best match found: {result[0]} with score {result[1]}")
+#         return [c for c in candidates if c[2].strip().lower() == result[0]][0]
+#     else:
+#         return None
+   
+
+
+def add_result_to_training_data(data: list, training_data_file: str):
+
+    # create input from original QueryDecomposedModel in this format  {
+                #     "input": "Is your patient affected by transient ischemic attack (TIA)?,categorical values: yes=yes| no=no, visit: Baseline visit",
+                #     "output": "{\"domain\": \"Condition_occurrence\", \"base_entity\": \"Transient cerebral ischemia\", \"additional_entities\": null, \"categories\": [\"yes\", \"no\"], \"visit\": \"Baseline time\", \"unit\": null}"
+                # },
+    try:
+        
+        new_examples = []
+        for d in data:
+            original_query = d['input'].dict()
+            input_str = f"{original_query['full_query']}",
+            
+            # Evaluating variable: {'VARIABLE NAME': 'bk_dat', 'VARIABLE LABEL': 'date of examination', 'Categorical Values Concept Code': None, 'Categorical Values Concept Name': None, 'Categorical Values OMOP ID': None, 'Variable Concept Code': 'icare:icv200000087', 'Variable Concept Name': 'date of examination', 'Variable OMOP ID': 200000087, 'Additional Context Concept Name': None, 'Additional Context Concept Code': None, 'Additional Context OMOP ID': None, 'Unit Concept Name': None, 'Unit Concept Code': None, 'Unit OMOP ID': None, 'Domain': 'observation_period', 'Visit Concept Name': 'baseline time', 'Visit Concept Code': 'loinc:64103-5', 'Visit OMOP ID': 40766819, 'Primary to Secondary Context Relationship': None}
+            result  = d['output']
+            lower_case_result = {k.lower(): v for k, v in result.items() if v is not None}
+            output_str = f"{{\"domain\": \"{lower_case_result['domain']}\", \"base_entity\": \"{lower_case_result['variable concept name']}\", \"additional_entities\": {lower_case_result['additional context concept name']}, \"categories\": {lower_case_result['categorical values concept name']}, \"visit\": \"{lower_case_result['visit concept name']}\", \"unit\": {lower_case_result['unit concept name']}}}"
+            example = {
+                "input": input_str,
+                "output": output_str,
+            }
+            new_examples.append(example)
+            with open(training_data_file, "r") as file:
+                data = json.load(file)
+
+        domain = domain if domain else "all"
+        # print(f"domain={domain}")
+        mapping = data["mapping_rules"].get(domain, {})
+        # append the new example to the existing examples
+        if "example_output" in mapping:
+            mapping["example_output_new"].extend(new_examples)
+        else:
+            mapping["example_output_new"] = new_examples
+        # Save the updated data back to the file
+        with open(training_data_file, "w") as file:
+            json.dump(data, file, indent=4)
+        print(f"Added example to {training_data_file}")
+    # gene
+    except FileNotFoundError:
+        print(f"Error adding example to training data: {e}")
+    except json.JSONDecodeError:
+        print(f"Error decoding JSON from file: {training_data_file}")
+    except KeyError:
+        print(f"Error: Missing key in JSON data for file: {training_data_file}")
 
 
 def exact_match_found(query_text, documents, domain=None):
@@ -1392,15 +1467,15 @@ def format_categorical_values(
             #     codes.append(' and/or '.join(remove_duplicates([doc.standard_code for doc in docs])))
             #     ids.append(' and/or '.join(remove_duplicates(doc.standard_concept_id)) for doc in docs])))
             # elif len(docs) == 1:
-            labels.append(docs[0].label)
-            codes.append(docs[0].code)
-            ids.append(docs[0].omop_id)
+            labels.append(docs[0].label) if docs[0].label else labels.append("na")
+            codes.append(docs[0].code) if docs[0].code else codes.append("na")
+            ids.append(docs[0].omop_id) if docs[0].omop_id else ids.append("na")
         elif type == "categorical":
             labels.append("na")
             codes.append("na")
             ids.append("na")
 
-    return "|".join(labels), "|".join(codes), "|".join(ids)
+    return "|".join(labels), "|".join(codes), "|".join([str(id_) if id_ is not None else "Na" for id_ in ids])
 
 
 def process_synonyms(synonyms_text: str) -> List[str]:
@@ -1488,7 +1563,7 @@ def print_docs(docs):
 
 def filter_irrelevant_domain_candidates(docs, domain) -> List[RetrieverResultsModel]:
     select_vocabs = select_vocabulary(domain=domain)
-
+    print(f"Selected vocabularies for domain '{domain}': {select_vocabs}")
     # Filter documents based on selected vocabularies
     docs_ = [doc for doc in docs if doc.metadata["vocab"] in select_vocabs]
     # If no documents match, add 'snomed' to the vocabularies and filter again
@@ -1508,56 +1583,86 @@ def pretty_print_docs(docs) -> None:
 
 # Evaluating variable: {'VARIABLE NAME': 'date_of_visit', 'VARIABLE LABEL': 'date of patient visit', 'Categorical Values Concept Code': None, 'Categorical Values Concept Name': None, 'Categorical Values OMOP ID': None, 'Variable Concept Code': 'snomed:406543005', 'Variable Concept Name': 'date of visit', 'Variable OMOP ID': '4231970', 'Additional Context Concept Name': None, 'Additional Context Concept Code': None, 'Additional Context OMOP ID': None, 'Primary to Secondary Context Relationship': None, 'Unit Concept Name': None, 'Unit Concept Code': None, 'Unit OMOP ID': None, 'Domain': 'visit_occurrence', 'Visit Concept Name': None, 'Visit Concept Code': None, 'Visit OMOP ID': None}
 
-def convert_row_to_entities(row: dict) -> List[Dict[str, str]]:
+def convert_row_to_entities(row: dict) -> List[Dict[str, any]]:
     """
     Convert a row of variable data into a list of entities.
     Each entity is represented as a dictionary with keys 'label' and 'code'.
     """
+    print(f"Converting variable to db entries: {row}")
     result_rows = []
     # make all keys small case
     row = {k.lower(): v for k, v in row.items()}
     if pd.notna(row.get("variable name")) and row.get("variable name") != "":
             print(f"Processing variable: {row['variable name']}")
-            if pd.notna(row.get("variable concept name")) and row.get("variable concept name") != "":
+            if pd.notna(row.get("variable concept name")) and row.get("variable concept name") != "" and pd.notna(row.get("variable omop id")):
                 result_rows.append({
                     "variable_name": row["variable label"],
                     "concept_code":row.get("variable concept code"),
                     "standard_label": row.get("variable concept name").strip(),
                     "omop_id": int(row.get("variable omop id") if pd.notna(row.get("variable omop id")) else None)
             })
-
+            
             # construct dictionary using each categorical value separately and its corresponding concept code and omop id
-            if pd.notna(row.get("categorical")) and pd.notna(row.get("categorical value concept code")):
+            if pd.notna(row.get("categorical values concept name")) and pd.notna(row.get("categorical values concept code")):
 
                 for categorical_value, concept_code, omop_id, standard_label in zip(
                     row.get("categorical", "").split("|"),
-                    row.get("categorical value concept code", "").split("|"),
-                    row.get("categorical value omop id", "").split("|"),
-                    row.get("categorical value concept name", "").split("|")  # Assuming standard label is the first part
+                    row.get("categorical values concept code", "").split("|"),
+                    row.get("categorical values omop id", "").split("|"),
+                    row.get("categorical values concept name", "").split("|")  # Assuming standard label is the first part
                 ):
-                    print(f"Processing categorical value: {categorical_value.strip()} for variable name: {row['variablename']}")
-                    result_rows.append({
-                        "variable_name": categorical_value.strip(),
-                        "concept_code": concept_code.strip(),
-                        "standard_label": standard_label.strip() if standard_label else None,
-                        "omop_id": int(omop_id) if pd.notna(omop_id) and omop_id.strip() else None
-                    })
+                    print(f"Processing categorical value: {categorical_value.strip()} for variable name: {row['variable name']}")
+                    if standard_label and omop_id != "na" and concept_code.strip() != "na" and standard_label.strip() != "na":
+                        result_rows.append({
+                            "variable_name": categorical_value.strip(),
+                            "concept_code": concept_code.strip(),
+                            "standard_label": standard_label.strip(),
+                            "omop_id": int(omop_id)
+                        })
+            if pd.notna(row.get("additional context concept name")) and pd.notna(row.get("additional context concept code")):
+                    # Split all columns into lists
+                    context_names = row.get("additional context concept name", "").split("|") 
+                    context_codes = row.get("additional context concept code", "").split("|")
+                    context_omop_ids = row.get("additional context omop id", "").split("|")
+                    additional_entities_label = row.get("additional entities", "").split("|")
+                    print(f"Processing additional context {row['variable name']} with labels: {additional_entities_label}, names: {context_names}, codes: {context_codes}, omop_ids: {context_omop_ids}")
+                    # Check all lengths
+                    if len(additional_entities_label) == len(context_names) == len(context_codes) == len(context_omop_ids) :
+                        for cvar, cname, ccod, coid in zip(additional_entities_label, context_names, context_codes, context_omop_ids):
+                            if pd.notna(cname) and pd.notna(ccod) and pd.notna(coid) and coid != "na":
+                                print(f"Processing additional context code: {coid} for variable name: {row['variable name']}")
+                                result_rows.append({
+                                    "variable_name": cvar.strip(),
+                                    "concept_code": ccod.strip(),
+                                    "standard_label": cname.strip(),
+                                    "omop_id": int(coid)
+                                })
+                    else:
+                        print(
+                            f"[WARN] Skipping additional context for variable '{row.get('variable name')}'. "
+                            f"Column counts do not match: "
+                            f"name={len(context_names)}, code={len(context_codes)}, omop_id={len(context_omop_ids)}"
+                        )
+
             # add visit concept code, label and omop id if they exist
             if pd.notna(row.get("visits")) and pd.notna(row.get("visit concept code")):
-                print(f"Processing visit: {row['visits']} for variable name: {row['variablename']}")  # Debugging output
-                result_rows.append({
-                    "variable_name": row.get("visits", "").strip(),
-                    "concept_code": row.get("visit concept code", ""),
-                    "standard_label": row.get("visit concept name", "").strip(),
-                    "omop_id": int(row.get("visit omop id") if pd.notna(row.get("visit omop id")) else None)
-                })
+                print(f"Processing visit: {row['visits']} for variable name: {row['variable name']}")  # Debugging output
+                if pd.notna(row.get("visit concept name")) and pd.notna(row.get("visit omop id")) and pd.notna(row.get("visit concept code")) and row.get("visit omop id") != "na":
+                    # Append visit information
+                        result_rows.append({
+                        "variable_name": row.get("visits", "").strip(),
+                        "concept_code": row.get("visit concept code", ""),
+                        "standard_label": row.get("visit concept name", "").strip(),
+                        "omop_id": int(row.get("visit omop id"))
+                    })
             # add unit concept code, label and omop id if they exist
             if pd.notna(row.get("unit concept code")) and pd.notna(row.get("units")):
-                result_rows.append({
-                    "variable_name": row.get("units", ""),
-                    "concept_code": row.get("unit concept code", ""),
-                    "standard_label": row.get("unit concept name", ""),
-                    "omop_id": int(row.get("unit omop id") if pd.notna(row.get("unit omop id")) else None)
+                if pd.notna(row.get("unit concept name")) and pd.notna(row.get("unit omop id")) and pd.notna(row.get("unit concept code")) and row.get("unit omop id") != "na":
+                    result_rows.append({
+                        "variable_name": row.get("units", ""),
+                        "concept_code": row.get("unit concept code", ""),
+                        "standard_label": row.get("unit concept name", ""),
+                        "omop_id": int(row.get("unit omop id"))
                 })
     print(f"Converted row to entities: {result_rows}")
     return result_rows
@@ -1774,7 +1879,7 @@ def convert_row_to_entities(row: dict) -> List[Dict[str, str]]:
 
 #     return df
 
-def append_results_to_csv(input_file, results, logger:any, output_suffix="_mapped.csv", llm_id: str = "") -> pd.DataFrame:
+def append_results_to_csv(input_file, results, logger:any, output_file_path="_mapped.csv", llm_id: str = "") -> pd.DataFrame:
     """
     Reads the input CSV file, uses the number of rows according to `results` length, appends new columns,
     and saves it with a new name with the suffix '_mapped.csv'. If 'visits' column exists in the original file,
@@ -1843,7 +1948,7 @@ def append_results_to_csv(input_file, results, logger:any, output_suffix="_mappe
     add_ctx_labels = extract_context("Additional Context Concept Name")
     add_ctx_codes = extract_context("Additional Context Concept Code")
     add_ctx_omops = extract_context("Additional Context OMOP ID")
-    logger.info(f"Processed Additional Context: {add_ctx_labels}, {add_ctx_codes}, {add_ctx_omops}")
+    # logger.info(f"Processed Additional Context: {add_ctx_labels}, {add_ctx_codes}, {add_ctx_omops}")
 
     new_columns_data = {
         "Categorical Values Concept Code": extract_context("Categorical Values Concept Code"),
@@ -1892,9 +1997,10 @@ def append_results_to_csv(input_file, results, logger:any, output_suffix="_mappe
 
     # Save
     file_name, _ = os.path.splitext(input_file)
-    output_file = f"{file_name}{output_suffix}"
-    df.to_csv(output_file, index=False)
-    print(f"File saved: {output_file}")
+    if output_file_path is None:
+        output_file_path = f"{file_name}_mapped.csv"
+    df.to_csv(output_file_path, index=False, quoting=csv.QUOTE_MINIMAL)
+    print(f"File saved: {output_file_path}")
    
     return df
 
@@ -2146,3 +2252,13 @@ def evaluate_ncgd(data):
 #     # Fallback if no tokenizer is available
 #     print("Warning: Using a simple word count as a fallback method.")
 #     return len(prompt_text.split())
+
+
+def string_formatting(text:str) -> str:
+    """
+    Format the input string by removing extra spaces and ensuring proper capitalization.
+    """
+    # if there is comma in the text, add double quotes around the text for csv compatibility
+    if "," in text:
+        text = f'"{text}"'
+    return text

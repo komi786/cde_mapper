@@ -1,0 +1,6 @@
+How to create vector database documents
+
+1. Read vocabulary folder and preprocess vocabularies using process rag/preprocess_data.py code
+2. USe the output files from step 1 to create omop_graph
+3. Use omop_graph and load_data to create jsonl file which contains Document Objects --- we are using Langchain and adhere to this format
+4. Jsonl file is stored in output folder 

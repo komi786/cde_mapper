@@ -1,4 +1,4 @@
-from typing import Optional, List, Any, Dict
+from typing import Optional, List, Any, Dict, Union
 from pydantic import BaseModel, Field, validator
 from pydantic import root_validator
 
@@ -107,7 +107,7 @@ class RetrieverResultsModel(BaseModel):
     label: Optional[str] = None
     domain: Optional[str] = None
     code: Optional[str] = None
-    omop_id: Optional[str] = None
+    omop_id: Optional[Union[int, str]] = None
     vocab: Optional[str] = None
     score: Optional[float] = None  # In case there's a score for relevance
 

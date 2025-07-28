@@ -11,6 +11,7 @@ from .utils import (
     post_process_candidates,
     exact_match_found,
     filter_irrelevant_domain_candidates,
+    add_result_to_training_data
 )
 from .evalmap import perform_mapping_eval_for_variable
 from .llm_chain import pass_to_chat_llm_chain, extract_information
@@ -67,7 +68,6 @@ def retriever_docs(query, retriever, domain="all", is_omop_data=False, topk=10):
 
 COMPRESSED_RETRIEVER = False
 
-
 def map_data(
     data,
     retriever,
@@ -86,6 +86,7 @@ def map_data(
     # start_time = time.time()
     # max_queries = len(data)  # 282
     results = []
+    training_examples= []
     for _, item in enumerate(data):
         query_obj = item[1]
         # logger.info(f"Processing object: {query_obj}")
@@ -97,7 +98,7 @@ def map_data(
         #     topk=topk,
         # )
         if query_obj:
-            query_result = full_query_processing_db(
+            query_result, decomposed_query_object = full_query_processing_db(
                 query_text=query_obj,
                 retriever=retriever,
                 llm_name=llm_name,
@@ -106,17 +107,32 @@ def map_data(
                 datamanager=db,
             )
             if query_result:
+                
                 query_result = perform_mapping_eval_for_variable(
                     var_=query_result, llm_id=llm_name
                 )
-                if query_result["prediction"].strip().lower() == "correct":
-                    db.insert_many(convert_row_to_entities(query_result))
                 results.append(query_result)
+                query_result["variable label"] = decomposed_query_object.base_entity
+                query_result["variable name"] = decomposed_query_object.name
+                query_result["categorical"] = "|".join(decomposed_query_object.categories) if decomposed_query_object.categories else None
+                query_result["visits"] = decomposed_query_object.visit if decomposed_query_object.visit else None
+                query_result["additional entities"] = "|".join(decomposed_query_object.additional_entities) if decomposed_query_object.additional_entities else None
+                query_result["units"] = decomposed_query_object.unit if query_obj.unit else None
+                if query_result["prediction"].strip().lower() == "correct":
+                    training_examples.append(
+                        {
+                            "input": query_obj,
+                            "output": query_result
+                        }
+                    )
+                    db.insert_many(convert_row_to_entities(query_result))
+                logger.info(f"Query result after processing: {query_result}")
+                
         else:
             logger.info(f"No query object found for item: {item}")
             results.append(create_processed_result())
         # time.sleep(0.05)  # Adjusted to be more appropriate than 0.0005
-    db.close_connection()
+
     # end_time = time.time()
     # total_time = end_time - start_time
     # save_results(results, output_file)
@@ -127,6 +143,8 @@ def map_data(
     # logger.info(
     #     f"Total execution time for {max_queries} queries is {total_time} seconds."
     # )
+    add_result_to_training_data(training_examples, MAPPING_FILE)
+    db.close_connection()
     return results
 
 
@@ -144,7 +162,7 @@ def full_query_processing_db(
         if query_text is None:
             return None
         else:
-            print(f"variable name ={query_text.name}")
+            print(f"variable name ={query_text.full_query}")
             # results, mode = datamanager.query_variable(. It was inconsisten logic 
             #     query_text.original_label, var_name=query_text.name
             # )
@@ -164,26 +182,27 @@ def full_query_processing_db(
                 db=datamanager,
             )
 
-            # logger.info("Mapping result:", processes_results)
-            return processes_results
+            
+            return processes_results, query_decomposed
     except Exception as e:
         logger.error(f"Error full processing query: {e}", exc_info=True)
-        return {}
+        return {}, query_decomposed
 
 
 def find_entity_in_db(entity_str:str, data_manager: DataManager) -> list:
+        entity_str = entity_str.strip().lower() 
         result = data_manager.find_by_variable(entity_str)
 
         if result:
-            logger.info(f"Found entity {result} by variable: {entity_str}")
+            logger.info(f"Found entity {result} by variable name:{entity_str}")
             return [convert_db_result(result)]
         else:
             result = data_manager.find_by_label(entity_str)
-            logger.info(f"Found entity {result} by label: {entity_str}")
+            logger.info(f"Found entity {result} by label:{entity_str}")
             if result:
                 return [convert_db_result(result)]
             else:
-                logger.info(f"No entity found for: {entity_str}")
+                logger.info(f"No entity found for:{entity_str}")
                 return []
 
 def temp_process_query_details_db(
@@ -210,7 +229,7 @@ def temp_process_query_details_db(
                 unit_matches,
                 visit_matches
             ) = None, None, None, None, None
-            base_entity = original_query_obj.base_entity
+            base_entity = llm_query_obj.base_entity
             # domain = original_query_obj.domain
             
             # base_entity_in_db = find_entity_in_db(base_entity, db)
@@ -271,7 +290,7 @@ def temp_process_query_details_db(
             # unit = llm_query_obj.unit
             rel = llm_query_obj.rel
             logger.info(
-                f"main_term={main_term}, context={llm_query_obj.additional_entities}, status={llm_query_obj.categories}, domain={llm_query_obj.domain}, unit={llm_query_obj.unit}"
+                f"main_term={main_term}, context={llm_query_obj.additional_entities}, categories={llm_query_obj.categories}, domain={llm_query_obj.domain}, unit={llm_query_obj.unit}"
             )
             if llm_query_obj.additional_entities:
                 logger.info(f"Processing additional entities: {llm_query_obj.additional_entities}")
@@ -474,7 +493,7 @@ def process_values_db(
                         domain=domain,
                     ):
                         # max_results = 2 if ('or' in q_value or 'and' in q_value) else 1
-                        # logger.info(f"max_results={max_results} for {updated_q_value}")
+                        logger.info(f"Exact Matched docs for {q_value}: {matched_docs}")
                         all_values[q_value] = post_process_candidates(
                             matched_docs, max=1
                         )
@@ -502,8 +521,8 @@ def process_values_db(
                                 all_values[q_value] = [
                                     RetrieverResultsModel(
                                         label="na",
-                                        code=None,
-                                        omop_id=None,
+                                        code="na",
+                                        omop_id="na",
                                         vocab=None,
                                     )
                                 ]
@@ -516,6 +535,16 @@ def process_values_db(
         #             vocab="na",
         #         )
         #     ]
+        
+        else:
+            all_values[q_value] = [
+                                    RetrieverResultsModel(
+                                        label="na",
+                                        code="na",
+                                        omop_id="na",
+                                        vocab=None,
+                                    )
+                                ]
     return all_values
 
 def process_unit_db(
