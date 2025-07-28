@@ -1,8 +1,8 @@
-# CDE-Linker: Using Retrieval-Augmented Language Models for Linking Clinical Data Elements to Controlled Vocabularies
+# CDE-Mapper: Using Retrieval-Augmented Language Models for Mapping Clinical Data Elements to Controlled Vocabularies
 
 ![image](https://github.com/user-attachments/assets/54577286-9d04-45a3-852e-66684bd1a2fc)
 
-CT_Mapper is an automated concept linking tool designed to find appropriate standardized terms in OMOP Athena vocabularies for clinical terms found in data dictionaries. Built with advanced Retrieval Augmented Generation (RAG) methods, CT_Mapper leverages the power of generative models and vector stores to enhance the accuracy of linking composite concepts. This tool enables data custodians to transform ambiguous and semi-structured clinical data into a harmonized schema effectively. Checkout the article at https://arxiv.org/abs/2505.04365
+CDE-Mapper is an automated concept linking tool designed to find appropriate standardized terms in OMOP Athena vocabularies for clinical terms found in data dictionaries. Built with advanced Retrieval Augmented Generation (RAG) methods, CT_Mapper leverages the power of generative models and vector stores to enhance the accuracy of linking composite concepts. This tool enables data custodians to transform ambiguous and semi-structured clinical data into a harmonized schema effectively. Checkout the article at https://arxiv.org/abs/2505.04365
 
 
 ## Table of Contents
@@ -26,7 +26,7 @@ Instead of mapping individual terms, we focus on mapping data dictionaries prese
 
 ## Installation Requirements
 
-To run **CT_Mapper**, you need to install the packages mentioned in requirements.in file:
+To run **CDE-Mapper**, you need to install the packages mentioned in requirements.in file:
 
 You can install these dependencies using `pip`:
 
@@ -36,7 +36,7 @@ pip install pandas tqdm torch transformers python-dotenv qdrant-client langchain
 ## Usage
 
 Running Experiments on NCBI Dataset
-Below are examples of how to run experiments using the {NCBI} dataset or anyother dataset with CT_Mapper. These examples demonstrate both standard inference and using the LLAMA3.1 model for enhanced performance.
+Below are examples of how to run experiments using the {NCBI} dataset or anyother dataset with CDE-Mapper. These examples demonstrate both standard inference and using the LLAMA3.1 model for enhanced performance.
 
 ## Standard Inference: To perform standard inference on the BC5CDR-Disease dataset, use the following command:
 ```
